@@ -1,0 +1,6 @@
+[submodule "asciidoctor-backends"]
+	path = asciidoctor-backends
+	url = https://github.com/asciidoctor/asciidoctor-backends
+[submodule "dzslides"]
+	path = dzslides
+	url = https://github.com/mojavelinux/dzslides.git
