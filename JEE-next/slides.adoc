@@ -1,0 +1,271 @@
+= The Java EE 7 Platform
+Kuba Marchwicki ; @kubem 
+include::attributes.adoc[]
+
+:experimental:
+:toc2:
+:sectanchors:
+:idprefix:
+:idseparator: -
+:icons: font
+:dzslides-transition: fade
+:source-highlighter: coderay
+
+[.topic]
+== \\
+
+====
+[quote, Antoine de Saint-Exupery]
+____
+Perfection is achieved, not when there is nothing more to add, but when there is nothing left to take away.
+____
+====
+
+[.topic]
+== The story behind J(2)EE
+image::03-jee-history.png[JEE History, 600, role="middle"]
+
+[.topic]
+== JEE6 profiles
+image::04-jee6-profiles.png[JEE Profiles, 600, role="middle"]
+
+[NOTE]
+[role="speaker"]
+====
+Problems. Tomee (web profile), Tomee + JAX-RS, Tomee Plus (Full profile). Więc w JEE7 JAX-RS przewędrował do web profile.
+====
+
+[.topic]
+== JEE7
+image::05-jee7-deep-dive.png[JEE7, 600, role="middle"]
+
+[NOTE]
+[role="speaker"]
+====
+* Cel: modernizacja API
+* Co nie weszło: JCache – JSR 107
+====
+
+[.topic]
+== JEE7 deep dive
+image::06-jee7-deep-dive.png[JEE7, 600, role="middle"]
+
+== \\
+
+image::07-whats-all-about.png[caption="What's it all about?", role="stretch-x"]
+
+[NOTE]
+[role="speaker"]
+====
+* An umbrella specification. 
+* Nothing new – just made sure all specs talk to each other
+====
+
+[.topic]
+== JEE7 deep dive
+
+[.incremental]
+* JMS 2.0
+* JPA 2.1
+* Bean Validation 1.1
+* JAX-RS 2.0
+* Java API for JSON
+* Java API for Websockets
+* Batch Application
+* Concurrency Utilities
+
+
+[.topic.source]
+== Before we start
+
+[source,xml]
+----
+<dependency>
+  <groupId>javax</groupId>
+  <artifactId>javaee-api</artifactId>
+  <version>7.0</version>
+  <scope>provided</scope>
+</dependency>
+----
+
+[NOTE]
+[role="speaker"]
+====
+* Maven dependency. Nie ma problemów – co szczególnie było widoczne w testach. Gdzie można było budować unit testy bez kontenera
+* java.lang.ClassFormatError: Absent Code attribute in method that is not native or abstract in class file javax/persistence/LockModeType
+====
+
+[.topic]
+== JEE7 deep dive
+
+* *JMS 2.0*
+* JPA 2.1
+* Bean Validation 1.1
+* JAX-RS 2.0
+* Java API for JSON
+* Java API for Websockets
+* Batch Application
+* Concurrency Utilities
+
+[NOTE]
+[role="speaker"]
+====
+JCA Adapter – czyli możemy wymieniać implementacje: websphere z RabbitMQ
+====
+
+[.topic.source]
+== JMS 2.0 :: Configuration - Old API
+
+[.statement.middle]
+*?*
+
+[.topic.source]
+== JMS 2.0 :: Configuration - Old API
+
+[source,xml]
+----
+<subsystem xmlns="urn:jboss:domain:messaging:1.1">
+  <hornetq-server>
+     <jms-destinations>
+        <jms-queue name="testQueue">
+            <entry name="queue/test"/>
+        </jms-queue>
+        <jms-topic name="testTopic">
+            <entry name="topic/test"/>
+        </jms-topic>
+     </jms-destinations>
+  </hornetq-server>
+</subsystem>
+----
+
+
+[.topic.source]
+== JMS 2.0 :: Configuration - New API
+
+[source,java]
+----
+
+@JMSConnectionFactoryDefinition( <1>
+  name = "java:global/jms/demoConnectionFactory", 
+  className = "javax.jms.ConnectionFactory")
+@JMSDestinationDefinition( <2>
+  name = "java:global/jms/demoQueue", 
+  interfaceName = "javax.jms.Queue", 
+  destinationName = "demoQueue")
+public class JmsConfiguration {
+
+}
+----
+<1> Use annotation to specify a JMS `ConnectionFactory`
+<2> Use annotation to specify a JMS `Destination`
+
+[.topic.source]
+== JMS 2.0 :: Sending messages - Old API
+
+[source,java]
+----
+@Stateless
+public class SendMessageService {
+  
+  @Resource(lookup = "java:global/jms/demoConnectionFactory")
+  ConnectionFactory connectionFactory;
+  @Resource(lookup = "java:global/jms/demoQueue")
+  Queue demoQueue;
+          
+  public void sendMessage(String payload) {
+     try {
+        Connection connection = connectionFactory.createConnection();
+        Session session = connection
+            .createSession(false, Session.AUTO_ACKNOWLEDGE);
+        MessageProducer messageProducer = session
+            .createProducer(demoQueue);
+        TextMessage textMessage = session.createTextMessage(payload);
+        messageProducer.send(textMessage); <1>
+     } finally {
+        //...
+     } 
+  }
+} 
+----
+<1> This is the only important line
+
+[.topic.source]
+== JMS 2.0 :: Sending messages - New API
+
+[source,java]
+----
+@Stateless
+public class MessageService {
+
+  @Inject
+  private JMSContext context; <1>
+  @Resource(mappedName = "jms/inboundQueue")
+  private Queue inboundQueue;
+
+  public void sendMessage(String payload) {
+     context.createProducer().send(inboundQueue, payload); <2>
+  }
+
+}
+----
+<1> Injecting a complete context
+<2> Spring inspired `*Template` class
+
+[NOTE]
+[role="speaker"]
+====
+Inspiracja JmsTemplate Springowym jest dość oczywista. I w ogóle całą klasą klas *Template ze Springa
+Likwidujemy checked expections. 
+
+It is close to Spring JmsTemplate features
+- Reduces boilerplate code
+- Manages resources transparently
+- Handles exception properly
+- Converts checked exceptions to runtime equivalents
+- Provides convenience methods such as the convertAndSend() method that take a destination (a queue here) and a payload object as message.
+====
+
+[.topic.source]
+== JMS 2.0 :: Reciving message - New API
+
+[source,java]
+----
+@MessageDriven(mappedName="global/jms/demoQueue")
+public class MessageConsumer implements MessageListener {
+
+  @Override
+  public void onMessage(Message msg) {
+     try {
+       String payload = msg.getBody(String.class); <1>
+     } catch (JMSException e) {
+        e.printStackTrace();
+     }
+  }
+}
+----
+<1> No casting!!!
+
+[NOTE]
+[role="speaker"]
+====
+Not much changed - no casting
+
+====
+
+== \\  
+
+image::17-jms.png[width=600, role="middle"]
+
+[NOTE]
+[role="speaker"]
+
+====
+Nice try Oracle!
+
+====
+
+[.topic.ending, hrole="name"]
+== Kuba Marchwicki
+
+[.footer]
+[icon-twitter]'{zwsp}' @kubem
