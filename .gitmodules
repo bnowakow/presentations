@@ -3,4 +3,4 @@
 	url = https://github.com/asciidoctor/asciidoctor-backends
 [submodule "JEE-next/dzslides"]
 	path = JEE-next/dzslides
-	url = https://github.com/mojavelinux/dzslides.git
+	url = git@github.com:kubamarchwicki/dzslides.git
