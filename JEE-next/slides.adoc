@@ -1311,6 +1311,7 @@ image::68-questions.jpg[caption="Questions?", crole="invert", role="stretch-x"]
 * https://github.com/
 ** _javaee-samples/javaee7-samples_
 ** _kubamarchwicki/jee7-examples_
+** _kubamarchwicki/presentations/_
 * https://speakerdeck.com/
 ** _kubamarchwicki/jeenext_
 
