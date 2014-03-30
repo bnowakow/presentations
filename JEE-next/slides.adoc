@@ -784,6 +784,32 @@ assertThat(target.request().get(String.class))
 * Batch Applications
 * Concurrency Utilities
 
+[.topic]
+== JSON Processing :: Old API
+
+[.statement.middle]
+*?*
+
+[.topic]
+== JSON Processing API
+
+* API to parse and generate JSON
+* Streaming API
+** Low-level, efficient way to parse/generate JSON
+** Similar to StAX API in XML world
+* Object Model API
+** Simple, easy to use high-level API
+** Similar to DOM API in XML world
+
+[NOTE]
+[role="speaker"]
+====
+Lowlevel API. 
+To nie jest JAXB dla XMLa, bardziej DOM – obiektowy, albo StAX – parser (pooling)
+Wysokopoziomowy jest Jackson, GSON. 
+JSON binding w kolejnym kroku
+====
+
 [.topic.source]
 == JSON Processing
 
@@ -796,21 +822,6 @@ assertThat(target.request().get(String.class))
 		]
 }
 ----
-
-[NOTE]
-[role="speaker"]
-====
-Lowlevel API. 
-To nie jest JAXB dla XMLa, bardziej DOM – obiektowy, albo StAX – parser (pooling)
-Wysokopoziomowy jest Jackson, GSON. 
-JSON binding w kolejnym kroku
-====
-
-[.topic.source]
-== JSON Processing :: Old API
-
-[.statement.middle]
-*?*
 
 [.topic.source]
 == JSON Processing :: New API - streaming
@@ -902,6 +913,16 @@ public JsonObject saySimpleHello(@PathParam("name") String name) {
 Z JEE7 to było moje trzecie podejście do websockets. Od wczesnej bety, po teraz. Każde kolejne ma inne API. A mówicie że Java zmienia się bardzo powoli. 
 
 ====
+
+[.topic]
+== Java API for Websockets
+
+* Server and Client WebSocket Endpoint
+** Annotated: `@ServerEndpoint`, `@ClientEndpoint`
+** Programmatic: `Endpoint`
+* Lifecycle methods
+** `@OnOpen`, `@OnClose`, `@OnError`, `@OnMessage`
+* Packaging and Deployment
 
 [.topic.source]
 == Websockets :: Old API #1
@@ -1050,6 +1071,13 @@ API names has changed - and that's pretty much all.
 [.topic]
 == Batch Applications
 
+* Suited for non-interactive, bulk-oriented, and long-running tasks
+* Batch execution: sequential, parallel, decision-based
+* ETL processes: Extract, Transform, Load
+
+[.topic]
+== Batch Applications
+
 image::56-batch-processing.png["Batch processing", 700, role="middle"]
 
 == //
@@ -1143,6 +1171,18 @@ ____
 Kontener musi zapewnić stabilność, pewność, failover – dlatego zarządza wątkami; i nie pozwala innym.
 No ale można było w przeszłości działać asynchronicznie / w tle.
 ====
+
+[.topic]
+== Concurrency
+
+* Extension of Java SE Concurrency Utilities API
+* Provide asynchronous capabilities to Java EE application components
+* Provides 4 types of managed objects
+** `ManagedExecutorService`
+** `ManagedScheduledExecutorService`
+** `ManagedThreadFactory`
+** `ContextService`
+* Context Propagation
 
 [.topic.source]
 == Concurrency :: Old API
