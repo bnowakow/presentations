@@ -562,7 +562,7 @@ I'll focus on two areas: method level (parameters) validation and JAX-RS service
 ====
 
 [.topic.source]
-== Bean Validation 1.1 :: Old API - method parameters validation
+== Validation 1.1 :: Old API - method parameters
 
 [source,java]
 ----
@@ -580,7 +580,7 @@ public void addAuthor(String name,
 <2> Validation annotations can be used for method params
 
 [.topic.source]
-== Bean Validation 1.1 :: Old API - method parameters validation
+== Validation 1.1 :: Old API - method parameters 
 
 [source,java]
 ----
@@ -610,7 +610,7 @@ Mamy klasyczny interceptor, który musimy implementować
 ====
 
 [.topic.source]
-== Bean Validation 1.1 :: New API - method parameters validation
+== Validation 1.1 :: New API - method parameters 
 
 [source,java]
 ----
@@ -634,7 +634,7 @@ Nie potrzebujemy implementować interceptorów. Walidacja działa na wszystkich 
 ====
 
 [.topic.source]
-== Bean Validation 1.1 :: New API - method parameters validation
+== Validation 1.1 :: New API - method parameters 
 
 [source,java]
 ----
