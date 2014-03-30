@@ -818,10 +818,10 @@ assertThat(target.request().get(String.class))
 * API to parse and generate JSON
 * Streaming API
 ** Low-level, efficient way to parse/generate JSON
-** Similar to StAX API in XML world
+** Similar to StAX API
 * Object Model API
 ** Simple, easy to use high-level API
-** Similar to DOM API in XML world
+** Similar to DOM API
 
 [NOTE]
 [role="speaker"]
@@ -939,9 +939,7 @@ Z JEE7 to było moje trzecie podejście do websockets. Od wczesnej bety, po tera
 [.topic]
 == Java API for Websockets
 
-* Server and Client WebSocket Endpoint
-** Annotated: `@ServerEndpoint`, `@ClientEndpoint`
-** Programmatic: `Endpoint`
+* Server and Client WebSocket Endpoint: `@ServerEndpoint`, `@ClientEndpoint`
 * Lifecycle methods
 ** `@OnOpen`, `@OnClose`, `@OnError`, `@OnMessage`
 * Packaging and Deployment
@@ -1199,12 +1197,7 @@ No ale można było w przeszłości działać asynchronicznie / w tle.
 
 * Extension of Java SE Concurrency Utilities API
 * Provide asynchronous capabilities to Java EE application components
-* Provides 4 types of managed objects
-** `ManagedExecutorService`
-** `ManagedScheduledExecutorService`
-** `ManagedThreadFactory`
-** `ContextService`
-* Context Propagation
+* Provides Thread Factories and Executor Services
 
 [.topic.source]
 == Concurrency :: Old API
