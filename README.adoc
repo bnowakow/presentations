@@ -13,7 +13,7 @@ $ asciidoctor -b dzslides -T asciidoctor-backends/slim/dzslides slides.adoc
 Execute:
 ....
 $ asciidoctor -b dzslides -T asciidoctor-backends/slim/dzslides -a linkcss -a data-uri slides.adoc
-$ JAVA_HOME=$JDK_8
-$ git clone https://github.com/melix/deck2pdf (follow instructions to build)
-$ deck2pdf --profile=dzslides slides.html slides.pdf
+$ export JAVA_HOME=$JDK_8
+$ deck2pdf --profile=dzslides slides.html slides.pdf <1>
 ....
+<1> Build deck2pdf before hand. Follow the deck2pdf/README.adoc instructions
