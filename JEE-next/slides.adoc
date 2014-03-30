@@ -68,11 +68,20 @@ image::07-whats-all-about.png[caption="What's it all about?", role="stretch-x"]
 * JPA 2.1
 * Bean Validation 1.1
 * JAX-RS 2.0
-* Java API for JSON
+* Java API for JSON Processing
 * Java API for Websockets
-* Batch Application
+* Batch Applications
 * Concurrency Utilities
 
+[NOTE]
+[role="speaker"]
+====
+Out of scope; ne dotkniemy:
+* JTA 1.2 i adnotacji `@Transactional` pozwalającej objąć transakcją także komponenty CDI
+* JSF 2.2. `@FlowScope` oraz przepuszczanie atrybutów i elementów (pod kątem HTML5) - nie utrudnia
+* CDI 1.1 - uruchomienie _by default_ przez co były problemy z Googl Guice. Adnotacja `@Vetoed`
+
+====
 
 [.topic.source]
 == Before we start
@@ -101,9 +110,9 @@ image::07-whats-all-about.png[caption="What's it all about?", role="stretch-x"]
 * JPA 2.1
 * Bean Validation 1.1
 * JAX-RS 2.0
-* Java API for JSON
+* Java API for JSON Processing
 * Java API for Websockets
-* Batch Application
+* Batch Applications
 * Concurrency Utilities
 
 [NOTE]
@@ -262,6 +271,987 @@ image::17-jms.png[width=600, role="middle"]
 Nice try Oracle!
 
 ====
+
+
+[.topic]
+== JEE7 deep dive
+
+* JMS 2.0
+* *JPA 2.1*
+* Bean Validation 1.1
+* JAX-RS 2.0
+* Java API for JSON Processing
+* Java API for Websockets
+* Batch Applications
+* Concurrency Utilities
+
+[.topic.source]
+== JPA 2.1 :: Old Api - persistence.xml
+
+[source,java]
+----
+<persistence-unit>
+  <properties>
+    <property name="hibernate.connection.driver_class" <1>
+       value="org.apache.derby.jdbc.ClientDriver" />
+    <property name="hibernate.connection.url" <2>
+       value="jdbc:derby://localhost:1527/sample;create=true" />
+    <property name="hibernate.connection.username" value="user" /> <3>
+    <property name="hibernate.connection.password" value="pass" /> <4>
+    <property name="hibernate.show_sql" value="true" /> <5>
+    <property name="hibernate.format_sql" value="true" /> <6>
+    <property name="hibernate.use_sql_comments" value="true" /> <7>
+    <property name="hibernate.dialect" <8>
+       value="org.hibernate.dialect.MySQL5Dialect" />
+    <property name="hibernate.hbm2ddl.auto" value="create-drop" /> <9>
+  </properties>
+</persistence-unit>
+
+----
+
+
+[.topic.source]
+== JPA 2.1 :: Old Api - persistence.xml
+
+[source,java]
+----
+<persistence-unit>
+  <properties>
+    <property name="eclipselink.jdbc.driver" <1>
+      value="org.apache.derby.jdbc.ClientDriver" />
+    <property name="eclipselink.jdbc.url" <2>
+      value="jdbc:derby://localhost:1527/sample;create=true" />
+    <property name="eclipselink.jdbc.user" value="user" /> <3>
+    <property name="eclipselink.jdbc.password" value="pass" /> <4>
+    <property name="eclipselink.logging.level" value="FINE" /> <5>
+    <property name="eclipselink.target-database" <6>
+      value="org.eclipse.persistence.platform.database.MySQLPlatform" />
+    <property name="eclipselink.ddl-generation" <7>
+      value="drop-and-create-tables" />
+    <property name="eclipselink.ddl-generation.output-mode" <8>
+      value="database" />
+  </properties>
+</persistence-unit>
+
+----
+
+[.topic.source]
+== JPA 2.1 :: New API - persistence.xml
+
+[source,java]
+----
+<persistence-unit>
+  <properties>
+    <property name="javax.persistence.jdbc.driver" 
+      value="org.apache.derby.jdbc.ClientDriver" /> <1>
+    <property name="javax.persistence.jdbc.url" 
+      value="jdbc:derby://localhost:1527/sample;create=true" /> <2>
+    <property name="javax.persistence.jdbc.user" value="user" /> <3>
+    <property name="javax.persistence.jdbc.password" value="pass" /> <4>
+    <property name="javax.persistence.schema-generation.database.action"  
+      value="drop-and-create" /> <5>
+
+    <property name="eclipselink.logging.level" value="FINE" />
+    <property name="eclipselink.target-database" 
+      value="org.eclipse.persistence.platform.database.MySQLPlatform" />
+  </properties>
+</persistence-unit>
+
+----
+
+[.topic.source]
+== JPA 2.1 :: Old API - convertions
+
+[source,java]
+.+UserSex.java+
+----
+public enum UseSex {
+  MALE, FEMALE;
+}
+----
+
+[source,java]
+.+User.java+
+----
+@Entity
+public class User {
+
+  @Id
+  private long id;
+
+  @Enumerated(EnumType.ORDINAL) <1>
+  private UserSex sex;
+
+  //..
+}
+----
+<1> Actual database value is either `0` or `1`
+
+[NOTE]
+[role="speaker"]
+====
+Ale znacznie częściej w bazie mam “M” I “F” – bo tak chciał dba
+
+====
+
+[.topic.source]
+== JPA 2.1 :: Old API - convertions
+
+[source,java]
+.+UserSex.java+
+----
+public enum UseSex {
+  MALE, FEMALE;
+}
+----
+
+[source,java]
+.+User.java+
+----
+@Entity
+public class User {
+
+  @Id
+  private long id;
+
+  @Enumerated(EnumType.STRING) <1>
+  private UserSex sex;
+
+  //..
+}
+----
+<1> Actual database value is either `MALE` or `FEMALE`
+
+[NOTE]
+[role="speaker"]
+====
+Wciąż to nie to co powinienem. Jak ro rozwiązać
+
+====
+
+[.topic.source]
+== JPA 2.1 :: Old API - convertions
+
+[source,java]
+----
+@Entity
+public class User {
+
+  @PostLoad
+  public void afterLoad() {
+    switch(db_sex){
+      case "M": sex = UserSex.MALE;
+      case "F": sex = UserSex.FEMALE;
+      default: throw new IllegalArgumentException();
+    }
+  }
+
+  @PrePersist
+  public void beforePersit() {
+    switch(sex){
+      case MALE: db_sex = "M";
+      case FEMALE: db_sex = "F";
+      default: throw new IllegalArgumentException();
+    }
+  }
+}                               
+----
+  
+[.topic.source]
+== JPA 2.1 :: New API - convertions
+
+[source,java]
+----
+@Entity
+public class User {
+
+  @Convert(converter = SexConverter.class) <1>
+  private UserSex sex;
+
+  //..
+}
+----
+<1> Declare converter
+
+[.topic.source]
+== JPA 2.1 :: New API - convertions
+
+[source,java]
+----
+@Converter <1>
+public class SexConverter 
+  implements AttributeConverter<UserSex, String> { <2>
+
+  public String convertToDatabaseColumn(UserSex arg0) {
+    switch(arg0){
+      case MALE: return "M";
+      case FEMALE: return "F";
+      default: throw new IllegalArgumentException();
+    }
+  }
+  
+  public UserSex convertToEntityAttribute(String arg0) {
+    switch(arg0){
+      case "M": return UserSex.MALE;
+      case "F": return UserSex.FEMALE;
+      default: throw new IllegalArgumentException();
+    }
+  }
+}
+----
+
+[.topic.source]
+== JPA 2.1 :: New API - stored procedures
+
+[source,java]
+----
+@Table(indexes = @Index(columnList = "name")) <1>
+@Entity
+@NamedQuery(name = User.FIND_USER_BY_NAME, 
+   query = "from User u where name = ?")
+@NamedStoredProcedureQuery(name = User.REFRESH_USERS, 
+   procedureName = "USR_STRD_PRCR_CALL") <2>
+public class User {
+   public final static String FIND_USER_BY_NAME = "User.findByName";
+   public final static String REFRESH_USERS = "User.refreshUsersEntries";
+
+   //..
+
+}
+----
+<1> Define indexes for schema generation
+<2> Use predefined stored procedures
+
+[.topic]
+== JEE7 deep dive
+
+* JMS 2.0
+* JPA 2.1
+* *Bean Validation 1.1*
+* JAX-RS 2.0
+* Java API for JSON Processing
+* Java API for Websockets
+* Batch Applications
+* Concurrency Utilities
+
+[NOTE]
+[role="speaker"]
+====
+I'll focus on two areas: method parameters validation and JAX-RS services validation
+====
+
+[.topic.source]
+== Bean Validation 1.1 :: Old API - method parameters validation
+
+[source,java]
+----
+@Interceptors(ValidationInterceptor.class) <1>
+public void addAuthor(String name, 
+	@Size(min=5) String surename) { <2>
+   Author a = new Author();
+   a.setName(name);
+   a.setSurename(surename);
+
+   em.persist(a);
+}
+----
+<1> Interceptor is needed cause AppServer does not handle such case
+<2> Validation annotations can be used for method params
+
+[.topic.source]
+== Bean Validation 1.1 :: Old API - method parameters validation
+
+[source,java]
+----
+public Object validateMethodInvocation(InvocationContext ctx) 
+    throws Exception { <1>
+
+    MethodValidator validator = validatorFactory.getValidator()
+        .unwrap(MethodValidator.class);
+
+    Set<MethodConstraintViolation<Object>> violations = 
+        validator.validateAllParameters(
+            ctx.getTarget(), 
+            ctx.getMethod(), 
+            ctx.getParameters());
+ 
+   //...
+
+}
+----
+<1> Pretty standard EJB 3.0 interception method
+
+[NOTE]
+[role="speaker"]
+====
+Mamy klasyczny interceptor, który musimy implementować
+
+====
+
+[.topic.source]
+== Bean Validation 1.1 :: New API - method parameters validation
+
+[source,java]
+----
+public void addAuthor(String name, 
+	@Size(min=5) String surename) { <1>
+
+   Author a = new Author();
+   a.setName(name);
+   a.setSurename(surename);
+
+   em.persist(a);
+}	
+----
+<1> Validation is handled out-of-the-box
+
+[NOTE]
+[role="speaker"]
+====
+Nie potrzebujemy implementować interceptorów. Walidacja działa na wszystkich typach serwisów
+
+====
+
+[.topic.source]
+== Bean Validation 1.1 :: New API - method parameters validation
+
+[source,java]
+----
+@Path("/hello")
+public class HelloWorld {
+
+   @Path("/{name}")
+   @GET
+   @Produces(MediaType.APPLICATION_JSON)
+   public JsonObject sayHello(
+      @NotEmpty @PathParam("name") String name) { <1>
+         //..
+      }
+   }
+}
+
+----
+
+[NOTE]
+[role="speaker"]
+====
+Tutaj np. JAX-RS. Gdy nie uda się walidacja, zwracany jest HTTP400 – Bad Request
+
+====
+
+[.topic]
+== JEE7 deep dive
+
+* JMS 2.0
+* JPA 2.1
+* Bean Validation 1.1
+* *JAX-RS 2.0*
+* Java API for JSON Processing
+* Java API for Websockets
+* Batch Applications
+* Concurrency Utilities
+
+[NOTE]
+[role="speaker"]
+====
+Podobnie jak z innymi elemantami specyfikacji – to jest ustandaryzowanie rzeczy które już sa obecne
+RESTeasy, Jersey, CXF
+
+Mamy nowe: interceptory i filtry. Tak jak w komponentach EJB i w serwletach.
+Asynchroniczność – analogiczna jak AsyncServlet w Servler 3.0 (JEE6)
+Niemniej - skupię się na dwóch elementach: konfiguracji oraz Client API
+
+====
+
+[.topic.source]
+== JAX-RS 2.0 :: Configuration - Old API
+
+[.statement.middle]
+*?*
+
+[.topic.source]
+== JAX-RS 2.0 :: Configuration - Old API
+
+[source,xml]
+----
+<servlet>
+    <servlet-name>JAX-RS Servlet</servlet-name>
+    <servlet-class>
+    	com.sun.jersey.spi.container.servlet.ServletContainer
+    </servlet-class>
+    <load-on-startup>1</load-on-startup>
+</servlet>
+<servlet-mapping>
+    <servlet-name>JAX-RS Servlet</servlet-name>
+    <url-pattern>/jax-rs/*</url-pattern>
+</servlet-mapping>
+
+----
+
+[NOTE]
+[role="speaker"]
+====
+Glassfish3, Jersey configuration
+====
+
+[.topic.source]
+== JAX-RS 2.0 :: Configuration - New API
+
+[source,java]
+----
+import javax.ws.rs.ApplicationPath; 
+import javax.ws.rs.core.Application; 
+
+@ApplicationPath("/rs") <1>
+public class RestApp extends Application { <2>
+}
+----
+<1> Root application path
+<2> Extends `Application`
+
+[.topic.source]
+== JAX-RS 2.0 :: Client - Old API
+
+[source,java]
+----
+HttpURLConnection connection = 
+   (HttpURLConnection)serverAddress.openConnection();
+connection.setRequestMethod("GET");
+connection.setDoOutput(true);
+connection.setReadTimeout(10000);
+
+BufferedReader rd = new BufferedReader(
+   new InputStreamReader(connection.getInputStream()));
+StringBuilder sb = new StringBuilder();
+
+while ((line = rd.readLine()) != null) {
+   sb.append(line + '\n');
+}
+
+System.out.println(sb.toString());
+----
+
+[.topic.source]
+== JAX-RS 2.0 :: Client - Old API
+
+[source,xml]
+.+pom.xml+
+----
+<dependency>
+	<groupId>com.github.kevinsawicki</groupId>
+	<artifactId>http-request</artifactId>	
+	<version>5.4.1</version>
+</dependency>
+----
+
+[source,java]
+----
+HttpRequest request = HttpRequest.get(baseURL).receive(output);
+System.out.println(request.toString());
+----
+
+[.topic.source]
+== JAX-RS 2.0 :: Client - New API
+
+[source,java]
+----
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.WebTarget;
+
+Client client = ClientBuilder.newBuilder().build(); <1>
+WebTarget target = client.target(uri.toString());
+Response response = target.request().get(); <2>
+
+assertThat(response.getStatus()).isEqualTo(200); <3>
+assertThat(target.request().get(String.class))
+	.isEqualTo("{}"); <4>
+----
+<1> Prepare a client
+<2> Actual request
+<3> Get HTTP Response status
+<4> Get the response body as String
+
+[.topic]
+== JEE7 deep dive
+
+* JMS 2.0
+* JPA 2.1
+* Bean Validation 1.1
+* JAX-RS 2.0
+* *Java API for JSON Processing*
+* Java API for Websockets
+* Batch Applications
+* Concurrency Utilities
+
+[.topic.source]
+== JSON Processing
+
+[source, json]
+----
+{
+	"data": [
+		"Hello Jakub",
+		"Guten Tag Jakub"
+		]
+}
+----
+
+[NOTE]
+[role="speaker"]
+====
+Lowlevel API. 
+To nie jest JAXB dla XMLa, bardziej DOM – obiektowy, albo StAX – parser (pooling)
+Wysokopoziomowy jest Jackson, GSON. 
+JSON binding w kolejnym kroku
+====
+
+[.topic.source]
+== JSON Processing :: Old API
+
+[.statement.middle]
+*?*
+
+[.topic.source]
+== JSON Processing :: New API - streaming
+
+[source,java]
+----
+JsonParser parser = Json.
+	createParser(new StringReader(string))); <1>
+
+JsonParser.Event event = p.next();          // START_OBJECT
+event = p.next();                           // KEY_NAME
+event = p.next();                           // VALUE_STRING
+
+assertThat(event).is(new Condition<Object>() {
+	public boolean matches(Object value) {
+		return value instanceof Event 
+			&& value == Event.VALUE_STRING; <2>
+	}
+});
+assertThat(parser.getString()).isEqualTo("Hello Jakub"); <3>
+
+----
+<1> Define an events based parser
+<2> Look for an event (`START_OBJECT`, `START_ARRAY`, `KEY_NAME`, `VALUE_STRING`, etc)
+<3> Get actual value
+
+[.topic.source]
+== JSON Processing :: New API - object API
+
+[source,java]
+----
+JsonReader reader = Json.
+	createReader(new StringReader(string)); <1>
+        
+JsonObject obj = reader.readObject(); <2>
+assertThat(obj.containsKey("data")).isTrue();
+        
+JsonArray results = obj.getJsonArray("data"); <3>
+        
+assertThat(results.size()).isEqualTo(2); 
+assertThat(results.getString(0)).isEqualTo("Hello Jakub");
+assertThat(results.getString(1)).isEqualTo("Guten tag Jakub");
+----
+<1> Create a reader
+<2> Read a JSON Object
+<3> Read a JSON Array
+
+[.topic.source]
+== JSON Processing :: New API - assemblers / builders
+
+[source,java]
+----
+import javax.json.Json; <1>
+import javax.json.JsonObject;
+
+@Path("/simple/{name}")
+@GET
+@Produces(MediaType.APPLICATION_JSON)
+public JsonObject saySimpleHello(@PathParam("name") String name) {
+	return Json.createObjectBuilder() <2>
+		.add("data", Json.createArrayBuilder() <3>
+			.add("Hello " + name)
+			.add("Guten tag " + name)
+			.build())	
+		.build(); 
+}
+
+----
+<1> Look after `javax.json.*` package
+<2> Create a builder object
+<3> Work with arrays in a similar fashion
+
+
+[.topic]
+== JEE7 deep dive
+
+* JMS 2.0
+* JPA 2.1
+* Bean Validation 1.1
+* JAX-RS 2.0
+* Java API for JSON Processing
+* *Java API for Websockets*
+* Batch Applications
+* Concurrency Utilities
+
+[NOTE]
+[role="speaker"]
+====
+Z JEE7 to było moje trzecie podejście do websockets. Od wczesnej bety, po teraz. Każde kolejne ma inne API. A mówicie że Java zmienia się bardzo powoli. 
+
+====
+
+[.topic.source]
+== Websockets :: Old API #1
+
+[source,java]
+.+WebSocketServlet.java+
+----
+@WebServlet(urlPatterns = "/ping")
+public class FeedNotifierWebSocket extends WebSocketServlet { <1>
+	
+	protected StreamInbound createWebSocketInbound(
+			String subprotocol,
+			HttpServletRequest req) {
+		//.. return new Inboud for each client
+	}
+
+}
+----
+
+[.topic.source]
+== Websockets :: Old API #1
+
+[source,java]
+----
+class NotificationInbound extends MessageInbound {
+
+	private WsOutbound outbound;
+
+	protected void onOpen(WsOutbound outbound) {
+		this.outbound = outbound; <1>
+	}
+
+	protected void onBinaryMessage(ByteBuffer m) {
+		outbound.writeBinaryMessage(message); 
+	}
+
+	protected void onTextMessage(CharBuffer m) {
+		outbound.writeTextMessage(message); <2>
+	}
+}
+----
+
+[NOTE]
+[role="speaker"]
+====
+Message Inbound was an abstraction over HTTP web socket communication
+This was early Tomcat 7.0.20+ - if I recon corretly
+====
+
+
+[.topic.source]
+== Websockets :: Old API #2
+
+[source,java]
+----
+@Singleton <1>
+@WebSocketEndpoint(path=”/chat”) <2>
+public class ChatServer {
+	Set<Session> peers = new HashSet<>();
+
+	@WebSocketOpen 
+	public void onOpen(Session s) {
+		peers.add(s);
+	}
+
+	@WebSocketClose
+	public void onClose(Session s) {
+		peers.remove(s);
+	}
+
+	@WebSocketMessage <3>
+	public void message(String m, Session c) throws IOException {
+		for (Session session : peers) {
+			if (!session.equals(c)) <4>
+				session.getRemote().sendObject(m);
+		}
+	}
+}
+
+----
+<1> More JEE'ish approach
+<2> Clear Web Socket definition
+<3> Handling the communication
+<4> Sending the message
+
+[.topic.source]
+== Websockets :: New API
+
+[source,java]
+----
+@Singleton <1>
+@ServerEndpoint("/ping") <2>
+public class NotificationServer {
+	Set<Session> peers = new HashSet<>();
+	
+	@OnOpen
+	public void onOpen(Session s) throws IOException {
+		peers.add(s);
+	}
+	
+	@OnClose
+	public void onClose(Session s) throws IOException {
+		peers.remove(s);
+	}
+
+	@OnMessage <3>
+	public void message(String m, Session c) throws IOException {
+		for (Session session: peers) {
+			if (!session.equals(c)) <4>
+				session.getBasicRemote().sendText(m);
+		}		
+	}
+}
+----
+
+[NOTE]
+[role="speaker"]
+====
+Cel: abstrakcja komunikacji TCP, tak jak JAX-RS jest abstrakcją na komunikację HTTP
+Sesja jest kowersacją
+
+Przykład LIVE!!
+
+API names has changed - and that's pretty much all. 
+====
+
+[.topic]
+== JEE7 deep dive
+
+* JMS 2.0
+* JPA 2.1
+* Bean Validation 1.1
+* JAX-RS 2.0
+* Java API for JSON Processing
+* Java API for Websockets
+* *Batch Applications*
+* Concurrency Utilities
+
+
+[.topic]
+== Batch Applications :: Old API
+
+[.statement.middle]
+*?*
+
+[.topic]
+== Batch Applications
+
+image::56-batch-processing.png["Batch processing", 700, role="middle"]
+
+== //
+
+[.incremental]
+Job Repository:: holds information about jobs current running and jobs that run in the past. JobOperator provides access to this repository.
+Job Operator:: an interface to manage all aspects of job processing, including operational commands, such as start, restart, and stop, retrieval of job and step executions.
+Job:: encapsulates an entire batch process
+
+[.topic.source]
+== Batch Applications
+
+[source, xml]
+----
+<job id="myJob" xmlns="http://batch.jsr352/jsl"> <1>
+  <step id="myStep"> <2>
+    <chunk reader="MyItemReader" <3>
+        writer="MyItemWriter" 
+        processor="MyItemProcessor"
+        buffer-size="5"
+        checkpoint-policy="item"
+        commit-interval="10" /> 
+  </step>
+</job>
+----
+
+[.topic.source]
+== Batch Applications
+
+[source,java]
+.+MyItemReader.java+
+----
+@ItemReader <1>
+public class MyItemReader {
+   //...
+}
+----
+
+[source,java]
+.+MyItemProcessor.java+
+----
+@ItemProcessor <2>
+public class MyItemProcessor {
+   //...
+}
+----
+
+[source,java]
+.+MyItemWriter.java+
+----
+@ItemWriter <3>
+public class MyItemWriter {
+   //...
+}
+----
+<1> Reads Job elements
+<2> Processes
+<3> Writes output
+
+[NOTE]
+[role="speaker"]
+====
+Opowiedzieć o ilości boilerplate code. Wszystko objęte jest transakcja
+====
+
+[.topic]
+== JEE7 deep dive
+
+* JMS 2.0
+* JPA 2.1
+* Bean Validation 1.1
+* JAX-RS 2.0
+* Java API for JSON Processing
+* Java API for Websockets
+* Batch Applications
+* *Concurrency Utilities*
+
+== \\
+
+
+====
+[.small.quote, EJB Spec - 21.2.2. Programming restrictions]
+____
+The enterprise bean must not attempt to manage threads. The enterprise bean must not attempt to start, stop, suspend, or resume a thread, or to change a thread’s priority or name. The enterprise bean must not attempt to manage thread groups.
+____
+====
+
+[NOTE]
+[role="speaker"]
+====
+Kontener musi zapewnić stabilność, pewność, failover – dlatego zarządza wątkami; i nie pozwala innym.
+No ale można było w przeszłości działać asynchronicznie / w tle.
+====
+
+[.topic.source]
+== Concurrency :: Old API
+
+[source, java]
+.+AsynchronousWatcher.java+
+----
+@Stateless
+public class EventWatcher {
+
+	@Asynchronous <1>
+	public void method(FeedEvent event) {
+		System.out.println(event);
+	}
+	
+}
+----
+<1> This method is run asynchronously
+
+[.topic.source]
+== Concurrency :: Old API
+
+[source,java]
+.+AsyncServlet.java+
+----
+@WebServlet(urlPatterns = "/somepath", 
+	asyncSupported = true) <1>
+public class AsyncServlet extends HttpServlet {
+
+    public void doGet(HttpServletRequest request,
+	 HttpServletResponse response) 
+		throws ServletException, IOException {
+		//..
+	}
+}
+----
+<1> The Response is immediate
+
+[.topic.source]
+== Concurrency :: New API
+
+[source,java]
+.+UsingManagedThreadFactory.java+
+----
+@Named
+public class ThreadManager {
+
+	@Resource
+	ManagedThreadFactory mtf; <1>
+
+	public ExecutorService getThreadManager() {
+		return new ThreadPoolExecutor(5,10, 10,
+			TimeUnit.SECONDS, 
+			new ArrayBlockingQueue<Runnable>(100), 
+			mtf);
+	}
+}
+
+----
+<1> `ManagedThreadFactory` is an application server resource
+
+
+[.topic.source]
+== Concurrency :: New API
+
+[source,java]
+----
+@Named
+public class ProcessingService {
+
+	public void doLoadsOfStuff(ExecutorService executor) {
+		for (int i = 0; i < 50; i++) {
+			Runnable worker = new WorkerThread("" + i);
+			executor.execute(worker); <1>
+		}
+		executor.shutdown();
+	}
+}
+----
+
+== \\ 98 percent business logic
+image::66-jee7.png[width="600", role="middle"]
+
+[.topic]
+== Learn JEE7 the right way
+
+[.incremental]
+github.com:: Fork _javaee7-samples_ project
+choose your example:: Take one feature at a time, understand the spec, create an Arquillian test. Run with Wildfly and Glassfish. See how it all works.
+push it:: Become a part of the community. Push your changes and help others
+
+[.topic]
+== JEE8?
+
+[.incremental]
+* JSON-B (JSON binding)
+* JCache (JSR 107)
+* Adopt JSR
+* Open TCK (??)
+* More JSP (+ templates), less JSF
+* no more EARs (??)
+
+== \\ questions
+https://github.com/javaee-samples/javaee7-samples
+https://github.com/kubamarchwicki/jee7-examples
+http://www.slideshare.net/kubamarchwicki/jeenext
+
+image::68-questions.jpg[caption="", role="stretch-x"]
+
 
 [.topic.ending, hrole="name"]
 == Kuba Marchwicki
