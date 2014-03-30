@@ -1090,14 +1090,14 @@ API names has changed - and that's pretty much all.
 [.statement.middle]
 *?*
 
-== //
+[.topic]
+== Batch Applications
 
 * Suited for non-interactive, bulk-oriented, and long-running tasks
 * Batch execution: sequential, parallel, decision-based
 * ETL processes: Extract, Transform, Load
 
-[.topic]
-== Batch Applications
+== //
 
 [.incremental]
 Job Repository:: holds information about jobs current running and jobs that run in the past. JobOperator provides access to this repository.
@@ -1311,7 +1311,7 @@ image::68-questions.jpg[caption="Questions?", crole="invert", role="stretch-x"]
 * https://github.com/
 ** _javaee-samples/javaee7-samples_
 ** _kubamarchwicki/jee7-examples_
-** _kubamarchwicki/presentations/_
+** _kubamarchwicki/presentations_
 * https://speakerdeck.com/
 ** _kubamarchwicki/jeenext_
 
