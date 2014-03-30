@@ -846,7 +846,7 @@ JSON binding w kolejnym kroku
 ----
 
 [.topic.source]
-== JSON Processing :: New API - streaming
+== Streaming API
 
 [source,java]
 ----
@@ -871,7 +871,7 @@ assertThat(parser.getString()).isEqualTo("Hello Jakub"); <3>
 <3> Get actual value
 
 [.topic.source]
-== JSON Processing :: New API - object API
+== Object API
 
 [source,java]
 ----
@@ -892,7 +892,7 @@ assertThat(results.getString(1)).isEqualTo("Guten tag Jakub");
 <3> Read a JSON Array
 
 [.topic.source]
-== JSON Processing :: New API - assemblers / builders
+== Assemblers and builders
 
 [source,java]
 ----
