@@ -77,6 +77,7 @@ image::07-whats-all-about.png[caption="What's it all about?", role="stretch-x"]
 [role="speaker"]
 ====
 Out of scope; ne dotkniemy:
+
 * JTA 1.2 i adnotacji `@Transactional` pozwalającej objąć transakcją także komponenty CDI
 * JSF 2.2. `@FlowScope` oraz przepuszczanie atrybutów i elementów (pod kątem HTML5) - nie utrudnia
 * CDI 1.1 - uruchomienie _by default_ przez co były problemy z Googl Guice. Adnotacja `@Vetoed`
@@ -226,6 +227,7 @@ Inspiracja JmsTemplate Springowym jest dość oczywista. I w ogóle całą klas�
 Likwidujemy checked expections. 
 
 It is close to Spring JmsTemplate features
+
 - Reduces boilerplate code
 - Manages resources transparently
 - Handles exception properly
