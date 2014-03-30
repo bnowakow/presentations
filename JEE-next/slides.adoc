@@ -76,10 +76,14 @@ image::07-whats-all-about.png[caption="What's it all about?", role="stretch-x"]
 [NOTE]
 [role="speaker"]
 ====
-Out of scope; ne dotkniemy:
+Out of scope:
+
 * JTA 1.2 i adnotacji `@Transactional` pozwalającej objąć transakcją także komponenty CDI
 * JSF 2.2. `@FlowScope` oraz przepuszczanie atrybutów i elementów (pod kątem HTML5) - nie utrudnia
 * CDI 1.1 - uruchomienie _by default_ przez co były problemy z Googl Guice. Adnotacja `@Vetoed`
+
+In scope: *JMS* configuration. *JPA* converters. *Validaton* method params. 
+*JAX-RS* client API & configuration. *JSON* streaming and object API. *Websockets* *Batch* ETL *Concurrency*
 
 ====
 
@@ -118,7 +122,13 @@ Out of scope; ne dotkniemy:
 [NOTE]
 [role="speaker"]
 ====
-JCA Adapter – czyli możemy wymieniać implementacje: websphere z RabbitMQ
+* JCA Adapter – czyli możemy wymieniać implementacje: websphere z RabbitMQ
+* New JMSContext interface
+* AutoCloseable JMSContext, Connection, Session, …
+* Use of runtime exceptions
+* Method chaining on JMSProducer
+* Simplified message sending
+
 ====
 
 [.topic.source]
@@ -226,11 +236,10 @@ Inspiracja JmsTemplate Springowym jest dość oczywista. I w ogóle całą klas�
 Likwidujemy checked expections. 
 
 It is close to Spring JmsTemplate features
-- Reduces boilerplate code
-- Manages resources transparently
-- Handles exception properly
-- Converts checked exceptions to runtime equivalents
-- Provides convenience methods such as the convertAndSend() method that take a destination (a queue here) and a payload object as message.
+Reduces boilerplate code, Manages resources transparently, Handles exception properly, 
+Converts checked exceptions to runtime equivalents, Provides convenience methods such 
+as the convertAndSend() method that take a destination (a queue here) and a payload 
+object as message.
 ====
 
 [.topic.source]
@@ -284,6 +293,17 @@ Nice try Oracle!
 * Java API for Websockets
 * Batch Applications
 * Concurrency Utilities
+
+[NOTE]
+[role="speaker"]
+====
+Criteria API niestety nadal wygląda tak że się trochę odechciewa. 
+Ale pojawiło się parę uproszczeń:
+
+* configuracja
+* stored procedured
+* converters
+====
 
 [.topic.source]
 == JPA 2.1 :: Old Api - persistence.xml
@@ -537,7 +557,8 @@ public class User {
 [NOTE]
 [role="speaker"]
 ====
-I'll focus on two areas: method parameters validation and JAX-RS services validation
+I'll focus on two areas: method level (parameters) validation and JAX-RS services validation
+
 ====
 
 [.topic.source]
@@ -661,6 +682,7 @@ Mamy nowe: interceptory i filtry. Tak jak w komponentach EJB i w serwletach.
 Asynchroniczność – analogiczna jak AsyncServlet w Servler 3.0 (JEE6)
 Niemniej - skupię się na dwóch elementach: konfiguracji oraz Client API
 
+It provides a higher-level API than HttpURLConnection as well as integration with JAX-RS providers.
 ====
 
 [.topic.source]
