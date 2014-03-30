@@ -1,5 +1,7 @@
 == Slides and public speaking
 
+My public presentations and speaking. Complete slide deck with asciidoctor Gemfile, generators and PDF converion.
+
 
 === Generating Slides
 
