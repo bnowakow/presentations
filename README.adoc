@@ -17,3 +17,11 @@ $ JAVA_HOME=$JDK_8
 $ git clone https://github.com/melix/deck2pdf (follow instructions to build)
 $ deck2pdf --profile=dzslides slides.html slides.pdf
 ....
+
+=== Decent Polish Google Web Fonts
+
+* Alegreya Sans
+* Scada
+* Cuprum
+* Archivo Narrow
+* Ubuntu Condensed
