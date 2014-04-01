@@ -1,0 +1,10 @@
+:longform:
+:sectids!:
+:imagesdir: images
+:source-highlighter: highlightjs
+:language: no-highlight
+:dzslides-style: stormy-jm
+:dzslides-transition: fade
+:dzslides-fonts: family=Alegreya+Sans:400,700,200,300&subset=latin,latin-ext&family=Cedarville+Cursive 
+:dzslides-highlight: monokai
+

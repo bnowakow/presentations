@@ -1,0 +1,13 @@
+= Jak programować aby nie zwariować 
+Kuba Marchwicki ; @kubem 
+include::attributes.adoc[]
+
+:experimental:
+:toc2:
+:sectanchors:
+:idprefix:
+:idseparator: -
+:icons: font
+:dzslides-transition: fade
+:source-highlighter: coderay
+

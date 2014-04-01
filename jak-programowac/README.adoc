@@ -1,0 +1,12 @@
+= Jak programować aby nie zwariować
+
+Wybuchowa mieszanka czystego kodu, wzorców, zachowań, wartości z nutką psychologii (głównie kognitywistycznej); savoir vivre programisty w projekcie - przynajmniej w kontekście języka którym się w największym stopniu posługuje.
+
+Oprogramowanie można podzielić na typu według wielu rożnych kluczy, jednym z nich może być: czy buduje produkt który będę utrzymywał przez lata, czy piszę kod dla kogoś - i przyszłość rozwiązania to nie będzie już moje zmartwienie. Przy tak postawionym pytaniu zasadnicza różnica dotyczy jakości, nie tylko ostatecznego produktu (działa czy nie działa) ale jakości samego rozwiązania. Nie tego co zostało dostarczone ale jak zostało zrobione. Bo właśnie to 'jak' wpływa później na koszt nanoszenia poprawek, dodawania kolejnych elementów, poprawiania ewentualnych błędów. Na wykładzie chciałbym przybliżyć te zasady jak, jak programować aby później z trwoga nie wracać do fragmentów sprzed lat. Jakich trzymać się zasad aby kod był czytelny, klarowny, intencja jasna a całość była dobrze zaprojektowana
+
+
+== Presented at:
+
+* 2013-04-04 University of Gdańsk
+* 2013-05-20 Technical University of Gdańsk
+* 2014-04-07 4developers.org.pl - Warszawa
