@@ -62,7 +62,7 @@ Wchodzimy w kod i mamy łapiemy się za głowe. Albo nie wchodzimy w kod w ogól
 
 == \\
 [.statement]
-A może *inaczej*; dlaczego zajmujemy się *softwarem*?
+A może *inaczej* dlaczego zajmujemy się *softwarem*
 
 [.topic]
 == Punkty wyjścia
@@ -175,11 +175,195 @@ image::10-uncle-bob.jpg[caption="", role="stretch-x"]
 [role="speaker"]
 ====
 * Nazywaj zmiennej w taki a taki sposób
-* Stosuj komentarze w takich a nie innych przypadkach
 * Dziel funkcje na części zgodnie z takimi a takimi zasadami
+* Stosuj komentarze w takich a nie innych przypadkach
 * Stosuj abstrakcje, symetrię, prawo Demeter
 * Testuj, testuj, testuj, red – green – ….
 * Poprawiaj
 ====
 
+[.topic.source]
+== Nazwy
 
+[source,java]
+.+BadCode.java+
+----
+for (int i=0; i<10; i++){
+    k += ((l[i]*1.5) / 3 );
+}
+----
+
+[source,java]
+.+GoodCode.java+
+----
+float milleageRate;
+const int NUMER_OF_EMPLOYEE = 3;
+float sum = 0;
+
+for ( int i=0; i<numberOfTrips; i++ ){
+   float totalCompensation = tripLength[i] * milleageRate;
+   float deduction = totalCompensation / NUMER_OF_EMPLOYEE;
+   sum += deduction;
+}
+----
+
+[NOTE]
+[role="speaker"]
+====
+* Nazwy zmiennych, metod, klas powinny być wystarczająco opisowe aby zrozumieć jaką wartość przetrzymuje zmienna i jaką czynność wykonuje metoda.
+* Nazwy nie powinny wymagać dodawania komentarza
+* Nazwy zmiennych nie mogą wprowadzać w błąd!
+* Nazwy metod nie mogą ukrywać funkcjonalności!
+
+* Korzystaj z nazw które
+* Ułatwiają zapamiętywanie
+* Umożliwiają swobodną dyskusję o kodzie
+====
+
+[.topic]
+== Funkcje
+
+[.incremental]
+Zasada pierwsza:: funkcje powinny być małe
+Zasada druga:: funkcje powinny być jeszcze mniejsze
+
+== \\
+
+[.statement]
+Functions should *do one thing*.
+Should do it well and should do it only
+
+== \\
+image::13-functions.png[caption="Why? Oh why?" role="stretch-y"]
+
+[NOTE]
+[role="speaker"]
+====
+* Don't repeat yourself
+* Symertia w kodzie: realizuj w funkcji zadań które operują na innych poziomach abstrakcji
+====
+
+[.topic]
+== Komentarze
+
+[.statement]
+*don't*
+
+== \\
+
+====
+[quote, Robert C. Martin]
+____
+If you decide to write a comment, then spend the time necessary to make sure it is the best comment you can write
+____
+====
+
+[.topic]
+== Obiekty
+
+[.statement]
+Zasada *minimalnej wiedzy* moduł nie powinien wiedzieć o wnętrzu obiektów, którymi manipuluje
+
+[.topic]
+== Prawo Demeter
+
+[role="incremental scatter"]
+* możesz bawić się *ze sobą*
+* możesz bawić się *własnymi zabawkami* (ale bez rozbierania)
+* możesz bawić się zabawkami które *dostałeś*
+* możesz bawić się zabawkami które *zrobiłeś samodzielnie*
+
+== \\
+image::12-lebovsky.jpg[caption="", role="stretch-x"]
+
+[NOTE]
+[role="speaker"]
+====
+* Po prostu głęboko wierzymy że dobry kod nam pomoże
+* Choć nie wiemy jak, intuicyjnie staramy się go stosować
+* Z pokorą przyjmujemy karcący wzrok mnicha 
+* Uczymy się... bez wnikania w kontekst
+* Z czasem zobaczymy że z czystym kodem lepiej się pracuje... tak po ludzku
+====
+
+== \\
+image::11-kent-beck.jpg[caption="", role="stretch-x"]
+
+[NOTE]
+[role="speaker"]
+====
+Parę lat wcześniej któś położył podwaliny
+====
+
+[.topic]
+== Wartość
+
+[.incremental.scatter]
+* Kod jest podstawowym medium komunikacji w projekcie
+* Jako zespół jesteśmy jednością
+* Programy są częściej czytane niż pisane
+* Więcej czasu poświęcamy na modyfikację istniejącego kodu niż na tworzenie nowego
+
+[NOTE]
+[role="speaker"]
+====
+* Jak ja pójdę na skróty, to kolega będzie się męczył
+* I jako całość i tak będziemy nieefektywni
+====
+
+[.topic]
+== Implementation patterns
+
+[.incremental.scatter]
+* *Komunikacja*; kod źródłowy powinno się czytać jak książkę
+* *Prostota*; wprowadzaj złożoność tylko kiedy jest to konieczne
+* *Elastyczność* to dodatkowa złożoność, więc wprowadzaj ją tylko tam gdzie to konieczne
+
+
+[.topic]
+== Implementation patterns
+
+[.incremental.scatter]
+* *Lokalne konsekwencje* a więc zmiana w jednym miejscu nie powoduje zmian w innych
+* *Dane* i *logika* razem, ponieważ zmieniają się w tym samym czasie
+* *Symetria*, utrzymuj podobny poziom abstrakcji
+
+== \\
+
+====
+[.small.quote, Grady Booch - Software Archeologist - IBM]
+____
+Czysty kod jest prosty i bezpośredni. Czysty kod czyta się jak dobrze napisaną prozę. Czysty kod nigdy nie zaciemnia zamiarów projektanta; jest pełen trafnych abstrakcji i prostych ścieżek sterowania
+____
+====
+
+== \\
+image::14-ksiazki.png[width="700"]
+
+[NOTE]
+[role="speaker"]
+====
+Skąd czerpać taką wiedzę
+====
+
+== \\
+
+[.pull-right]
+image::15-like-a-boss.jpg[caption="", role="stretch-x"]
+
+[NOTE]
+[role="speaker"]
+====
+* Po co to robię? 
+* Aby być like a boss. Fajnie – piszę dobry kod. 
+* Czytelny, pracuje mi się łatwiej. Ale dlaczego. By zylo się lepiej, aby budować lepsze systemy -też
+====
+
+== \\
+image::16-cause-effect.jpg[caption="", role="stretch-x"]
+
+[NOTE]
+[role="speaker"]
+====
+Ale ten talk będzie bardziej nauką o przyczynie I skutku. Jeżeli się nie zastanowimy na tym – to nasz clean code, nasz czystość będzie tylko I wyłącznie na poziomie estetyki. 
+====
