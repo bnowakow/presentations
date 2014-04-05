@@ -1,15 +1,20 @@
 = The Java EE 7 Platform
 Kuba Marchwicki ; @kubem 
-include::attributes.adoc[]
-
+:longform:
+:sectids!:
+:imagesdir: images
+:source-highlighter: highlightjs
+:language: no-highlight
+:dzslides-style: stormy-jm
+:dzslides-fonts: family=Yanone+Kaffeesatz:400,700,200,300&family=Cedarville+Cursive
+:dzslides-transition: fade
+:dzslides-highlight: monokai
 :experimental:
 :toc2:
 :sectanchors:
 :idprefix:
 :idseparator: -
 :icons: font
-:dzslides-transition: fade
-:source-highlighter: coderay
 
 == \\
 

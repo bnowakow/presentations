@@ -1,13 +1,18 @@
 = Jak programować aby nie zwariować 
 Kuba Marchwicki ; @kubem 
-include::attributes.adoc[]
-
+:longform:
+:sectids!:
+:imagesdir: images
+:source-highlighter: highlightjs
+:language: no-highlight
+:dzslides-style: stormy-jm
+:dzslides-transition: fade
+:dzslides-fonts: family=Alegreya+Sans:400,700,200,300&subset=latin,latin-ext&family=Cedarville+Cursive 
+:dzslides-highlight: monokai
 :experimental:
 :toc2:
 :sectanchors:
 :idprefix:
 :idseparator: -
 :icons: font
-:dzslides-transition: fade
-:source-highlighter: coderay
 
