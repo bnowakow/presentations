@@ -16,7 +16,7 @@ Execute:
 ....
 $ asciidoctor -b dzslides -T asciidoctor-backends/slim/dzslides -a linkcss -a data-uri slides.adoc
 $ export JAVA_HOME=$JDK_8
-$ deck2pdf --profile=dzslides --width=1024 --height=768 slides.html slides.pdf <1>
+$ deck2pdf --profile=dzslides --width=954 --height=714 slides.html slides.pdf <1>
 ....
 <1> Build deck2pdf before hand. Follow the deck2pdf/README.adoc instructions
 
