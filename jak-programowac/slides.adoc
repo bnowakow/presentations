@@ -16,3 +16,170 @@ Kuba Marchwicki ; @kubem
 :idseparator: -
 :icons: font
 
+[.topic]
+== Co ja tu robię?
+image::05-comments1.png[width=500]
+
+[.topic]
+== Co ja tu robię?
+image::06-comments-woohoo.png[width=573]
+
+== \\
+image::07-munch-krzyk.jpg[caption="", role="stretch-x"]
+
+[NOTE]
+[role="speaker"]
+====
+Developer który przeszedł na ciemną stronę mocy. 
+Biznesową stronę mocy. Od Eclipsa do zarządzania.
+
+Programowanie na co dzień zamienił na hacknights w weekendy. Z jednej strony czasem brakuje, z drugiej – daje zupełnie inną perspektywę. 
+Wymaga sporo, ale jak nic pozwala na noszenie wielu czapek i identyfikacja z każdą rolą w projekcie. Czasami trener, coach, orędownik czystego kodu, refaktoringu, testów, zwinnego podejścia do życia. Od 8 do 16 prowadzi dział oprogramowania w Young Digital Planet, wieczorem szczęśliwy młody Tata, nocach nie znający umiaru hacker
+
+Hacker - osoba o bardzo dużych, praktycznych umiejętnościach informatycznych (lub elektronicznych) która identyfikuje się ze społecznością hakerską. Hakerzy odznaczają się bardzo dobrą orientacją w Internecie, znajomością wielu języków programowania, a także świetną znajomością systemów operacyjnych
+====
+
+== \\
+[.statement]
+A kiedy powiemy, że *software* jest dobry?
+
+[.topic]
+== Punkty wyjścia
+
+[.incremental.middle]
+* Oprogramowanie musi działać
+* Musi być na czas
+* Musi być rozbudowywalne
+* Modyfikowalne
+* Musi mieć odpowiednią "jakość"
+
+[NOTE]
+[role="speaker"]
+Analogia do samochodów spawanych za zachodnią granicą, do składaków.
+Wygląda dobrze, a pod spodem bywa różnie. Nie zawsze Niemiec jeździł do kościoła. 
+Wchodzimy w kod i mamy łapiemy się za głowe. Albo nie wchodzimy w kod w ogóle, bo nie ma potrzeby.
+
+
+== \\
+[.statement]
+A może *inaczej*; dlaczego zajmujemy się *softwarem*?
+
+[.topic]
+== Punkty wyjścia
+
+[.incremental.middle.pull-right]
+* hobby
+* fach
+* zawód
+* przyjemność
+
+[NOTE]
+[role="speaker"]
+====
+Kręci nas dostarczanie fajnych rzeczy. 
+Jeżeli ma być przyjemnością, to piszmy taki kod aby później było przyjemnie – o tym będzie dzisiaj. 
+====
+
+== \\
+
+====
+[quote, Anonimowy Profesor - Politechnika Gdańska]
+____
+Programistom płaci się za pisanie dokumentacji, pisanie kodu to dla nich przyjemność
+____
+====
+
+== \\
+
+====
+[quote, @KevlinHenney - DevoxxUK]
+____
+We didn't get into programming because we wanted to deliver business value. That's what we say during interviews.
+____
+====
+
+[.topic]
+== Skąd się bierze ta schizofrenia?
+
+[.incremental]
+Dla kogo pracuje:: Kto odbiera moją pracę?
+Klient::
+Kolega z zespołu::
+
+[NOTE]
+[role="speaker"]
+====
+I okazuje się że to samo pojęcie jakości, dobrego software'u nagle można rozumieć bardzo dwojako
+====
+
+
+== \\
+
+====
+[.small.quote, Platon]
+____
+Jakość (jak piękno) jest sądem wartościującym, wyrażonym przez użytkownika. Jeśli nie ma takiego użytkownika – nie ma takiego sądu
+____
+====
+
+== \\
+
+====
+[quote, William Edwards Deming]
+____
+Jakość to sposób myślenia, który powoduje, że stosuje się i bez przerwy poszukuje najlepszych rozwiązań
+____
+====
+
+[NOTE]
+[role="speaker"]
+====
+Nie oddaje, żyję z tym, przez lata. Kod to coś do piszemy aby komputer zrozumiał. To medium porozumieniawania się z ludźmi, miejsce w którym mieszkamy. I takie miejsce musi byćdobre. 
+====
+
+== \\
+[.white]
+image::09.jpg[caption="", role="stretch-x"]
+
+[NOTE]
+[role="speaker"]
+====
+No więc jak programować aby nie zwariować?
+====
+
+== \\
+[.statement]
+Czysty *kod*
+
+[NOTE]
+[role="speaker"]
+====
+Zacznijmy od najprostszych elementów
+====
+
+== \\
+image::10-uncle-bob.jpg[caption="", role="stretch-x"]
+
+[.topic]
+== Podstawowe zasady Wuja Boba
+
+[.incremental]
+* Nazwy
+* Funkcje
+* Komentarze
+* Formowanie kodu
+* Obiekty i struktury danych
+* Obsługa błędów
+
+[NOTE]
+[role="speaker"]
+====
+* Nazywaj zmiennej w taki a taki sposób
+* Stosuj komentarze w takich a nie innych przypadkach
+* Dziel funkcje na części zgodnie z takimi a takimi zasadami
+* Stosuj abstrakcje, symetrię, prawo Demeter
+* Testuj, testuj, testuj, red – green – ….
+* Poprawiaj
+====
+
+
