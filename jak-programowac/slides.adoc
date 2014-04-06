@@ -55,10 +55,11 @@ A kiedy powiemy, że *software* jest dobry?
 
 [NOTE]
 [role="speaker"]
-Analogia do samochodów spawanych za zachodnią granicą, do składaków.
-Wygląda dobrze, a pod spodem bywa różnie. Nie zawsze Niemiec jeździł do kościoła. 
-Wchodzimy w kod i mamy łapiemy się za głowe. Albo nie wchodzimy w kod w ogóle, bo nie ma potrzeby.
-
+====
+* Analogia do samochodów spawanych za zachodnią granicą, do składaków.
+* Wygląda dobrze, a pod spodem bywa różnie. Nie zawsze Niemiec jeździł do kościoła. 
+* Wchodzimy w kod i mamy łapiemy się za głowe. Albo nie wchodzimy w kod w ogóle, bo nie ma potrzeby.
+====
 
 == \\
 [.statement]
@@ -76,8 +77,8 @@ A może *inaczej* dlaczego zajmujemy się *softwarem*
 [NOTE]
 [role="speaker"]
 ====
-Kręci nas dostarczanie fajnych rzeczy. 
-Jeżeli ma być przyjemnością, to piszmy taki kod aby później było przyjemnie – o tym będzie dzisiaj. 
+* Kręci nas dostarczanie fajnych rzeczy. 
+* Jeżeli ma być przyjemnością, to piszmy taki kod aby później było przyjemnie – o tym będzie dzisiaj. 
 ====
 
 == \\
@@ -158,7 +159,7 @@ Zacznijmy od najprostszych elementów
 ====
 
 == \\
-image::10-uncle-bob.jpg[caption="", role="stretch-x"]
+image::10-uncle-bob.jpg[caption="Ktoś upowszechnił", crole="invert", role="stretch-x"]
 
 [.topic]
 == Podstawowe zasady Wuja Boba
@@ -287,7 +288,50 @@ image::12-lebovsky.jpg[caption="", role="stretch-x"]
 ====
 
 == \\
-image::11-kent-beck.jpg[caption="", role="stretch-x"]
+[.statement]
+Czysty *projekt*
+
+[NOTE]
+[role="speaker"]
+====
+Przejście z poziomu syntaktyki na sematykę
+Same podstawowe zasady kompozycji klasy,obiektów nie wystarczają - poszukujemy dalej.
+====
+
+[.topic]
+== SOLIDny programista
+
+[.incremental]
+* *S* ingle Responsibility Principle +
+[detail]#klasa powinna mieć tylko jeden powód do zmiany#
+* *O* pen Closed Principle +
+[detail]#klasę można łatwo rozszerzać, nie modyfikując jej#
+* *L* iskov Substitution Principle + 
+[detail]#klasy pochodne muszą być przeźroczystymi zamiennikami klasy nadrzędnej#
+
+[.topic]
+== SOLIDny programista
+
+[.incremental]
+* *I* nterface Segregation Principle +
+[detail]#dla różnych klientów twórz osobne interfejsy#
+* *D* ependency Inversion Principle +
+[detail]#bądź zależny od abstrakcji a nie od konkretnych implementacji#
+
+== \\
+[.statement]
+A *co* jest *dalej?*
+
+[NOTE]
+[role="speaker"]
+====
+* I na tym poziomie wielu się zatrzymuje. Nie wnikając w kontekst, czasem mechanicznie stosuje te zasady. To jest ok
+* Lepsze to niż nic
+* A czy można zrobić krok dalej? Co jest poza SOLIDem
+====
+
+== \\
+image::11-kent-beck.jpg[caption="Ktoś położył podwaliny", crole="invert", role="stretch-x"]
 
 [NOTE]
 [role="speaker"]
@@ -296,9 +340,9 @@ Parę lat wcześniej któś położył podwaliny
 ====
 
 [.topic]
-== Wartość
+== Wartości
 
-[.incremental.scatter]
+[.incremental]
 * Kod jest podstawowym medium komunikacji w projekcie
 * Jako zespół jesteśmy jednością
 * Programy są częściej czytane niż pisane
@@ -315,18 +359,24 @@ Parę lat wcześniej któś położył podwaliny
 == Implementation patterns
 
 [.incremental.scatter]
-* *Komunikacja*; kod źródłowy powinno się czytać jak książkę
-* *Prostota*; wprowadzaj złożoność tylko kiedy jest to konieczne
-* *Elastyczność* to dodatkowa złożoność, więc wprowadzaj ją tylko tam gdzie to konieczne
+* Komunikacja +
+[detail]#kod źródłowy powinno się czytać jak książkę#
+* Prostota + 
+[detail]#wprowadzaj złożoność tylko kiedy jest to konieczne#
+* Elastyczność +
+[detail]#to dodatkowa złożoność, więc wprowadzaj ją tylko tam gdzie to konieczne#
 
 
 [.topic]
 == Implementation patterns
 
 [.incremental.scatter]
-* *Lokalne konsekwencje* a więc zmiana w jednym miejscu nie powoduje zmian w innych
-* *Dane* i *logika* razem, ponieważ zmieniają się w tym samym czasie
-* *Symetria*, utrzymuj podobny poziom abstrakcji
+* Lokalne konsekwencje +
+[detail]#zmiana w jednym miejscu nie powoduje zmian w innych#
+* Dane i logika razem +
+[detail]#ponieważ zmieniają się w tym samym czasie#
+* Symetria +
+[detail]#utrzymuj podobny poziom abstrakcji#
 
 == \\
 
@@ -360,10 +410,291 @@ image::15-like-a-boss.jpg[caption="", role="stretch-x"]
 ====
 
 == \\
-image::16-cause-effect.jpg[caption="", role="stretch-x"]
+[.statement]
+Skąd bierze się *piękno*?
 
 [NOTE]
 [role="speaker"]
 ====
 Ale ten talk będzie bardziej nauką o przyczynie I skutku. Jeżeli się nie zastanowimy na tym – to nasz clean code, nasz czystość będzie tylko I wyłącznie na poziomie estetyki. 
 ====
+
+== \\
+image::19-on.jpg[caption="", role="stretch-x"]
+
+[NOTE]
+[role="speaker"]
+====
+Bo co to znaczy pięknę? Estetyczne? Ładne? To akurat dla Pań programistek
+====
+
+== \\
+image::19-krzeslo.jpg[caption="", role="stretch-x"]
+
+[NOTE]
+[role="speaker"]
+====
+A może krzesło Eamesa. 
+
+====
+
+== \\
+image::19-syrena.jpg[caption="", role="stretch-x"]
+
+[NOTE]
+[role="speaker"]
+====
+* U innych syrena sport wywołuje dreszcze emocji. I tu nie chodzi o estetykę, tu chodzi o projekt. 
+* A tu chodzi o to co się dzieje w naszej głowie jak obcujemy z dobrze zaprojektowanym przedmiotem, pracujemy z dobrym kodem. 
+====
+
+
+== \\
+image::20-pudelko.jpg[caption="", role="stretch-x"]
+
+[NOTE]
+[role="speaker"]
+====
+* Widzimy coś i w naszej głowie zaczyna budować się model mentalny. 
+* Wyobrażenie. 
+* Weźmy takie pudełko. Widzimy je. 
+* Podnieść, potrząsnąć, zaglądnąć do środka, otworzyć. Skad to wiem. Ano wiemy
+====
+
+[.topic]
+== Affordance
+
+====
+[.small.quote]
+____
+a *quality* of an *object*, which *allows* an individual *to perform an action*. For example, a knob affords twisting, and perhaps pushing, while a cord affords pulling
+____
+====
+
+== \\
+image::21-affordance.jpg[caption="", role="stretch-x"]
+
+[NOTE]
+[role="speaker"]
+====
+* A wiecie że kod także ma swoją afordancję. 
+* Ma swoją naturę która sugeruje nam pewne konkretne akcje które możemy wykonać. 
+* To się nazywa signifierami. 
+====
+
+== \\
+image::22-drzwi-jedi.png[caption="", role="stretch-x"]
+
+[NOTE]
+[role="speaker"]
+====
+* A takie rzeczy zdarzają się nam w życiu codziennym
+====
+
+== \\
+image::23-domofon.jpg[caption="", role="stretch-x"]
+
+== \\
+image::23-domofon2.png[caption="", role="stretch-x"]
+
+== \\
+image::24-android1.png[width=300]
+
+== \\
+image::24-android1.png[width=300]
+image::24-android2.png[width=287, role="pull-right"]
+
+[NOTE]
+[role="speaker"]
+====
+* I bardzo codziennym – tutaj łatwo wyżyć się na Androidzie. To jest akurat łatwy chłopiec do bicia
+* Ale tu jest nie tylko slide (signifier) ale też guzik (WTF)?
+* Fajnie - posmialiśmy się
+* Ale jak to ma się do kodu?
+====
+
+== \\
+image::13-functions2.png[caption="Why? Oh Why?", role="stretch-x"]
+
+[.source]
+== Co mówi ten kod?
+
+[source, java]
+.+BadBadSql.java+
+----
+public class Sql {
+
+   public Sql(String table, Column[] columns)
+   public String create()
+   public String insert(Object[] fields)
+   public String selectAll()
+   public String fieldByKey(
+	String keyColumn, String keyValue)
+   private String ColumnList(Column[] columns)
+   private String valuesList(
+	Object[] fields, final Column[] columns)
+
+}
+----
+
+[NOTE]
+[role="speaker"]
+====
+Co tutaj łamiemy?
+* Odpowiedzialność – jest wiele
+* Hermetyzację - Dokładamy a nie modyfikujemy
+* Zmiany są inwazyjne
+====
+
+[.source]
+== \\
+
+[source, java]
+----
+abstract public class Sql {
+   public Sql(String table, Column[] columns)
+   abstract public String generate();
+}
+
+public class CreateSql extends Sql {
+   public CreateSql(String table, Column[] columns)
+   @Override public String generate()
+}
+
+public class SelectSql extends Sql {
+   public SelectSql(String table, Column[] columns)
+   @Override public String generate()
+}
+
+public class InsertSql extends Sql {
+   public InsertSql(String table, Column[] columns)
+   @Override public String generate()
+   private String valuesList(Object[] fields, final Column[] columns)
+}
+
+public class FindKeyBySql extends Sql {
+   public FindKeyBySql(String table, Column[] columns, String keyColumn, String keyValue)
+   @Override public String generate()
+}
+----
+
+== \\
+image::21-design-of-everyday-things.jpg[caption="", role="stretch-x"]
+
+[NOTE]
+[role="speaker"]
+====
+* Zobaczcie np taki przedmiot. Jaką akcję możemy na nim wykonać. 
+* Nalać wrzątku. Jak złapać – widzimy. A co potem? – nie przypomina Wam to czegoś
+====
+
+
+== \\
+
+[.statement]
+Po co nam to *piękno*?
+
+[.topic]
+== Multi store model of memory
+image::25-multi-store-model.png[role="middle"]
+
+[NOTE]
+[role="speaker"]
+====
+* Pamięć sensoryczna: na 1/4 sekundy
+* Pamięć krótkotrwała: do okolo 20 sek (7+/- 2 rzeczy)	
+* Pamięć długotrwała: bez ograniczeń – ale wymaga nauki
+* Próg wejścia w kod, zrozumienia abstakcji. 
+====
+
+
+== \\
+image::26-programmer-1.png[caption="", role="stretch-x"]
+
+== \\
+image::26-programmer-2.png[caption="", role="stretch-x"]
+
+== \\
+image::26-programmer-3.png[caption="", role="stretch-x"]
+
+== \\
+image::26-programmer-4.png[caption="", role="stretch-x"]
+
+== \\
+image::26-programmer-5.png[caption="", role="stretch-x"]
+
+[NOTE]
+[role="speaker"]
+====
+* I programiści są nieźli w zmianach kontekstu – tak długo jak ten kontekst siedzi w ich pamięci. 
+* Inaczej muszą go odbudwać / zbudować od nowa. 
+====
+
+== \\
+[.statement]
+Jak obcować z *pięknem*?
+
+== \\
+image::27-flow.png[role="middle"]
+
+
+[NOTE]
+[role="speaker"]
+====
+* ME-HI   CHICKS-SENT-ME-HI
+* Opisał on stan pełnego zanurzenia w jakiejś czynności (full immersion, involvement and angement) – nazwał to the flow
+====
+
+== \\
+image::27-flow2.png[width="600", role="middle"]
+
+[NOTE]
+[role="speaker"]
+====
+* Projetanci mówią np. o procesie szukania (google search). 
+* Programiści: refaktoring, połączony z TDD, cykl: red green refactor. Albo code-deploy-check
+====
+
+== \\
+image::28-jak-zyc.jpg[caption="Jak żyć?", crole="invert", role="stretch-x"]
+
+[NOTE]
+[role="speaker"]
+====
+* Jak żyć?
+* Piszemy czysty kod, bo łatwiej nam z nim obcować i jesteśmy produktywniejszy
+* Jesteśmy produktywni, bo minimalizujemy próg wejścia, bo pracujemy z czystym kodem
+
+* Shu – dogma. Adherence
+* Ha – bending rules
+* Ri – transcendence. We just know what to do and why.
+====
+
+[.topic]
+== Bo w sytuacjach trudnych...
+image::29-ecce-homo-1.jpg[]
+
+[.topic]
+== ... brniemy nie wiadomo gdzie ...
+image::29-ecce-homo-2.jpg[role="pull-right"]
+
+[.topic]
+== ... mimo że cel był wyraźny
+image::29-ecce-homo-3.jpg[role="middle"]
+
+== \\ questions
+image::68-questions.jpg[caption="Questions?", crole="invert", role="stretch-x"]
+
+== \\
+
+[.statement]
+https://speakerdeck.com/ + 
+ {nbsp} {nbsp} kubamarchwicki/ +
+ {nbsp} {nbsp} jak-programowac
+
+
+[.topic.ending, hrole="name"]
+== Kuba Marchwicki
+
+[.footer]
+[icon-twitter]'{zwsp}' @kubem
