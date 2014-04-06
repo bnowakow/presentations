@@ -690,7 +690,8 @@ image::68-questions.jpg[caption="Questions?", crole="invert", role="stretch-x"]
 [.statement]
 https://speakerdeck.com/ + 
  {nbsp} {nbsp} kubamarchwicki/ +
- {nbsp} {nbsp} jak-programowac
+ {nbsp} {nbsp} jak-programowac- +
+ {nbsp} {nbsp} aby-nie-zwariowac
 
 
 [.topic.ending, hrole="name"]
