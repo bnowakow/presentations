@@ -20,6 +20,13 @@ Kuba Marchwicki ; @kubem
 == Co ja tu robię?
 image::05-comments1.png[width=500]
 
+[NOTE]
+[role="speaker"]
+====
+* Programuje od kilkunastu lat
+* Taka sytuacja to codzienność. Moja. Moich współpracowników
+====
+
 [.topic]
 == Co ja tu robię?
 image::06-comments-woohoo.png[width=573]
@@ -30,13 +37,12 @@ image::07-munch-krzyk.jpg[caption="", role="stretch-x"]
 [NOTE]
 [role="speaker"]
 ====
-Developer który przeszedł na ciemną stronę mocy. 
-Biznesową stronę mocy. Od Eclipsa do zarządzania.
+* Developer który przeszedł na ciemną stronę mocy. 
+* Biznesową stronę mocy. Od Eclipsa do zarządzania.
 
-Programowanie na co dzień zamienił na hacknights w weekendy. Z jednej strony czasem brakuje, z drugiej – daje zupełnie inną perspektywę. 
-Wymaga sporo, ale jak nic pozwala na noszenie wielu czapek i identyfikacja z każdą rolą w projekcie. Czasami trener, coach, orędownik czystego kodu, refaktoringu, testów, zwinnego podejścia do życia. Od 8 do 16 prowadzi dział oprogramowania w Young Digital Planet, wieczorem szczęśliwy młody Tata, nocach nie znający umiaru hacker
-
-Hacker - osoba o bardzo dużych, praktycznych umiejętnościach informatycznych (lub elektronicznych) która identyfikuje się ze społecznością hakerską. Hakerzy odznaczają się bardzo dobrą orientacją w Internecie, znajomością wielu języków programowania, a także świetną znajomością systemów operacyjnych
+* Programowanie na co dzień zamienił na hacknights w weekendy. Z jednej strony czasem brakuje, z drugiej – daje zupełnie inną perspektywę. 
+* Czasami trener, coach, orędownik czystego kodu, refaktoringu, testów, zwinnego podejścia do życia. 
+* Od 8 do 16 prowadzi dział oprogramowania w Young Digital Planet, wieczorem szczęśliwy młody Tata, nocach nie znający umiaru hacker
 ====
 
 == \\
@@ -59,11 +65,22 @@ A kiedy powiemy, że *software* jest dobry?
 * Analogia do samochodów spawanych za zachodnią granicą, do składaków.
 * Wygląda dobrze, a pod spodem bywa różnie. Nie zawsze Niemiec jeździł do kościoła. 
 * Wchodzimy w kod i mamy łapiemy się za głowe. Albo nie wchodzimy w kod w ogóle, bo nie ma potrzeby.
+* *Ale wciąż w tym tkwimy*. No właśnie...
 ====
 
 == \\
+
+====
+[quote, @KevlinHenney - DevoxxUK]
+____
+We didn't get into programming because we wanted to deliver business value. That's what we say during interviews.
+____
+====
+
+
+== \\
 [.statement]
-A może *inaczej* dlaczego zajmujemy się *softwarem*
+A może *inaczej* dlaczego zajmujemy się *softwarem*?
 
 [.topic]
 == Punkty wyjścia
@@ -90,15 +107,6 @@ Programistom płaci się za pisanie dokumentacji, pisanie kodu to dla nich przyj
 ____
 ====
 
-== \\
-
-====
-[quote, @KevlinHenney - DevoxxUK]
-____
-We didn't get into programming because we wanted to deliver business value. That's what we say during interviews.
-____
-====
-
 [.topic]
 == Skąd się bierze ta schizofrenia?
 
@@ -110,7 +118,10 @@ Kolega z zespołu::
 [NOTE]
 [role="speaker"]
 ====
-I okazuje się że to samo pojęcie jakości, dobrego software'u nagle można rozumieć bardzo dwojako
+* Dlaczego tak wielu mówi o pracy dla pieniędzy, o opensource w nocy
+* I okazuje się że to samo pojęcie jakości, dobrego software'u nagle można rozumieć bardzo dwojako
+
+* I to rozumienie, ten dualizm, nie ułatwia
 ====
 
 
@@ -121,6 +132,13 @@ I okazuje się że to samo pojęcie jakości, dobrego software'u nagle można ro
 ____
 Jakość (jak piękno) jest sądem wartościującym, wyrażonym przez użytkownika. Jeśli nie ma takiego użytkownika – nie ma takiego sądu
 ____
+====
+
+[NOTE]
+[role="speaker"]
+====
+* Z jednej strony uczymy się że klient ma zawsze rację
+* Że to jest ostateczna opinia się liczy
 ====
 
 == \\
@@ -135,7 +153,11 @@ ____
 [NOTE]
 [role="speaker"]
 ====
-Nie oddaje, żyję z tym, przez lata. Kod to coś do piszemy aby komputer zrozumiał. To medium porozumieniawania się z ludźmi, miejsce w którym mieszkamy. I takie miejsce musi byćdobre. 
+* nie oddaje i nie zapominam
+* żyję z tym, przez lata. Kod to coś do piszemy aby komputer zrozumiał. 
+* To medium porozumieniawania się z ludźmi, miejsce w którym mieszkamy. I takie miejsce musi byćdobre. 
+
+* O tym będzie dzisiaj
 ====
 
 == \\
@@ -160,6 +182,13 @@ Zacznijmy od najprostszych elementów
 
 == \\
 image::10-uncle-bob.jpg[caption="Ktoś upowszechnił", crole="invert", role="stretch-x"]
+
+[NOTE]
+[role="speaker"]
+====
+Przejdźmy przez kilka zasad Wuja Boba
+====
+
 
 [.topic]
 == Podstawowe zasady Wuja Boba
@@ -249,6 +278,14 @@ image::13-functions.png[caption="Why? Oh why?" role="stretch-y"]
 
 [.statement]
 *don't*
+
+[NOTE]
+[role="speaker"]
+====
+* Nie dodawaj komentarza do złego kodu. Popraw go
+* Tak refleksja, skąd pomysł, że ktoś kto nie potrafił się jasno wyrazić w kodzie, będzie potrafił w komentarzu.
+====
+
 
 == \\
 
@@ -406,7 +443,9 @@ image::15-like-a-boss.jpg[caption="", role="stretch-x"]
 ====
 * Po co to robię? 
 * Aby być like a boss. Fajnie – piszę dobry kod. 
-* Czytelny, pracuje mi się łatwiej. Ale dlaczego. By zylo się lepiej, aby budować lepsze systemy -też
+* Czytelny, pracuje mi się łatwiej. Ale dlaczego. By zylo się lepiej, aby budować lepsze systemy
+
+* Ale ujmijmy to z innej strony.,,
 ====
 
 == \\
@@ -416,7 +455,11 @@ Skąd bierze się *piękno*?
 [NOTE]
 [role="speaker"]
 ====
-Ale ten talk będzie bardziej nauką o przyczynie I skutku. Jeżeli się nie zastanowimy na tym – to nasz clean code, nasz czystość będzie tylko I wyłącznie na poziomie estetyki. 
+* Ale ten talk będzie bardziej nauką o przyczynie I skutku. 
+* Jeżeli się nie zastanowimy na tym – to nasz clean code, nasz czystość będzie tylko I wyłącznie na poziomie estetyki. 
+* Ponieważ robimy cleancode - pracuje nam się łatwiej... 
+* A może cleancode jest wynikiem, rezultatem
+* Zacznijmy od piękna
 ====
 
 == \\
@@ -500,6 +543,13 @@ image::23-domofon2.png[caption="", role="stretch-x"]
 == \\
 image::24-android1.png[width=300]
 
+[NOTE]
+[role="speaker"]
+====
+* I bardzo codziennym – tutaj łatwo wyżyć się na Androidzie. To jest akurat łatwy chłopiec do bicia
+* Ale tu jest nie tylko slide (signifier) ale też guzik (WTF)?
+====
+
 == \\
 image::24-android1.png[width=300]
 image::24-android2.png[width=287, role="pull-right"]
@@ -507,8 +557,6 @@ image::24-android2.png[width=287, role="pull-right"]
 [NOTE]
 [role="speaker"]
 ====
-* I bardzo codziennym – tutaj łatwo wyżyć się na Androidzie. To jest akurat łatwy chłopiec do bicia
-* Ale tu jest nie tylko slide (signifier) ale też guzik (WTF)?
 * Fajnie - posmialiśmy się
 * Ale jak to ma się do kodu?
 ====
@@ -578,6 +626,15 @@ public class FindKeyBySql extends Sql {
 }
 ----
 
+[NOTE]
+[role="speaker"]
+====
+* mental model: jaki model sobie budujecie widząc ten kod
+* affordance: jakie akcje pozwala wykonać taki kod?
+* signifiers: jak dodać kolejną funckjonalność w tych warunkach
+====
+
+
 == \\
 image::21-design-of-everyday-things.jpg[caption="", role="stretch-x"]
 
@@ -601,6 +658,8 @@ image::25-multi-store-model.png[role="middle"]
 [NOTE]
 [role="speaker"]
 ====
+* Atkinson & Shiffrin (lata 70)
+
 * Pamięć sensoryczna: na 1/4 sekundy
 * Pamięć krótkotrwała: do okolo 20 sek (7+/- 2 rzeczy)	
 * Pamięć długotrwała: bez ograniczeń – ale wymaga nauki
@@ -623,11 +682,18 @@ image::26-programmer-4.png[caption="", role="stretch-x"]
 == \\
 image::26-programmer-5.png[caption="", role="stretch-x"]
 
+[.topic]
+== Multi store model of memory
+image::25-multi-store-model.png[role="middle"]
+
 [NOTE]
 [role="speaker"]
 ====
 * I programiści są nieźli w zmianach kontekstu – tak długo jak ten kontekst siedzi w ich pamięci. 
 * Inaczej muszą go odbudwać / zbudować od nowa. 
+
+* Ten komiks był o uczeniu się, o zapamiętywaniu. A na to potrzeba czasu.
+* Jak stosujemy zasacy SOLIDa / CleanCode'a - to bloki naszego kodu są dużo mniejsze. Łatwiejsze do ogarnięcia.
 ====
 
 == \\
@@ -651,8 +717,14 @@ image::27-flow2.png[width="600", role="middle"]
 [NOTE]
 [role="speaker"]
 ====
-* Projetanci mówią np. o procesie szukania (google search). 
+* Projektanci mówią np. o procesie szukania (google search). 
 * Programiści: refaktoring, połączony z TDD, cykl: red green refactor. Albo code-deploy-check
+
+* Zobaczcie idąc od końca: 
+** wchodzimy we flow.. latwo
+** nie wypadamy z niego, łatwo przeładowujemy konteksty
+** ponieważ kod z którym pracujemy nie jest jednym wielkim spaghetti monsterem.
+* TA! DA!
 ====
 
 == \\
@@ -691,7 +763,9 @@ image::68-questions.jpg[caption="Questions?", crole="invert", role="stretch-x"]
 https://speakerdeck.com/ + 
  {nbsp} {nbsp} kubamarchwicki/ +
  {nbsp} {nbsp} jak-programowac- +
- {nbsp} {nbsp} aby-nie-zwariowac
+ {nbsp} {nbsp} aby-nie-zwariowac +
+ +
+ [icon-twitter]'{zwsp}' @kubem
 
 
 [.topic.ending, hrole="name"]

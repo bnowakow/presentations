@@ -85,7 +85,7 @@ Out of scope:
 
 * JTA 1.2 i adnotacji `@Transactional` pozwalającej objąć transakcją także komponenty CDI
 * JSF 2.2. `@FlowScope` oraz przepuszczanie atrybutów i elementów (pod kątem HTML5) - nie utrudnia
-* CDI 1.1 - uruchomienie _by default_ przez co były problemy z Googl Guice. Adnotacja `@Vetoed`
+* CDI 1.1 - uruchomienie _by default_ przez co były problemy z Google Guice. Adnotacja `@Vetoed`
 
 In scope: *JMS* configuration. *JPA* converters. *Validaton* method params. 
 *JAX-RS* client API & configuration. *JSON* streaming and object API. *Websockets* *Batch* ETL *Concurrency*
@@ -820,6 +820,7 @@ assertThat(target.request().get(String.class))
 [.topic]
 == JSON Processing API
 
+[.incremental]
 * API to parse and generate JSON
 * Streaming API
 ** Low-level, efficient way to parse/generate JSON
@@ -944,6 +945,7 @@ Z JEE7 to było moje trzecie podejście do websockets. Od wczesnej bety, po tera
 [.topic]
 == Java API for Websockets
 
+[.incremental]
 * Server and Client WebSocket Endpoint: 
 ** `@ServerEndpoint`
 ** `@ClientEndpoint`
@@ -1088,16 +1090,10 @@ API names has changed - and that's pretty much all.
 * *Batch Applications*
 * Concurrency Utilities
 
-
-[.topic]
-== Batch Applications :: Old API
-
-[.statement.middle]
-*?*
-
 [.topic]
 == Batch Applications
 
+[.incremental]
 * Suited for non-interactive, bulk-oriented, and long-running tasks
 * Batch execution: sequential, parallel, decision-based
 * ETL processes: Extract, Transform, Load
@@ -1108,6 +1104,12 @@ API names has changed - and that's pretty much all.
 Job Repository:: holds information about jobs current running and jobs that run in the past. JobOperator provides access to this repository.
 Job Operator:: an interface to manage all aspects of job processing, including operational commands, such as start, restart, and stop, retrieval of job and step executions.
 Job:: encapsulates an entire batch process
+
+[.topic]
+== Batch Applications :: Old API
+
+[.statement.middle]
+*?*
 
 [.topic]
 == Batch Applications
@@ -1130,6 +1132,9 @@ image::56-batch-processing.png["Batch processing", 700, role="middle"]
   </step>
 </job>
 ----
+<1> Define a job
+<2> Split it into one or more steps
+<3> Process each step as a chunk
 
 [.topic.source]
 == Batch Applications
@@ -1202,6 +1207,7 @@ No ale można było w przeszłości działać asynchronicznie / w tle.
 [.topic]
 == Concurrency
 
+[.incremental]
 * Extension of Java SE Concurrency Utilities API
 * Provide asynchronous capabilities to Java EE application components
 * Provides Thread Factories and Executor Services
