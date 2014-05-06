@@ -4,7 +4,7 @@ Last year (in may) the next JEE spec has been officially released… yet another
 
 So, you have this JEE; good - no need for me to encourage or discourage you. I’ll focus on some other stuff. Things that has been introduced (better say standardized): REST webservice, JSON, web sockets, some JPA goodies. How it used to be (like back in time) and how things changed (for better). From old boilerplated times to productive developer… at least that’s what she said.
 
-
+https://speakerdeck.com/kubamarchwicki/jeenext[PDF slides (at) speakerdeck]
 
 Presented at:
 ~~~~~~~~~~~~~
