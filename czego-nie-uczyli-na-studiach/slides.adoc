@@ -1,0 +1,229 @@
+= Czego nie uczono na informatyce... 
+Jakub Marchwicki ; YDP SA ; @kubem
+:longform:
+:sectids!:
+:imagesdir: images
+:source-highlighter: highlightjs
+:language: no-highlight
+:dzslides-style: stormy-jm
+:dzslides-transition: fade
+:dzslides-fonts: family=Alegreya+Sans:400,700,200,300&subset=latin,latin-ext&family=Cedarville+Cursive 
+:dzslides-highlight: monokai
+:experimental:
+:toc2:
+:sectanchors:
+:idprefix:
+:idseparator: -
+:icons: font
+
+[.topic]
+== Agenda
+
+[.incremental.middle]
+* o kodzie nowym
+* o kodzie który już istnieje
+* o testach
+* o informatyce poza kodem
+* o użytkownikach
+* o zespołach
+
+[NOTE]
+[role="speaker"]
+====
+* ja też kończyłem ten wydział
+* wierzyłem że najważniejsze są wymagania klienta
+* że jak je zrozumiemy to resztę wygenerujemy w RUPie
+* i to wystarczy
+====
+
+== \\
+image::01-clean-code.jpg[caption="", role="stretch-x"]
+
+== \\
+image::02-uncle-bob.jpg[caption="", crole="invert", role="stretch-x"]
+
+[NOTE]
+[role="speaker"]
+====
+Przejdźmy przez kilka zasad Wuja Boba
+====
+
+[.topic]
+== Podstawowe zasady Wuja Boba
+
+[.incremental]
+* Nazwy
+* Funkcje
+* Komentarze
+* Formowanie kodu
+* Obiekty i struktury danych
+* Obsługa błędów
+
+[NOTE]
+[role="speaker"]
+====
+* Nazywaj zmiennej w taki a taki sposób
+* Dziel funkcje na części zgodnie z takimi a takimi zasadami
+* Stosuj komentarze w takich a nie innych przypadkach
+* Stosuj abstrakcje, symetrię, prawo Demeter
+* Testuj, testuj, testuj, red – green – ….
+* Poprawiaj
+====
+
+== \\
+[.statement]
+Functions should *do one thing*.
+Should do it well and should do it only
+
+
+[NOTE]
+[role="speaker"]
+====
+* To dla przykładu - ile rzeczy robiła funkcja którą napisaliście ostatnio.
+* Jeżeli miala ifa - to już robiła dwie rzeczy
+====
+
+== \\
+image::03-implementation-patterns.jpg[caption="", crole="invert", role="stretch-x"]
+
+== \\
+image::04-kent-beck.jpg[caption="", crole="invert", role="stretch-x"]
+
+[.topic]
+== Wartości
+
+[.incremental]
+* Kod jest podstawowym medium komunikacji w projekcie
+* Jako zespół jesteśmy jednością
+* Programy są częściej czytane niż pisane
+* Więcej czasu poświęcamy na modyfikację istniejącego kodu niż na tworzenie nowego
+
+[NOTE]
+[role="speaker"]
+====
+* Jak ja pójdę na skróty, to kolega będzie się męczył
+* I jako całość i tak będziemy nieefektywni
+====
+
+[.topic]
+== Implementation patterns
+
+[.incremental.scatter]
+* Komunikacja +
+[detail]#kod źródłowy powinno się czytać jak książkę#
+* Prostota + 
+[detail]#wprowadzaj złożoność tylko kiedy jest to konieczne#
+* Elastyczność +
+[detail]#to dodatkowa złożoność, więc wprowadzaj ją tylko tam gdzie to konieczne#
+
+
+[.topic]
+== Implementation patterns
+
+[.incremental.scatter]
+* Lokalne konsekwencje +
+[detail]#zmiana w jednym miejscu nie powoduje zmian w innych#
+* Dane i logika razem +
+[detail]#ponieważ zmieniają się w tym samym czasie#
+* Symetria +
+[detail]#utrzymuj podobny poziom abstrakcji#
+
+== \\
+
+====
+[.small.quote, Grady Booch - Software Archeologist - IBM]
+____
+Czysty kod jest prosty i bezpośredni. Czysty kod czyta się jak dobrze napisaną prozę. Czysty kod nigdy nie zaciemnia zamiarów projektanta; jest pełen trafnych abstrakcji i prostych ścieżek sterowania
+____
+====
+
+== \\
+image::05-design-patterns.jpg[caption="", crole="invert", role="stretch-x"]
+
+== \\
+
+[.statement]
+Wzorce projektowe to *nie* tylko *singleton*
+
+[NOTE]
+[role="speaker"]
+====
+* Dependency injection
+* Obeserver
+* Adapter
+
+* *problem*, sytuację gdy możemy go stosować
+* elementy *rozwiązania*: ich relacje, powiązania oraz obowiązki, zawiera także wskazówki implementacyjne dla różnych technologii;
+* *konsekwencje* – zestawienie wad i zalet stosowania wzorca, uwzględniające informacje o jego brakach oraz kosztach rozwoju i utrzymania systemu wykorzystującego dany wzorzec.
+====
+
+
+== \\
+image::06-legacy-code.jpg[caption="", crole="invert", role="stretch-x"]
+
+== W istniejącym kodzie czai się ZŁO
+
+[.incremental.middle]
+* requirements change
+* you never start from scratch
+* spaghetti monster hides everywhere
+
+[NOTE]
+[role="speaker"]
+====
+* Już powiedzieliśmy sobie - częściej czytamy niż piszemy
+====
+
+== \\
+
+[.statement]
+take opaque, convoluted system and slowly, gradually + 
+*reverse rot* + 
+piece by piece turn it into well designed system
+
+
+
+
+== \\
+image::07-tdd.jpg[caption="", crole="invert", role="stretch-x"]
+
+== \\
+
+[.statement]
+testerzy nie są od testowania
+
+[NOTE]
+[role="speaker"]
+====
+* Testerzy są od szukania dziury w całym. To programiści mają za zadanie upewnić się że ich system działa
+* Ci którzy nie znają, nie stosują TDD - teraz nie znajdą fajnej pracy. Za 5 lat nie znajdą jej w ogóle
+====
+
+== \\
+image::08-testing-pyramid.png[caption="", crole="invert", role="stretch-x"]
+
+== \\
+image::09-testing-cone.png[caption="", crole="invert", role="stretch-x"]
+
+== \\
+image::10-jak-rozmawiac.jpg[caption="", crole="invert", role="stretch-x"]
+
+
+== \\
+image::12-lean-software.jpg[caption="", crole="invert", role="stretch-x"]
+
+
+== \\
+
+[.statement]
+czy to już *wszystko*?
+
+[NOTE]
+[role="speaker"]
+====
+* Oczywiście że nie
+* W tych książkach jest wiele informacji bez których nie ruszycie dalej
+====
+
+
+

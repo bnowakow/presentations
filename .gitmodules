@@ -10,3 +10,6 @@
 [submodule "jak-programowac/dzslides"]
 	path = jak-programowac/dzslides
 	url = git@github.com:kubamarchwicki/dzslides.git
+[submodule "czego-nie-uczyli-na-studiach/dzslides"]
+	path = czego-nie-uczyli-na-studiach/dzslides
+	url = git@github.com:kubamarchwicki/dzslides.git
