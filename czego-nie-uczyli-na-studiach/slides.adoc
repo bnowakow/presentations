@@ -39,9 +39,6 @@ Jakub Marchwicki ; YDP SA ; @kubem
 == \\
 image::01-clean-code.jpg[caption="", role="stretch-x"]
 
-== \\
-image::02-uncle-bob.jpg[caption="", crole="invert", role="stretch-x"]
-
 [NOTE]
 [role="speaker"]
 ====
@@ -85,9 +82,6 @@ Should do it well and should do it only
 
 == \\
 image::03-implementation-patterns.jpg[caption="", crole="invert", role="stretch-x"]
-
-== \\
-image::04-kent-beck.jpg[caption="", crole="invert", role="stretch-x"]
 
 [.topic]
 == Wartości
