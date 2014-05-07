@@ -20,12 +20,12 @@ Jakub Marchwicki ; YDP SA ; @kubem
 == Agenda
 
 [.incremental.middle]
-* o kodzie nowym
-* o kodzie który już istnieje
-* o testach
-* o informatyce poza kodem
-* o użytkownikach
-* o zespołach
+* ... o kodzie nowym
+* ... o kodzie który już istnieje
+* ... o testach
+* ... o informatyce poza kodem
+* ... o użytkownikach
+* ... o zespołach
 
 [NOTE]
 [role="speaker"]
@@ -245,7 +245,7 @@ określenie *"projekt studencki"* nie jest synonimem dobrej jakości
 == \\
 
 [.statement]
-testerzy nie są od testowania
+testerzy *nie* są od testowania
 
 [NOTE]
 [role="speaker"]
@@ -278,14 +278,103 @@ ____
 * Redukcja liczby błędów (10x)
 * Testy to najlepsza dokumentacja
 * TDD pozwala na projektowanie przejrzystych API
+* Ułatwia zmiany i modyfikacje
+
+[NOTE]
+[role="speaker"]
+====
+* dlaczego w ogóle powinniśmy zajmować się tym że wszystko się zmienia
+* przecież możemy zebrać raz i później się tego trzymać
+====
 
 == \\
 image::10-jak-rozmawiac.jpg[caption="", crole="invert", role="stretch-x"]
 
+[.topic]
+== Ujęcie klasyczne
+
+[.middle.incremental]
+* specyfikacja wymagań
+* zarządzanie wymaganiami
+* klasyfikacja wymagań
+* diagramy UML
+* modele COCOMO
+* zarządzanie zmianą
+
+== \\
+
+[.statement]
+Czy to wszystko? Czy *wystarczy*?
+
+[NOTE]
+[role="speaker"]
+====
+* aby móc zarządzać pracować z wymaganiami trzeba je najpierw zebrać. 
+====
+
+== \\
+
+[.statement]
+Oprogramowanie *ma służyć* użytkownikom
+
+[NOTE]
+[role="speaker"]
+====
+* A nie testowaniu nowego framework
+====
+
+
+== \\
+
+[.statement]
+Oprogramowanie ma *rozwiązać* problemy
+
+[NOTE]
+[role="speaker"]
+====
+* a nie tworzyć nowe
+====
+
+== \\
+
+[.statement]
+Klient wie *czego potrzebuje*
+
+[NOTE]
+[role="speaker"]
+====
+* ale nie wie czego chce
+* trzeba z nim rozmawiać, wciągnać go w pracę - bo najlepiej powie co znaczy dobrze
+* a jak wciągnąć go w pracę, jak z nim pracować?
+* w jednym zespole
+====
 
 == \\
 image::12-lean-software.jpg[caption="", crole="invert", role="stretch-x"]
 
+[.topic]
+== Agile Principles
+
+[.incremental.scatter]
+* Individuals and interactions +
+[detail]#over processes and tools#
+* Working software +
+[detail]#over comprehensive documentation#
+* Customer collaboration +
+[detail]#over contract negotiation#
+* Responding to change +
+[detail]#over following a plan#
+
+[.topic]
+== To podstawa...
+
+[.incremental]
+* Agile to nie tylko Scrum
+* Kanban, Lean
+* Agile to filozofia
+** to sposób pracy
+* Inne traktowanie problemów
+* Inne wartości 
 
 == \\
 
@@ -299,5 +388,30 @@ czy to już *wszystko*?
 * W tych książkach jest wiele informacji bez których nie ruszycie dalej
 ====
 
+[.topic]
+== Liczą się rezultaty!
 
+[.middle.incremental]
+* Czy możesz to pokazać? 
+* Czym możesz się pochwalić?
 
+[NOTE]
+[role="speaker"]
+====
+* opensource, to nie trudne
+* testy, dokumentacja, przyklady
+* każdy projekt ma dług - nie tylko w kodzie.
+* contrybucja to nie tylko kod i feature'y. 
+* github.to nie jest CV, ale daje dobry pogląd
+====
+
+== \\
+
+[.statement]
+http://goo.gl/7n8rDG
+
+[.topic.ending, hrole="name"]
+== YDP SA . stoisko 24
+
+[.footer]
+[icon-twitter]'{zwsp}' @kubem 

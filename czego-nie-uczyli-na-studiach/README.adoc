@@ -2,6 +2,8 @@
 
 ... a o co pytają podczas pierwszej rozmowy rekrutacyjnej
 
+https://speakerdeck.com/kubamarchwicki/czego-nie-uczono-na-studiach[PDF slides(at) speakerdeck]
+
 == Presented at:
 
 * 2014-05-12 University of Gdańsk
