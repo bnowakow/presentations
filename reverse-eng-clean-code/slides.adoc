@@ -16,4 +16,115 @@ Jakub Marchwicki ; @kubem
 :idseparator: -
 :icons: font
 
+== \\
+
+[.statement]
+Put some *real slide* in here
+
+[NOTE]
+[role="speaker"]
+====
+* Bartosz, Arquillian Persistence Extension. The true opensource warrior.
+* I'd like to tell you a story how I went the path Bartosz described
+** How I went beyond my daily job
+* Reverse engineering the clean code
+** Not in a way you turn a _class_ file into _java_ file
+** In a way Mitnick reversed security through it's social aspects
+====
+
+== \\
+image::05-comments.png[width=500]
+
+[NOTE]
+[role="speaker"]
+====
+* Back in 2008 I was laying down code, best I could - like most people did.
+* There better and worse examples. I did was constatly improving. 
+** At least that's what I tought when I looked back my old code
+====
+
+== \\
+image::06-comments-woohoo.png[width=573]
+
+[NOTE]
+[role="speaker"]
+====
+* one day I realized there can and must be a beaty in code
+** prolly when I first time compared Calendar API and JodaTime
+** or looked up Guava (called Google Collections at that time)
+====
+
+== \\
+image::10-uncle-bob.jpg[caption="I found Uncle Bob", role="frame"]
+
+[NOTE]
+[role="speaker"]
+====
+* Now when I think about it, it was definatelly master - apprentice relation
+====
+
+[.topic]
+== Clean code in a nutshell 
+
+[.incremental]
+* name variableslike this
+* don't use comments; unless
+* split functions and keep them small
+* ... blah blah blah... abstractions
+* Law of Demeter
+* test, test, test 
+* red, green, refactor
+
+[NOTE]
+[role="speaker"]
+====
+* The rules. *The dogmna*
+* I realized my craft was improving
+** I felt like I had this rules tatoos at my arm
+* But yet another realization came
+** Do I do this to keep the code maintanable, easier to change
+** I kept focus beter
+* My team mates are more eager to change my code
+* I realized clean code wasn't on it's own. It was a result. *Not the cause*
+====
+
+== \\
+image::11-kent-beck.jpg[caption="The Sourcerer", role="frame"]
+
+[NOTE]
+[role="speaker"]
+====
+* That way I got to Kent Beck
+* The clean code was the effect. The cause was somewhere else
+** I know Uncle Bob was ranting about implementation patterns in clean code book. *I don't care*
+* Kent has given this different perspective on what was important
+** what the implementation was really about
+====
+
+== The Values
+
+[.middle.incremental]
+* Communication [detail]#program should read like a book#
+** [detail]#spend more time reading existing code than writing new code#
+* Simplicity [detail]#delete everything that don't add information#
+** [detail]#enable reading, using and modifying programs more quickly#
+* Flexibility [detail]#is complexity, so add only when it's needed#
+** [detail]#as if it was that easy#
+
+[NOTE]
+[role="speaker"]
+====
+* That was an a-ha moment. Kind of flash
+====
+
+== \\
+image::15-like-a-boss.jpg[caption="", role="strech-x"]
+
+[NOTE]
+[role="speaker"]
+====
+* Now I know where it's comming all from
+* That might be how you feel when you get all that
+** Or you can dig harder and deeper
+====
 
