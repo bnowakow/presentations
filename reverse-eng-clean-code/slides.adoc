@@ -19,7 +19,7 @@ Jakub Marchwicki ; @kubem
 == \\
 
 [.statement]
-Beyond *just* clean code
+Not *only* clean code
 
 [NOTE]
 [role="speaker"]
@@ -148,13 +148,9 @@ image::21-affordance.jpg[caption="affordance for dummies", role="frame"]
 [NOTE]
 [role="speaker"]
 ====
-* So now, think not only about phisical objects.
-** Even code has it's affordance
-** Has it's nature this sugegsts us certain actions we can or should perform.
-* Same is with objects
+* This plate,this knob suggest an action
 ** These suggestions are called signifiers
 ====
-
 
 == \\
 image::21-design-of-everyday-things.jpg[caption="", role="stretch-x"]
@@ -164,6 +160,8 @@ image::21-design-of-everyday-things.jpg[caption="", role="stretch-x"]
 ====
 * These terms were coined by Don Norman
 ** In this book "the design of everyday things"
+* So now, think not only about phisical objects.
+
 ====
 
 == \\
@@ -195,7 +193,9 @@ image::24-android2.png[width=287, role="pull-right"]
 [role="speaker"]
 ====
 * Yeah. That was funny, but how it works with code?
+** Has it's nature this sugegsts us certain actions we can or should perform.
 ====
+
 
 == \\
 image::13-functions2.png[caption="Why? Oh Why?", role="frame"]
@@ -319,7 +319,10 @@ image::25-bruce-lee.png[caption="Has Bruce Lee known kung-fu?", role="frame"]
 
 
 [.topic.ending, hrole="name"]
-== Jakub Marchwicki
+== http://goo.gl/gXwoVQ
+
+[.pull-right]
+Thank you!
 
 [.footer]
 [icon-twitter]'{zwsp}' @kubem
