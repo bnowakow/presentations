@@ -19,7 +19,7 @@ Jakub Marchwicki ; @kubem
 == \\
 
 [.statement]
-Put some *real slide* in here
+Beyond *just* clean code
 
 [NOTE]
 [role="speaker"]
@@ -61,24 +61,7 @@ image::10-uncle-bob.jpg[caption="I found Uncle Bob", role="frame"]
 [role="speaker"]
 ====
 * Now when I think about it, it was definatelly master - apprentice relation
-====
-
-[.topic]
-== Clean code in a nutshell 
-
-[.incremental]
-* name variableslike this
-* don't use comments; unless
-* split functions and keep them small
-* ... blah blah blah... abstractions
-* Law of Demeter
-* test, test, test 
-* red, green, refactor
-
-[NOTE]
-[role="speaker"]
-====
-* The rules. *The dogmna*
+* The rules. *The dogmna*. Variables. Names. Comments
 * I realized my craft was improving
 ** I felt like I had this rules tatoos at my arm
 * But yet another realization came
@@ -99,22 +82,8 @@ image::11-kent-beck.jpg[caption="The Sourcerer", role="frame"]
 ** I know Uncle Bob was ranting about implementation patterns in clean code book. *I don't care*
 * Kent has given this different perspective on what was important
 ** what the implementation was really about
-====
-
-== The Values
-
-[.middle.incremental]
-* Communication [detail]#program should read like a book#
-** [detail]#spend more time reading existing code than writing new code#
-* Simplicity [detail]#delete everything that don't add information#
-** [detail]#enable reading, using and modifying programs more quickly#
-* Flexibility [detail]#is complexity, so add only when it's needed#
-** [detail]#as if it was that easy#
-
-[NOTE]
-[role="speaker"]
-====
-* That was an a-ha moment. Kind of flash
+* Communication. Simplicity. Flexibility - as the values.
+** Kind of a-ha moment
 ====
 
 == \\
@@ -124,7 +93,233 @@ image::15-like-a-boss.jpg[caption="", role="strech-x"]
 [role="speaker"]
 ====
 * Now I know where it's comming all from
+* You can feel like a boss. Sometimes being a bit superior and dicky
 * That might be how you feel when you get all that
 ** Or you can dig harder and deeper
+** Look for some other inspirations. Go beyond beauty in code, cause it's not about beauty
 ====
 
+ 
+== \\
+image::19-on.jpg[caption="prettiness", role="frame"]
+
+== \\
+image::19-krzeslo.jpg[caption="aesthetics", role="frame"]
+
+== \\
+image::19-syrena.jpg[caption="design", role="frame"]
+
+[NOTE]
+[role="speaker"]
+====
+* Each of these make you feel different emotions
+** Though all wakes a sense of beauty in you. Because all of those where neatly designed.
+* It's all about what we feel,what happends within our mind when we see such objectes
+* Same can happen when working with beautiful code
+** I'll get there
+====
+
+
+== \\
+image::20-pudelko.jpg[caption="", role="stretch-x"]
+
+[NOTE]
+[role="speaker"]
+====
+* We see a box and we build a mental model around that, in our mind. 
+* Take this box
+** We can lift it, shake it, open, look inside, put something inside
+====
+
+
+[.topic]
+== Affordance
+
+====
+[.small.quote]
+____
+a *quality* of an *object*, which *allows* an individual *to perform an action*. For example, a knob affords twisting, and perhaps pushing, while a cord affords pulling
+____
+====
+
+== \\
+image::21-affordance.jpg[caption="affordance for dummies", role="frame"]
+
+[NOTE]
+[role="speaker"]
+====
+* So now, think not only about phisical objects.
+** Even code has it's affordance
+** Has it's nature this sugegsts us certain actions we can or should perform.
+* Same is with objects
+** These suggestions are called signifiers
+====
+
+
+== \\
+image::21-design-of-everyday-things.jpg[caption="", role="stretch-x"]
+
+[NOTE]
+[role="speaker"]
+====
+* These terms were coined by Don Norman
+** In this book "the design of everyday things"
+====
+
+== \\
+image::22-drzwi-jedi.png[caption="Only for Jedi", role="frame"]
+
+[NOTE]
+[role="speaker"]
+====
+* How it works - we see it on daily basis
+====
+
+== \\
+image::24-android1.png[width=300]
+
+[NOTE]
+[role="speaker"]
+====
+* Not only among phisical objects, also in IT
+** See Android. It's after all fairly easy to bash about
+* See this box. It has slider, which suggests an action. 
+** But at the same time it's a button. WTF??
+====
+
+== \\
+image::24-android1.png[width=300]
+image::24-android2.png[width=287, role="pull-right"]
+
+[NOTE]
+[role="speaker"]
+====
+* Yeah. That was funny, but how it works with code?
+====
+
+== \\
+image::13-functions2.png[caption="Why? Oh Why?", role="frame"]
+
+[.source]
+== \\
+
+[source, java]
+.+BadBadSql.java+
+----
+public class Sql {
+
+   public Sql(String table, Column[] columns)
+   public String create()
+   public String insert(Object[] fields)
+   public String selectAll()
+   public String fieldByKey(
+	String keyColumn, String keyValue)
+   private String ColumnList(Column[] columns)
+   private String valuesList(
+	Object[] fields, final Column[] columns)
+
+}
+----
+
+[NOTE]
+[role="speaker"]
+====
+* So what's wrong here? Many
+** Many responsibilities, too many
+** Open Closed principle
+** All our changes are pretty invasive
+====
+
+[.source]
+== \\
+
+[source, java]
+----
+abstract public class Sql {
+   public Sql(String table, Column[] columns)
+   abstract public String generate();
+}
+
+public class CreateSql extends Sql {
+   public CreateSql(String table, Column[] columns)
+   @Override public String generate()
+}
+
+public class SelectSql extends Sql {
+   public SelectSql(String table, Column[] columns)
+   @Override public String generate()
+}
+
+public class InsertSql extends Sql {
+   public InsertSql(String table, Column[] columns)
+   @Override public String generate()
+   private String valuesList(Object[] fields, final Column[] columns)
+}
+
+public class FindKeyBySql extends Sql {
+   public FindKeyBySql(String table, Column[] columns, String keyColumn, String keyValue)
+   @Override public String generate()
+}
+----
+
+[NOTE]
+[role="speaker"]
+====
+Now take this example
+
+* mental model: what model you build when you see this code
+* affordance: what actions does this code allow you to do
+* signifiers: or more, what it suggests
+====
+
+[.topic]
+== Beyond design 101
+
+[.statement]
+We can *help* ourselves +
+and be more *effective*
+
+[NOTE]
+[role="speaker"]
+====
+There is more
+
+* George Miler. The Magical Number Seven, Plus or Minus Two: Some Limits on Our Capacity for Processing Information
+* multistore memory model
+** different level of memory, time to learn
+* The Flow - when we find ourself within a highly challanging, engaging state of full immersion.
+====
+
+== \\
+image::25-bruce-lee.png[caption="", role="frame"]
+
+
+[NOTE]
+[role="speaker"]
+====
+* So when next time you find yourself with a bit a free time, about to watch "Breaking bad"
+* There is one thing I'd like you to remember
+** Take away with you
+====
+
+== \\
+image::25-bruce-lee.png[caption="Has Bruce Lee known kung-fu?", role="frame"]
+
+[NOTE]
+[role="speaker"]
+====
+* Coding is only a part of you job
+* Lots of things are beyond coding
+** Communication, aesthetics, desgn, psychology
+* Be like Bruce Lee, who started with Kung Fu and ended with Karate
+** Actually this term is coined by a friend of mine
+** Michał Bartyzel, who was talking yesterday about communication and conversation patterns
+* Go for Eames - The architect or Normand Design of everyday things
+====
+
+
+[.topic.ending, hrole="name"]
+== Jakub Marchwicki
+
+[.footer]
+[icon-twitter]'{zwsp}' @kubem
