@@ -1,0 +1,7 @@
+= Caught in an iron triangle 
+
+7 rzeczy których nie wiece o współpracy z biznesem, z których nie opowiem wam o nawet jedenej ale zrobię warsztat na którym to Wy mi powiecie jak wysokie są wieżowce w jednym amerykańskim mieście. 
+
+== Presented at:
+
+* 2014-05-17 UXCamp.pl - Starter 
