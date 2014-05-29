@@ -22,10 +22,6 @@ $ deck2pdf --profile=dzslides --width=954 --height=714 slides.html slides.pdf <1
 
 === Decent Polish Google Web Fonts
 
-* Alegreya Sans
-* Scada
-* Cuprum
-* Archivo Narrow
-* Ubuntu Condensed
+* Lato:400,700,400italic,700italic
 
 
