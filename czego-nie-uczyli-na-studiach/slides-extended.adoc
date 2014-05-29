@@ -1,4 +1,4 @@
-= Czego nie uczono na informatyce... 
+= 5 rzeczy o których usłyszycie dopiero w pracy
 Jakub Marchwicki ; YDP SA ; @kubem
 :longform:
 :sectids!:
@@ -7,7 +7,7 @@ Jakub Marchwicki ; YDP SA ; @kubem
 :language: no-highlight
 :dzslides-style: stormy-jm
 :dzslides-transition: fade
-:dzslides-fonts: family=Alegreya+Sans:400,700,200,300&subset=latin,latin-ext&family=Cedarville+Cursive 
+:dzslides-fonts: family=Lato:400,700,400italic,700italic&subset=latin,latin-ext&family=Cedarville+Cursive 
 :dzslides-highlight: monokai
 :experimental:
 :toc2:
@@ -23,7 +23,6 @@ Jakub Marchwicki ; YDP SA ; @kubem
 * ... o kodzie nowym
 * ... o kodzie który już istnieje
 * ... o testach
-* ... o informatyce poza kodem
 * ... o użytkownikach
 * ... o zespołach
 
@@ -35,6 +34,16 @@ Jakub Marchwicki ; YDP SA ; @kubem
 * że jak je zrozumiemy to resztę wygenerujemy w RUPie
 * i to wystarczy
 ====
+
+[.topic]
+== Agenda
+
+[.middle]
+* *... o kodzie nowym*
+* ... o kodzie który już istnieje
+* ... o testach
+* ... o użytkownikach
+* ... o zespołach
 
 == \\
 image::01-clean-code.jpg[caption="", role="stretch-x"]
@@ -67,18 +76,139 @@ Przejdźmy przez kilka zasad Wuja Boba
 * Poprawiaj
 ====
 
-== \\
-[.statement]
-Functions should *do one thing*.
-Should do it well and should do it only
+[.topic.source]
+== Nazwy
 
+[source,java]
+.+BadCode.java+
+----
+for (int i=0; i<10; i++){
+    k += ((l[i]*1.5) / 3 );
+}
+----
+
+[source,java]
+.+GoodCode.java+
+----
+float milleageRate;
+const int NUMER_OF_EMPLOYEE = 3;
+float sum = 0;
+
+for ( int i=0; i<numberOfTrips; i++ ){
+   float totalCompensation = tripLength[i] * milleageRate;
+   float deduction = totalCompensation / NUMER_OF_EMPLOYEE;
+   sum += deduction;
+}
+----
 
 [NOTE]
 [role="speaker"]
 ====
-* To dla przykładu - ile rzeczy robiła funkcja którą napisaliście ostatnio.
-* Jeżeli miala ifa - to już robiła dwie rzeczy
+* Nazwy zmiennych, metod, klas powinny być wystarczająco opisowe aby zrozumieć jaką wartość przetrzymuje zmienna i jaką czynność wykonuje metoda.
+* Nazwy nie powinny wymagać dodawania komentarza
+* Nazwy zmiennych nie mogą wprowadzać w błąd!
+* Nazwy metod nie mogą ukrywać funkcjonalności!
+
+* Korzystaj z nazw które
+* Ułatwiają zapamiętywanie
+* Umożliwiają swobodną dyskusję o kodzie
 ====
+
+[.topic]
+== Funkcje
+
+[.incremental]
+Zasada pierwsza:: funkcje powinny być małe
+Zasada druga:: funkcje powinny być jeszcze mniejsze
+
+== \\
+
+[.statement]
+Functions should *do one thing*.
+Should do it well and should do it only
+
+== \\
+image::13-functions.png[caption="Why? Oh why?" role="stretch-y"]
+
+[NOTE]
+[role="speaker"]
+====
+* Don't repeat yourself
+* Symertia w kodzie: realizuj w funkcji zadań które operują na innych poziomach abstrakcji
+====
+
+[.topic]
+== Komentarze
+
+[.statement]
+*don't*
+
+[NOTE]
+[role="speaker"]
+====
+* Nie dodawaj komentarza do złego kodu. Popraw go
+* Tak refleksja, skąd pomysł, że ktoś kto nie potrafił się jasno wyrazić w kodzie, będzie potrafił w komentarzu.
+====
+
+
+== \\
+
+====
+[quote, Robert C. Martin]
+____
+If you decide to write a comment, then spend the time necessary to make sure it is the best comment you can write
+____
+====
+
+[.topic]
+== Obiekty
+
+[.statement]
+Zasada *niewiedzy* +
+[detail]#albo minimalnej wiedzy# +
+[detail]#moduł nie powinien wiedzieć o wnętrzu obiektów, którymi manipuluje#
+
+[.topic]
+== Prawo Demeter o zabawie
+
+[.incremental]
+* *z* samym *sobą*
+* *własnymi zabawkami* (ale bez rozbierania!)
+* wszystkim co *dostałeś*
+* jak *zrobiłeś samodzielnie* - to Twoje!
+
+== \\
+image::12-lebovsky.jpg[caption="", role="stretch-x"]
+
+[NOTE]
+[role="speaker"]
+====
+* Po prostu głęboko wierzymy że dobry kod nam pomoże
+* Choć nie wiemy jak, intuicyjnie staramy się go stosować
+* Z pokorą przyjmujemy karcący wzrok mnicha 
+* Uczymy się... bez wnikania w kontekst
+* Z czasem zobaczymy że z czystym kodem lepiej się pracuje... tak po ludzku
+====
+
+[.topic]
+== SOLIDny programista
+
+[.incremental]
+* Single Responsibility Principle +
+[detail]#klasa powinna mieć tylko jeden powód do zmiany#
+* Open Closed Principle +
+[detail]#klasę można łatwo rozszerzać, nie modyfikując jej#
+* Liskov Substitution Principle + 
+[detail]#klasy pochodne muszą być przeźroczystymi zamiennikami klasy nadrzędnej#
+
+[.topic]
+== SOLIDny programista
+
+[.incremental]
+* Interface Segregation Principle +
+[detail]#dla różnych klientów twórz osobne interfejsy#
+* Dependency Inversion Principle +
+[detail]#bądź zależny od abstrakcji a nie od konkretnych implementacji#
 
 == \\
 image::05-design-patterns.jpg[caption="", crole="invert", role="stretch-x"]
@@ -138,9 +268,21 @@ image::03-implementation-patterns.jpg[caption="", crole="invert", role="stretch-
 [.topic]
 == Wartości
 
-[.incremental]
+[.scatter.incremental]
 * Kod jest podstawowym medium komunikacji w projekcie
 * Jako zespół jesteśmy jednością
+
+[NOTE]
+[role="speaker"]
+====
+* Jak ja pójdę na skróty, to kolega będzie się męczył
+* I jako całość i tak będziemy nieefektywni
+====
+
+[.topic]
+== Wartości
+
+[.scatter.incremental]
 * Programy są częściej czytane niż pisane
 * Więcej czasu poświęcamy na modyfikację istniejącego kodu niż na tworzenie nowego
 
@@ -151,28 +293,23 @@ image::03-implementation-patterns.jpg[caption="", crole="invert", role="stretch-
 * I jako całość i tak będziemy nieefektywni
 ====
 
-[.topic]
-== Implementation patterns
-
-[.incremental.scatter]
-* Komunikacja +
-[detail]#kod źródłowy powinno się czytać jak książkę#
-* Prostota + 
-[detail]#wprowadzaj złożoność tylko kiedy jest to konieczne#
-* Elastyczność +
-[detail]#to dodatkowa złożoność, więc wprowadzaj ją tylko tam gdzie to konieczne#
-
 
 [.topic]
 == Implementation patterns
 
 [.incremental.scatter]
-* Lokalne konsekwencje +
-[detail]#zmiana w jednym miejscu nie powoduje zmian w innych#
-* Dane i logika razem +
-[detail]#ponieważ zmieniają się w tym samym czasie#
-* Symetria +
-[detail]#utrzymuj podobny poziom abstrakcji#
+Komunikacja:: kod źródłowy powinno się czytać jak książkę
+Prostota:: wprowadzaj złożoność tylko kiedy jest to konieczne
+Elastyczność:: to dodatkowa złożoność, więc wprowadzaj ją tylko tam gdzie to konieczne
+
+
+[.topic]
+== Implementation patterns
+
+[.incremental.scatter]
+Lokalne konsekwencje:: zmiana w jednym miejscu nie powoduje zmian w innych
+Dane i logika razem:: ponieważ zmieniają się w tym samym czasie
+Symetria:: utrzymuj podobny poziom abstrakcji
 
 == \\
 
@@ -182,6 +319,16 @@ ____
 Czysty kod jest prosty i bezpośredni. Czysty kod czyta się jak dobrze napisaną prozę. Czysty kod nigdy nie zaciemnia zamiarów projektanta; jest pełen trafnych abstrakcji i prostych ścieżek sterowania
 ____
 ====
+
+[.topic]
+== Agenda
+
+[.middle]
+* ... o kodzie nowym
+* *... o kodzie który już istnieje*
+* ... o testach
+* ... o użytkownikach
+* ... o zespołach
 
 == \\
 image::06-legacy-code.jpg[caption="", crole="invert", role="stretch-x"]
@@ -233,6 +380,17 @@ piece by piece turn it into well designed system
 * wytyczanie granic i fasad istniejących systemów
 * ciągła integracja
 * testy, testy, testy
+
+[.topic]
+== Agenda
+
+[.middle]
+* ... o kodzie nowym
+* ... o kodzie który już istnieje
+* *... o testach*
+* ... o użytkownikach
+* ... o zespołach
+
 
 == \\
 image::07-tdd.jpg[caption="", crole="invert", role="stretch-x"]
@@ -286,6 +444,16 @@ ____
 * dlaczego w ogóle powinniśmy zajmować się tym że wszystko się zmienia
 * przecież możemy zebrać raz i później się tego trzymać
 ====
+
+[.topic]
+== Agenda
+
+[.middle]
+* ... o kodzie nowym
+* ... o kodzie który już istnieje
+* ... o testach
+* *... o użytkownikach*
+* ... o zespołach
 
 == \\
 image::10-jak-rozmawiac.jpg[caption="", crole="invert", role="stretch-x"]
@@ -349,6 +517,16 @@ Klient wie *czego potrzebuje*
 * w jednym zespole
 ====
 
+[.topic]
+== Agenda
+
+[.middle]
+* ... o kodzie nowym
+* ... o kodzie który już istnieje
+* ... o testach
+* ... o użytkownikach
+* *... o zespołach*
+
 == \\
 image::12-lean-software.jpg[caption="", crole="invert", role="stretch-x"]
 
@@ -391,9 +569,12 @@ czy to już *wszystko*?
 [.topic]
 == Liczą się rezultaty!
 
-[.middle.incremental]
-* Czy możesz to pokazać? 
-* Czym możesz się pochwalić?
+[.incremental]
+* Projekty opensource [detail]#nie tylko kod#
+* Dokumentacja, testy, przykłady
+* JUGi i inne spotkania [detail]#takie jak to#
+* Java, Ruby, PHP, JavaScript
+* *When one teaches, two learn!*
 
 [NOTE]
 [role="speaker"]
@@ -403,12 +584,42 @@ czy to już *wszystko*?
 * każdy projekt ma dług - nie tylko w kodzie.
 * contrybucja to nie tylko kod i feature'y. 
 * github.to nie jest CV, ale daje dobry pogląd
+* JUGi, spotkania. Np. w każdy ostatni czwartek miesiąca w Starterze
+* Robert Heinlein: “When one teaches, two learn.”
 ====
 
 == \\
+image::28-jak-zyc.jpg[caption="Jak żyć?", crole="invert", role="stretch-x"]
 
-[.statement]
-http://goo.gl/7n8rDG
+[NOTE]
+[role="speaker"]
+====
+* Jak żyć?
+* Piszemy czysty kod, bo łatwiej nam z nim obcować i jesteśmy produktywniejszy
+* Jesteśmy produktywni, bo minimalizujemy próg wejścia, bo pracujemy z czystym kodem
+* Ciągle się uczymy - poznajemy nowe obszary. Nowe języki. Nowe zagadnienia  
+
+* Shu – dogma. Adherence
+* Ha – bending rules
+* Ri – transcendence. We just know what to do and why.
+====
+
+[.topic]
+== Bo w sytuacjach trudnych...
+image::29-ecce-homo-1.jpg[]
+
+[.topic]
+== ... brniemy nie wiadomo gdzie ...
+image::29-ecce-homo-2.jpg[role="pull-right"]
+
+[.topic]
+== ... mimo że cel był wyraźny
+image::29-ecce-homo-3.jpg[role="middle"]
+
+== \\ questions
+image::68-questions.jpg[caption="Questions?", crole="invert", role="stretch-x"]
+
+
 
 [.topic.ending, hrole="name"]
 == Jakub Marchwicki 
