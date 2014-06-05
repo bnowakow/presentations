@@ -5,6 +5,7 @@ Jakub Marchwicki ; @kubem
 :imagesdir: images
 :source-highlighter: highlightjs
 :language: no-highlight
+:dzslides-aspect: 16-9
 :dzslides-style: stormy-jm
 :dzslides-transition: fade
 :dzslides-fonts: family=Yanone+Kaffeesatz:400,700,200,300&family=Cedarville+Cursive
@@ -27,7 +28,7 @@ As it that made any *difference*
 
 [.incremental]
 * What is microservice?
-* Why is interesting? 
+* Why bother? 
 * Why we shouldn't care?
 * Why I cared?
 * How I cared?
@@ -38,7 +39,7 @@ As it that made any *difference*
 == Agenda
 
 * *What is microservice?*
-* Why is interesting? 
+* Why bother? 
 * Why we shouldn't care?
 * Why I cared?
 * How I cared?
@@ -48,8 +49,7 @@ As it that made any *difference*
 
 [.middle]
 Micro Service is an *architectural concept* that aims to decouple a solution by decomposing functionality into discrete services +
- +
-#with communication over lightweight mechanisms, often an HTTP resource API#
+[detail]#with communication over lightweight mechanisms, often an HTTP API#
 
 [NOTE]
 [role="speaker"]
@@ -104,12 +104,190 @@ Micro Service is an *architectural concept* that aims to decouple a solution by 
 == Agenda
 
 * What is microservice?
-* *Why is interesting?* 
+* *Why bother?*
 * Why we shouldn't care?
 * Why I cared?
 * How I cared?
 * Was it worth doing?
 
+== !
+[.statement]
+*SOA* done right?
+
+[NOTE]
+[role="speaker"]
+====
+* 15 years since the concept of Service Oriented Architecture
+* significant changes in the way we think about architecture
+====
+
+== !
+[.statement]
+*Aggregates* and bounded *Contexts* give us a great way of breaking up a domain
+
+[NOTE]
+[role="speaker"]
+====
+* Eric Evan’s - Domain Driven Design
+* Service interface between each context
+* ensure a service is responsible for an aggregate root and all of it’s child domain objects
+====
+
+== !
+[.statement]
+*REST* style interfaces and *JSON* as a data interchange
+
+== !
+[.statement]
+Build *web services* + 
+easier than ever with +
+*micro* frameworks
+
+[NOTE]
+[role="speaker"]
+====
+* In JAVA world count: 
+** Simple embedded Jetty, 
+** Spark, Webbit, Dropwizard
+** Vert.x, Spring Boot
+====
+
+[.topic]
+== Agenda
+
+* What is microservice?
+* Why bother?
+* *Why we shouldn't care?*
+* Why I cared?
+* How I cared?
+* Was it worth doing?
+
+////
+TODO!!!
+////
+
+[.topic]
+== Agenda
+
+* What is microservice?
+* Why bother?
+* Why we shouldn't care?
+* *Why I cared?*
+* How I cared?
+* Was it worth doing?
+
+[.topic]
+== The beshitted legacy system 
+
+[.incremental]
+* an interesting application in legacy systems
+* don't touch it approach [detail]#as if you meant it#
+* write a small service that does what's needed +
+[detail]#instead of diving into legacy system#
+* an architecture evolution
+
+[NOTE]
+[role="speaker"]
+====
+* Working with legacy code is risky at best
+* We all know it
+====
+
+
+[role="terminal"]
+== !
+....
+        Legacy system                             
+                                                                                      
++------------------------------+                      
+|                              |                                 
+|   +----------------------+   |                                
+|   |                      |   |                               
+|   |                      | <-------------------------------------------------------+
+|   |                      |   |                              
+|   +----------------------+   |                             
+|         +       +-------+    |                            
+|         |       |       |    |                           
+|         |       |       |    |                          
+|         |       +-------+    |                         
+|         |       +-------+    |                        
+|         |       |       |    |                       
+|         |       |       |    |                      
+|         |       +-------+    |                     
+|         |                    |                    
++------------------------------++                  
+          |                      
+          v                      
++------------------------------+ 
+|                              |
+|                              | 
+|                              |                                                      
++------------------------------+                                                      
+                                                                                      
+            Database                                                                  
+....
+
+
+[role="terminal"]
+== !
+....
+        Legacy system                                               Proxy             
+                                                                                      
++------------------------------+                                   +------+           
+|                              |                                   |      |           
+|   +----------------------+   |                                   |      |           
+|   |                      |   |                                   |      |           
+|   |                      | <-------------------------------------------------------+
+|   |                      |   |                                   |      |           
+|   +----------------------+   |                                   |      |           
+|         +       +-------+    |                                   |      |           
+|         |       |       |    |                                   |      |           
+|         |       |       |    |                                   |      |           
+|         |       +-------+    |                                   |      |           
+|         |                    |              +-------+            |      |           
+|         |                    |              |       |            |      |           
+|         |                    |              |       | <----------------------------+
+|         |                    |              |       |            |      |           
+|         |                    |              +-------+            |      |           
++------------------------------+                  +                +------+           
+          |                                       |                                   
+          v                                       |                                   
++------------------------------+                  |                                   
+|                              |                  |                                   
+|                              | <----------------+                                   
+|                              |                                                      
++------------------------------+                                                      
+                                                                                      
+            Database                                                                  
+....
+
+
+[.topic]
+== Agenda
+
+* What is microservice?
+* Why bother?
+* Why we shouldn't care?
+* Why I cared?
+* *How I cared?*
+* Was it worth doing?
+
+
+
+[.topic]
+== Useful links and some notes
+
+[.middle]
+----
+http://speakerdeck.com/kubamarchwicki/microsevice-everything
+
+This presentation was made with Asciidoctor
+  http://asciidoctor.org/
+
+Tools when preparing this slides
+  http://paulrouget.com/dzslides/
+  http://asciiflow.com/
+----
 
 
 [.topic.ending, hrole="name"]
