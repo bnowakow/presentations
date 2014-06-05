@@ -279,7 +279,13 @@ TODO!!!
 
 [.middle]
 ----
-http://speakerdeck.com/kubamarchwicki/microsevice-everything
+http://speakerdeck.com/kubamarchwicki/microservice-everything
+
+Further reading material
+  http://readlists.com/14bb4629/
+
+Sam Newman - Building Microservices
+  http://shop.oreilly.com/product/0636920033158.do
 
 This presentation was made with Asciidoctor
   http://asciidoctor.org/
