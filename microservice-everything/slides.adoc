@@ -16,6 +16,100 @@ Jakub Marchwicki ; @kubem
 :idseparator: -
 :icons: font
 
+[.topic]
+== Who is this guy?
+
+[.statement]
+As it that made any *difference*
+
+[.topic]
+== Things to cover
+
+[.incremental]
+* What is microservice?
+* Why is interesting? 
+* Why we shouldn't care?
+* Why I cared?
+* How I cared?
+* Was it worth doing?
+
+
+[.topic]
+== Agenda
+
+* *What is microservice?*
+* Why is interesting? 
+* Why we shouldn't care?
+* Why I cared?
+* How I cared?
+* Was it worth doing?
+
+== !
+
+[.middle]
+Micro Service is an *architectural concept* that aims to decouple a solution by decomposing functionality into discrete services +
+ +
+#with communication over lightweight mechanisms, often an HTTP resource API#
+
+[NOTE]
+[role="speaker"]
+====
+* this means everything
+* maybe a diagram will go better
+====
+
+[role="terminal"]
+== !
+
+....
+
+
+
+       +----------------------------------+                                    
+       |                                  |                        ++          
+       |  +--------------------+  +----+  |               +---+    ++          
+       |  |                    |  |    |  |               |   |                
+       |  |                    |  |    |  |               |   |  +--------+    
+       |  +--------------------+  |    |  |               +---+  |        |    
+       |                          |    |  |                      |        |    
+       |  +-----+  +-----+ +---+  |    |  |            +-+       |        |    
+       |  |     |  |     | |   |  |    |  |            +-+  +-+  +--------+    
+       |  |     |  |     | |   |  |    |  |                 +-+                
+       |  +-----+  +-----+ +---+  |    |  |         +----+           +--+      
+       |                          |    |  |         |    |  +----+   |  |      
+       |  +--------------------+  |    |  |         +----+  |    |   +--+  +--+
+       |  |                    |  |    |  |                 |    |         |  |
+       |  |                    |  |    |  |            +-+  +----+         +--+
+       |  +--------------------+  +----+  |            +-+          +---+      
+       |                                  |                         |   |      
+       +----------------------------------+                         +---+      
+                                                                        
+                                                                        
+              Monolythic / layered                           Microservice      
+
+....
+
+[.topic]
+== My personal definition
+
+[.incremental]
+* A small problem domain [detail]#Bounded Content might be the thing#
+* Built and deployed by itself [detail]#standalone and isolated#
+* Runs in its own process
+* Integrates via well-known interfaces + 
+[detail]#While HTTP isn’t always the best answer, it’s a damn fine first guess#
+* Owns its own data storage [detail]#ultimate goal#
+
+[.topic]
+== Agenda
+
+* What is microservice?
+* *Why is interesting?* 
+* Why we shouldn't care?
+* Why I cared?
+* How I cared?
+* Was it worth doing?
+
 
 
 [.topic.ending, hrole="name"]
