@@ -29,7 +29,6 @@ As it that made any *difference*
 [.incremental]
 * What is microservice?
 * Why bother? 
-* Why we shouldn't care?
 * Why I cared?
 * How I cared?
 * Was it worth doing?
@@ -40,7 +39,6 @@ As it that made any *difference*
 
 * *What is microservice?*
 * Why bother? 
-* Why we shouldn't care?
 * Why I cared?
 * How I cared?
 * Was it worth doing?
@@ -105,10 +103,28 @@ Micro Service is an *architectural concept* that aims to decouple a solution by 
 
 * What is microservice?
 * *Why bother?*
-* Why we shouldn't care?
 * Why I cared?
 * How I cared?
 * Was it worth doing?
+
+[.topic]
+== Modularity at all levels
+
+[.incremental]
+* Function 
+* Object 
+* Class 
+* Actor 
+* Stream transform 
+* *Microservice* 
+
+[NOTE]
+[role="speaker"]
+====
+* Pointed out by Martin Odersky at GOTOchicago
+* Single Responsibility Principle  taken to an extreme
+====
+
 
 == !
 [.statement]
@@ -157,21 +173,6 @@ easier than ever with +
 
 * What is microservice?
 * Why bother?
-* *Why we shouldn't care?*
-* Why I cared?
-* How I cared?
-* Was it worth doing?
-
-////
-TODO!!!
-////
-
-[.topic]
-== Agenda
-
-* What is microservice?
-* Why bother?
-* Why we shouldn't care?
 * *Why I cared?*
 * How I cared?
 * Was it worth doing?
@@ -261,17 +262,178 @@ TODO!!!
             Database                                                                  
 ....
 
+[.topic]
+
+== Some problems with monolythic architecture
+
+[.incremental]
+* Even when layered, hidden coupling
+* Single runtime, allows in memory calls
+* FUD: if it works don't fix it [detail]#don't touch it# 
+* Good diagrams not always make it to good code
+
+[NOTE]
+[role="speaker"]
+====
+* I know this might not always be true
+** Though it usually happens
+* 
+====
+
 
 [.topic]
 == Agenda
 
 * What is microservice?
 * Why bother?
-* Why we shouldn't care?
 * Why I cared?
 * *How I cared?*
 * Was it worth doing?
 
+
+[.topic.recap]
+== Exibit A
+
+[.statement.pull-right]
+a mysterious scoring engine [detail]#-- 2007#
+
+[.topic]
+== Agenda
+
+* What is microservice?
+* Why bother?
+* Why I cared?
+* How I cared?
+* *Was it worth doing?*
+
+== !
+
+[.statement]
+Still *don't* know
+
+[NOTE]
+[role="speaker"]
+====
+* it's hard to say. architecture decisions does not pay off quickly (usually)
+* in some causes that was the only way to go
+* We haven't really touched on operations, deploying small thingies
+** In many cases it's a component cased architecture
+====
+
+
+[role="terminal"]
+== !
+
+....
+
+
+       +----------------------------------+                                    
+       |                                  |                        ++          
+       |  +--------------------+  +----+  |               +---+    ++          
+       |  |                    |  |    |  |               |   |                
+       |  |                    |  |    |  |               |   |  +--------+    
+       |  +--------------------+  |    |  |               +---+  |        |    
+       |                          |    |  |                      |        |    
+       |  +-----+  +-----+ +---+  |    |  |            +-+       |        |    
+       |  |     |  |     | |   |  |    |  |            +-+  +-+  +--------+    
+       |  |     |  |     | |   |  |    |  |                 +-+                
+       |  +-----+  +-----+ +---+  |    |  |         +----+           +--+      
+       |                          |    |  |         |    |  +----+   |  |      
+       |  +--------------------+  |    |  |         +----+  |    |   +--+  +--+
+       |  |                    |  |    |  |                 |    |         |  |
+       |  |                    |  |    |  |            +-+  +----+         +--+
+       |  +--------------------+  +----+  |            +-+          +---+      
+       |                                  |                         |   |      
+       |                                  |                         +---+
+       +----------------------------------+                        
+                                                                        
+                                                                        
+              Monolythic / layered                           Microservice      
+
+....
+
+
+[role="terminal"]
+== !
+
+....
+
+
+       +----------------------------------+      +--------------------------------+                              
+       |                                  |      |                 ++             |
+       |  +--------------------+  +----+  |      |        +---+    ++             |
+       |  |                    |  |    |  |      |        |   |                   |
+       |  |                    |  |    |  |      |        |   |  +--------+       |
+       |  +--------------------+  |    |  |      |        +---+  |        |       |
+       |                          |    |  |      |               |        |       |
+       |  +-----+  +-----+ +---+  |    |  |      |     +-+       |        |       |
+       |  |     |  |     | |   |  |    |  |      |     +-+  +-+  +--------+       |
+       |  |     |  |     | |   |  |    |  |      |          +-+                   |
+       |  +-----+  +-----+ +---+  |    |  |      |  +----+           +--+         |
+       |                          |    |  |      |  |    |  +----+   |  |         |
+       |  +--------------------+  |    |  |      |  +----+  |    |   +--+  +--+   |
+       |  |                    |  |    |  |      |          |    |         |  |   |
+       |  |                    |  |    |  |      |     +-+  +----+         +--+   |
+       |  +--------------------+  +----+  |      |     +-+          +---+         |
+       |                                  |      |                  |   |         |
+       |                                  |      |                  +---+         |
+       +----------------------------------+      +--------------------------------+
+                                                                        
+                                                                        
+              Monolythic / layered                      Something in between 
+                                                           (components ?)    
+
+....
+
+[NOTE]
+[role="speaker"]
+====
+* easier to handle by operations
+* easier to spoil, couple elements through internal calls
+** HTTP is pretty ruthless - you can't bypass
+** You can call different component within 
+====
+
+== !
+
+[.small.quote, James Lewis]
+____
+We define *libraries* as components that are linked into a program and called using in-memory calls, while *services* are out-of-process components who communicate with remote procedure calls 
+____
+
+[NOTE]
+[role="speaker"]
+====
+* So this might be a problem
+** Awareness, code reviews and inspections are important
+====
+
+
+== !
+
+[.small.quote, James Lewis]
+____
+Microservice applications put a lot of emphasis on *real-time monitoring* of the application, checking both architectural elements and business relevant metrics
+____
+
+[NOTE]
+[role="speaker"]
+====
+* Monitoring beyond Naigos
+** We are still not very good in it, still learing
+* Business metrics are very hard to grasp with `business at the other side of the wall`
+====
+
+== !
+
+[.statement]
+But we are still *trying*
+
+[.topic.ending, hrole="name"]
+== Questions?
+
+[.footer]
+[icon-twitter]'{zwsp}' @kubem
 
 
 [.topic]
@@ -295,9 +457,3 @@ Tools when preparing this slides
   http://asciiflow.com/
 ----
 
-
-[.topic.ending, hrole="name"]
-== Jakub Marchwicki
-
-[.footer]
-[icon-twitter]'{zwsp}' @kubem
