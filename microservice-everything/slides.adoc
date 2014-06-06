@@ -295,7 +295,145 @@ easier than ever with +
 == Exibit A
 
 [.statement.pull-right]
-a mysterious scoring engine [detail]#-- 2007#
+a mysterious scoring engine [detail]#-- 2009# 
+
+[role="terminal"]
+== !
+....
+
+           +-----------------------------------------------+
+           |                                               |
+           |  +-----------------------------------+        |
+           |  |                                   |        |
+           |  |          Boundary: SOAP           |        |
+           |  |                                   |        |
+           |  +-----------------------------------+        |
+           |  |                                   |        |
+           |  |               EJB                 |        |
+           |  |                                   |        |
+           |  +-----------------------------------+        |
+           |                                               |
+           |                                               |
+           |  +--------+   +-------+   +----------+        |
+           |  |        |   |       |   |          |        |
+           |  | JAX-WS |   |  JPA  |   |  DROOLS  |        |
+           |  |        |   |       |   |          |        |
+           |  +--------+   +-------+   +----------+        |
+           |                                               |
+           |                                               |
+           |                                 JBoss 4.2.x   |
+           |                                               |
+           +-----------------------------------------------+
+
+....
+
+[.topic]
+== Business driver
+
+[.middle]
+Webservices are really hard do sale. + 
+*Please visualize*
+
+
+[role="terminal"]
+== !
+....
+
+           +-----------------------------------------------+
+           |                                               |
+           |  +--------------------+--------------+        |
+           |  |                    |              |        |
+           |  |   Boundary: SOAP   |     JSF      |        |
+           |  |                    |              |        |
+           |  +--------------------+--------------+        |
+           |  |                                   |        |
+           |  |               EJB                 |        |
+           |  |                                   |        |
+           |  +-----------------------------------+        |
+           |                                               |
+           |                                               |
+           |  +--------+   +-------+   +----------+        |
+           |  |        |   |       |   |          |        |
+           |  | JAX-WS |   |  JPA  |   |  DROOLS  |        |
+           |  |        |   |       |   |          |        |
+           |  +--------+   +-------+   +----------+        |
+           |                                               |
+           |                                               |
+           |                                 JBoss 4.2.x   |
+           |                                               |
+           +-----------------------------------------------+
+
+....
+
+[NOTE]
+[role="speaker"]
+====
+* That was the initial approach- which I didn't like
+* I personally dislike JSF
+* After further discussion with business - the need was for mobile UI
+** Primefaces didn't make much sense in such case (remember 2009)
+* The app too ages to deploy so the development was hell
+** 25 minuts with full caching
+** I'm blaming the workstations - but still had to find another way
+====
+
+[role="terminal"]
+== !
+
+....
+    +-----------------------------------------------+                          
+    |                                               |                          
+    |  +-----------------+-----------------+        |         +---------------+
+    |  |                 |                 |        |         |               |
+    |  |      SOAP       |  REST endpoint  | <--------------+ |   Dedicated   |
+    |  |                 |                 |        |         |    mobile     |
+    |  +-----------------+-----------------+        |         |  Single Page  |
+    |  |                                   |        |         |  Application  |
+    |  |               EJB                 |        |         |               |
+    |  |                                   |        |         |               |
+    |  +-----------------------------------+        |         +---------------+
+    |                                               |                          
+    |                                               |                          
+    |  +--------+   +-------+   +----------+        |                          
+    |  |        |   |       |   |          |        |                          
+    |  | JAX+WS |   |  JPA  |   |  DROOLS  |        |                          
+    |  |        |   |       |   |          |        |                          
+    |  +--------+   +-------+   +----------+        |                          
+    |                                               |                          
+    |                                               |                          
+    |                                 JBoss 4.2.x   |                          
+    |                                               |                          
+    +-----------------------------------------------+                          
+
+....
+
+[NOTE]
+[role="speaker"]
+====
+* That was simple - write and endpoint, deploy and never come back
+* Develop the application externally, independently
+* My UI was one service, everything else was another
+====
+
+== !
+
+[.statement]
+Separate things that change with a +
+*different pace*
+
+[NOTE]
+[role="speaker"]
+====
+*That was my first outcome*
+====
+
+
+[.topic.recap]
+== Exibit B
+
+[.statement.pull-right]
+sizeable image repository from 2007 [detail]#-- 2012#
+
 
 [.topic]
 == Agenda
