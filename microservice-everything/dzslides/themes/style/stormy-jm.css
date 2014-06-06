@@ -159,10 +159,10 @@ section.recap > h2 {
   text-transform: uppercase;
   color: #000;
   font-size: 2em;
-  border: 15px solid #F3D054;
+  border: 10px solid #F3D054;
   border-radius: 20px;
   position: absolute;
-  right: -25px;
+  right: -15px;
   top: 5px;
   -webkit-transform: rotate(30deg);
   -moz-transform: rotate(30deg);
