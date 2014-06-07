@@ -176,6 +176,10 @@ section.recap > h2 {
   padding: 10px;
 }
 
+section.red-border > h2 {
+  border: 10px solid #F07746;
+}
+
 section.recap hgroup h2 {
   color: #958976;
   text-transform: uppercase;

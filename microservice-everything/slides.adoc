@@ -18,12 +18,6 @@ Jakub Marchwicki ; @kubem
 :icons: font
 
 [.topic]
-== Who is this guy?
-
-[.statement]
-As it that made any *difference*
-
-[.topic]
 == Things to cover
 
 [.incremental]
@@ -98,6 +92,13 @@ Micro Service is an *architectural concept* that aims to decouple a solution by 
 [detail]#While HTTP isn’t always the best answer, it’s a damn fine first guess#
 * Owns its own data storage [detail]#ultimate goal#
 
+[NOTE]
+[role="speaker"]
+====
+* Obviously some depend on context
+** Own data might not always be the case (with legacy systems)
+====
+
 [.topic]
 == Agenda
 
@@ -135,6 +136,7 @@ Micro Service is an *architectural concept* that aims to decouple a solution by 
 ====
 * 15 years since the concept of Service Oriented Architecture
 * significant changes in the way we think about architecture
+** ESB is not always SOA - when the sevices are deeply coupled in a non visible way
 ====
 
 == !
@@ -155,9 +157,9 @@ Micro Service is an *architectural concept* that aims to decouple a solution by 
 
 == !
 [.statement]
-Build *web services* + 
-easier than ever with +
-*micro* frameworks
+Build *web services* +  
+[.pull-right]#easier than ever# 
+with *micro frameworks*
 
 [NOTE]
 [role="speaker"]
@@ -176,6 +178,23 @@ easier than ever with +
 * *Why I cared?*
 * How I cared?
 * Was it worth doing?
+
+[.topic]
+== Some problems with monolythic architecture
+
+[.incremental]
+* Even when layered, hidden coupling
+* Single runtime, allows in memory calls
+* FUD: if it works don't fix it [detail]#don't touch it# 
+* Good diagrams not always make it to good code
+
+[NOTE]
+[role="speaker"]
+====
+* I know this might not always be true
+** Though it usually happens
+====
+
 
 [.topic]
 == The beshitted legacy system 
@@ -263,25 +282,6 @@ easier than ever with +
 ....
 
 [.topic]
-
-== Some problems with monolythic architecture
-
-[.incremental]
-* Even when layered, hidden coupling
-* Single runtime, allows in memory calls
-* FUD: if it works don't fix it [detail]#don't touch it# 
-* Good diagrams not always make it to good code
-
-[NOTE]
-[role="speaker"]
-====
-* I know this might not always be true
-** Though it usually happens
-* 
-====
-
-
-[.topic]
 == Agenda
 
 * What is microservice?
@@ -332,7 +332,7 @@ a mysterious scoring engine [detail]#-- 2009#
 
 [.middle]
 Webservices are really hard do sale. + 
-*Please visualize*
+[pull-right]#*Please visualize it!*#
 
 
 [role="terminal"]
@@ -415,7 +415,8 @@ Webservices are really hard do sale. +
 * My UI was one service, everything else was another
 ====
 
-== !
+[.topic.recap.red-border]
+== Note to self
 
 [.statement]
 Separate things that change with a +
@@ -424,9 +425,8 @@ Separate things that change with a +
 [NOTE]
 [role="speaker"]
 ====
-*That was my first outcome*
+* That was my first outcome
 ====
-
 
 [.topic.recap]
 == Exibit B
@@ -434,6 +434,181 @@ Separate things that change with a +
 [.statement.pull-right]
 sizeable image repository from 2007 [detail]#-- 2012#
 
+[NOTE]
+[role="speaker"]
+====
+* I work with education and publishers
+* our big data are images and movies
+* 4TB of data in files & 8GB of data in database
+====
+
+[role="terminal"]
+== !
+     
+....
++--------------------------------------+
+|                                      |
+|         web / controllers            |
+|                                      |
++-----------+--------------------------+
+            |                           
+            | (1)                       
+            |                           
+            v                           
+                                        
++-------------------------------------+ 
+|                                     | 
+|         application logic           | 
+|                                     | 
++--+-------------------------+--------+ 
+   |                         |          
+   | (2)   ^                 | (4)      
+   |       |                 |          
+   v       | (3)             v          
+           |                            
++----------+--+    +------------------+ 
+|             |    |                  | 
+|    MySQL    |    |    filesystem    | 
+|             |    |                  | 
++-------------+    +------------------+ 
+....
+
+[NOTE]
+[role="speaker"]
+====
+* A very simple flow. I'd say simplistic
+* That's not much unless:
+** The DB is denormalized MySQL
+** Files are randomly spread throughout the drive
+** Badly designed SQL queries
+** Your app is a PHP application
+* Initially no caching. That database temp tables
+* *And now they want you to make search faster*
+** Where you'd rather throw this whole shite away
+====
+
+[.topic]
+== Business driver
+
+[.middle]
+Search is extremelly slow and *it makes us unproductive*
+
+
+[.topic.recap.red-border]
+== Note to self
+
+[.statement]
+The is no such thing as legacy +
+If noone use it - abandon it + 
+If you can't - it's business as usual + 
+[pull-right]#*cope with it!*#
+
+[NOTE]
+[role="speaker"]
+====
+* My second outcome.
+* If there was no way to fight them - join them 
+====
+
+[role="terminal"]
+== !
+....
+        Proxy                                                                               
+                                                                                            
+       +-----+                                 +------------------+                         
+       |     |         /*                      |                  |                         
++----------------+-------------------------->  |                  |                         
+       |     |   |                             |  The Old stuff   |                         
+       |     |   |                             |                  +--------+                
+       |     |   |                             |                  |        |                
+       |     |   |                             +------------------+        |                
+       |     |   |                                                         |                
+       |     |   |                                                         |  Elastic Search
+       |     |   |                                                         |  rivers service
+       |     |   |                                                         |                
+       |     |   |                                                         |                
+       |     |   |                             +------------------+        |                
+       |     |   |     /search                 |                  |        |                
+       |     |   +-------------------------->  |                  | <------+                
+       |     |                                 |  Elastic Search  |                         
+       |     |                                 |       index      |                         
+       |     |                                 |                  |                         
+       +-----+                                 +------------------+                         
+....
+
+[NOTE]
+[role="speaker"]
+====
+* That was the idea. 
+* The design looked solid
+* The project never happened - due to various things
+
+* You can delegate functionality in that way in various way
+** Semantic search for a legacy portal
+** Advanced browsing for asset store
+** One-off shot functionalities
+* You build it, you cash it, you close it
+====
+
+[.topic.recap.red-border]
+== Note to self
+[.statement]
+If you get the mindset +
+*everything is a* +
+[pull-right]#*service*# +
+just not always very micro
+
+
+[.topic.recap]
+== Exibit C
+
+[.statement.pull-right]
+yet another big ball of mud
+
+[.topic]
+== A long time ago in a galaxy far, far away
+
+There was this portal with
+[.incremental]
+* user management and roles [detail]#and identity provisioning#
+* ecommerce [detail]#implementing multiple business models#
+* assets repository [detail]#with search#
+* lessons presentation [detail]#for teacher#
+* students assignments
+
+
+[NOTE]
+[role="speaker"]
+====
+* A portal where you could buy learing material, present it as school and push it to students to do a home assignment
+* Written very very badly, *convoluted* way
+* *FAT Controller* was the 'most widespread' design pattern
+* Just after *SQL everywhere*
+* Problem was - in some cases it just worked.
+* Implementing a new look and feel was a 20menday project
+====
+
+[.topic.recap.red-border]
+== Note to self
+
+[.statement]
+People are reluctant to *throw away* a multimillion *investment*
+
+[NOTE]
+[role="speaker"]
+====
+* Even though maintenance is extremelly expensive
+* It's still cheaper than build from scratch
+* And how said a green field wouldn't create same big ball of mud
+** But is a more hipster language
+====
+
+[role="terminal"]
+== !
+
+....
+
+....
 
 [.topic]
 == Agenda
