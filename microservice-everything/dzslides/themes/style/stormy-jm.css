@@ -79,11 +79,18 @@ section:not(.title) {
 }
 
 
+section.title {
+  background-image: url(../../../images/diuk.png);
+  background-repeat: no-repeat;
+
+}
+
 section.title h1 {
   font-size: 6em;
   color: #1D2326;
   position: relative;
   top: 40%;
+  left: 12%;
   -webkit-transform: translate(0, -50%);
   -moz-transform: translate(0, -50%);
   -ms-transform: translate(0, -50%);
