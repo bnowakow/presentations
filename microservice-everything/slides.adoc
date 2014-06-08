@@ -27,6 +27,19 @@ Jakub Marchwicki ; @kubem
 * How I cared?
 * Was it worth doing?
 
+[NOTE]
+[role="speaker"]
+====
+* Who am I?
+* YDP - Education Publisher
+* Most of examples are from YDP experience
+** But not all
+* I wasn't actually implementing many of those, unfortunately
+* I don't claim this ideas perfect. It was good enough in context
+** I'm happy to discuss it and ritualy dissent them
+** I'm not my ideas
+====
+
 
 [.topic]
 == Agenda
@@ -661,6 +674,7 @@ People are reluctant to *throw away* a multimillion *investment*
 +----------------+ +----------+         +-----------+   +---------+           
 |                | |          |         |           |   |         |           
 |   REST wrapper | | Another  |         | Yet       |   |         |           
+* This wasn't my code
 |                | | wrapper  |         | another   |   |         |           
 | +-----------+  | |          |         |           |   |  new    |           
 | |           |  | | +----+   |   ...   | +------+  |   |  sexy   |           
@@ -693,7 +707,7 @@ image::nonsense.jpg[caption="SRSLY??", role="frame"]
 * Take the whole application [detail]#for each functionality#
 * Write a wrapper for each functionality [detail]#extreme SRP#
 * Stabilize the contract [detail]#serve exactly what's needed#
-* Automate contact tests
+* Automate contract tests
 * Scrap what's not required [detail]#from an old stuff#
 
 
@@ -723,6 +737,114 @@ ActiveX [detail]#from 2002# as a Service [detail]#-- 2014#
 * This is a real core. For the true ninjas
 ====
 
+[role="terminal"]
+== !
+
+....
+
+     ++------------++                                                                     
+    +-|            |-+                                                                    
++-+----------------+-+-------------------------------------------------------------+-----+
+| <-+ | http://some.important.url.com                                              |     |
+|     +----------------------------------------------------------------------------+     |
+|                                                                                        |
+|                                                                                        |
+|      +----------------------------+            +-------------------------+             |
+|      |                            |            |                         |             |
+|      |         UI Component       |            | +--------------------+  |             |
+|      |    (Flash / Java Applet)   |            | |                    |  |             |
+|      |                            |            | | Active X component |  |             |
+|      |                            +--------->  | |                    |  |             |
+|      |                            |            | +--------------------+  |             |
+|      |    > []    record sound    |  <---------+                         |             |
+|      |                            |            |     JavaScript bindings |             |
+|      |                            | JavaScript |                         |             |
+|      +----------------------------+    magic   +-------------------------+             |
+|                                                                                        |
+|                                                                                        |
+|                                                                                        |
+|                                                                                        |
+|                                                                                        |
+|                                                                                        |
+|                                                                                        |
++----------------------------------------------------------------------------------------+
+....
+
+[NOTE]
+[role="speaker"]
+====
+* Imagine situation like this
+* Some UI components working together with ActiveX things
+* ActiveX was a C++ wrapper around C++ library for sound processing
+* Worked fine on Windows / until IE8 - and than stopped
+* Few applications were quite heavily dependent on (on the ActiveX API) 
+====
+
+
+[.topic]
+== Business driver
+
+[.middle]
+Go beyond Internet Explorer 8
+
+[.topic]
+== What if's?
+
+[.incremental]
+* the same library would work as a service
+* it was a REST web service
+* there was no C++ web server
+* there was no way anyone would write C++
+* we use more developer friendly language
+
+[role="terminal"]
+== !
+....
+
+     ++------------++                                                                        
+    +-|            |-+                                                                       
++-+----------------+-+-------------------------------------+--+        +-------------------+
+| <-+ | http://some.important.url.com                      |  |        |                   |
+|     +----------------------------------------------------+  |        |  +-------------+  |
+|                                                             |        |  |             |  |
+|    +-----------------------+            +------------+      |        |  | ActiveX     |  |
+|    |                       |            |            |      |        |  | components  |  |
+|    |      UI Component     |            | JavaScript |      |        |  |             |  |
+|    | (Flash / Ja^a Applet) |            | components |      |        |  +-------------+  |
+|    |                       |            |            |      |  http  |                   |
+|    |                       +--------->  |            +-------------> |  REST webservice  |
+|    |                       |            |            |      |        |                   |
+|    | ^ []    record sound  |  <---------+            |      |        +-------------------+
+|    |                       |            |            |      |                              
+|    |                       | JavaScript |            |      |                              
+|    +-----------------------+    magic   +------------+      |                              
+|                                                             |                              
+|                                                             |                              
+|                                                             |                              
+|                                                             |                              
+|                                                             |                              
++-------------------------------------------------------------+                              
+....
+
+[NOTE]
+[role="speaker"]
+====
+* Externalized sound component
+* Wrapped in Python win32com (as that was purely windows library)
+** We were considering node.js native bindings, but went for python
+* Wrap the C++ library and expose with REST webservice
+** Tornado was the choice
+** It's nonblocking I/O was somehow similar to node's idea
+* Surprise surprise - it worked
+====
+
+
+[.topic.recap.red-border]
+== Note to self
+
+[.statement]
+Damn! That was just *crazy* but it *worked*
+
 [.topic]
 == Agenda
 
@@ -742,6 +864,7 @@ Still *don't* know
 ====
 * it's hard to say. architecture decisions does not pay off quickly (usually)
 * in some causes that was the only way to go
+** The approach (you may argue it was just SOA) help us solve certain problems
 * We haven't really touched on operations, deploying small thingies
 ** In many cases it's a component cased architecture
 ====
