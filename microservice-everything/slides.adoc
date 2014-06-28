@@ -248,6 +248,22 @@ with *micro frameworks*
 * We all know it
 ====
 
+== !
+[.small.quote, Fred Brooks, The Mythical Man-Month]
+____
+Problems of developing software derive from essential complexity and its nonlinear increases with size; leading to difficulty of communication among team members, cost overruns, schedule delays.
+____
+
+[NOTE]
+[role="speaker"]
+====
+* If your program get longer, it take more time to develop
+* I'm not talking about the *product flaws* it can cause. Leave it out of scope for the time being
+* You think you need more people
+** But you can't get around by hiring more people
+** Because beyond a certain size new hires are actually a net lose
+* Keeping things micro is a way for me to limit the size 
+====
 
 [role="terminal"]
 == !
