@@ -1,5 +1,5 @@
 = JEE'ish development without hassle
-Kuba Marchwicki ; @kubem 
+Kuba Marchwicki ; @kubem
 :longform:
 :sectids!:
 :imagesdir: images
@@ -7,7 +7,7 @@ Kuba Marchwicki ; @kubem
 :language: no-highlight
 :dzslides-style: stormy-jm
 :dzslides-transition: fade
-:dzslides-fonts: family=Lato:400,700,400italic,700italic&subset=latin,latin-ext&family=Cedarville+Cursive 
+:dzslides-fonts: family=Lato:400,700,400italic,700italic&subset=latin,latin-ext&family=Cedarville+Cursive
 :dzslides-highlight: monokai
 :experimental:
 :toc2:
@@ -19,9 +19,31 @@ Kuba Marchwicki ; @kubem
 == !
 image::karty-java.png[caption="Archetyp programisty Java", role="frame"]
 
+[NOTE]
+[role="speaker"]
+====
+* I ja się temu nie dziwię.
+** Ostatnio spotkałem się z firmą której wielkim sukcesem było że wchodzą w annotacje.
+** SRSLY! Mamy 2014. Java5 EOL było w październiku 2009
+* Także smutne jest życie developera
+====
+
+== !
+image::karty-ios.png[caption="", role="frame-right"]
+
+[NOTE]
+[role="speaker"]
+====
+* I pewnie wielu z nas marzy się taka hipsterska praca
+** Poprogramować w Haskellu, w Switfcie
+** Albo chociaż w Javie8 zrobić kilka domknięć
+* A oni mi tutaj ciągle EJB3.0 (jak mamy szczęście).
+====
+
+
+
 [.topic.ending, hrole="name"]
 == Jakub Marchwicki
 
 [.footer]
 [icon-twitter]'{zwsp}' @kubem
-
