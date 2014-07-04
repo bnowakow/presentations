@@ -883,3 +883,35 @@ section.fit > img {
 .conum + b { display: none; }
 .conum:after { content: attr(data-value); }
 .conum:not([data-value]):empty { display: none; }
+
+.tableblock tr:nth-child(even) {
+  background-color: #E6E8E7;
+}
+
+.tableblock tr:nth-child(odd) {
+  background-color: #E7E3FD;
+}
+
+.tableblock td {
+  padding-top: 0.6em;
+  text-align: center;
+}
+
+.tableblock td:nth-child(even) {
+  text-align: left;
+  padding-left: 0.6em;
+}
+
+.tableblock th {
+  font-size: 1.3em;
+  padding-bottom: 1em;
+  background-color: #F1F2EC !important;
+}
+
+.tableblock th:nth-child(even) {
+  text-align: left;
+}
+
+.tableblock p {
+  font-size: 1.3em;
+}
