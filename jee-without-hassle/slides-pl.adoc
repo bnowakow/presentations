@@ -29,7 +29,7 @@ image::karty-java.png[caption="Archetyp programisty Java", role="frame"]
 ====
 
 == !
-image::karty-ios.png[caption="", role="frame-right"]
+image::karty-ios.png[caption="Archetyp programisty Java", role="frame-right"]
 
 [NOTE]
 [role="speaker"]
@@ -40,10 +40,28 @@ image::karty-ios.png[caption="", role="frame-right"]
 * A oni mi tutaj ciągle EJB3.0 (jak mamy szczęście).
 ====
 
-
-
 [.topic.ending, hrole="name"]
-== Jakub Marchwicki
-
+== Pytania? 
 [.footer]
 [icon-twitter]'{zwsp}' @kubem
+
+
+[.topic]
+== Przydatne linki i inne takie
+
+[.middle]
+----
+http://speakerdeck.com/kubamarchwicki/jee-without-hassle-pl
+
+Follow me on twitter:
+  @kubem
+
+Ta prezentacja została zrobiona przy pomocy AsciiDoctora
+  http://asciidoctor.org/
+  https://github.com/kubamarchwicki/presentations/
+
+Kilka narzędzi wykorzystywanych w prezentacji  
+  http://paulrouget.com/dzslides/
+  http://asciiflow.com/
+----
+
