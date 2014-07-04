@@ -8,7 +8,7 @@ Kuba Marchwicki ; @kubem
 :dzslides-style: stormy-jm
 :dzslides-transition: fade
 :dzslides-fonts: family=Lato:400,700,400italic,700italic&subset=latin,latin-ext&family=Cedarville+Cursive
-:dzslides-highlight: monokai
+:dzslides-highlight: tomorrow
 :experimental:
 :toc2:
 :sectanchors:
@@ -40,6 +40,108 @@ image::karty-ios.png[caption="Archetyp programisty Java", role="frame-right"]
 * A oni mi tutaj ciągle EJB3.0 (jak mamy szczęście).
 ====
 
+== !
+image::git_log.png[caption="Typowy projekt korporacyjny", role="frame"]
+
+[NOTE]
+[role="speaker"]
+====
+* Zwróćie uwagę na daty przy commitach
+* To jest projekt który istniał nim przyszliście i będzie istniał długo po waszym odejściu
+====
+
+[.topic]
+== Projekt ma swoje założenia
+
+[.incremental.scatter]
+JEE == EJB:: bo tak
+Spring Framework:: bo jest lightweight
+JPA:: object map everything 
+
+[NOTE]
+[role="speaker"]
+====
+* Oczywiście że ma
+* Używamy JEE już od tak dawna że nikt nie wie dlaczego
+** Eksperyment z małpami i bananami
+* Spring Framework był lightweight w 2006
+** JEE6 pojawiła się jako alternatywa dla springa: swiss army knife
+* JPA - zmapujmy wszystko na obiekty
+* Ja nie mówię że to sa złe założenia - są doskonałe, w pewnym kontekście
+** Zwalniają nas z myślenia o kontekście
+====
+
+[.topic]
+== Projekt ma swoje niespodzianki
+
+[.statement]
+[detail]#IDE# +
+IDE + 
+*IDE* -> [detail]#alt + tab# 
+
+[NOTE]
+[role="speaker"]
+====
+* Dziwne projekty na uboczu
+** Mobliny, responsywny frontend dla webserviców
+** Tymczasowy e-sklep dla repozytorium zasobów (np. zdjęć)
+** Automatyzacja pewnych procesów
+** Zwiększenie efektywności czynnika białkowego (tj. ludzkiego)
+* W każdym projekcie to miałem
+* Będę się posługiwał przykładem: TodoMVC
+* Co z taką niespodzianką zrobić?
+====
+
+
+[.topic]
+== Co z taką  
+[.pull-right]#niespodzianką?#
+
+image::einstein.jpg[caption="To co zawsze!", role="frame"]
+
+[NOTE]
+[role="speaker"]
+====
+* używamy dokładnie tych samych narzędzi których użwalismy dotychczas
+* jeżeli mieliśmy aplikację na stosie JEE, to dowolny fragment webu robimy w JSF
+* jak ktoś chciał frontendu do naszych webservice'ow JAX-WS
+** shang bang - jest JSF
+* I utyskujemy na wybory technologiczne tak jak zawsze utyskiwaliśmy
+====
+
+== !
+
+[source,java]
+.+TodoMVCResource.java+
+----
+@Path("/")
+@Produces(MediaType.APPLICATION_JSON)
+public class TodoMVCResource {
+
+    @GET
+    public List<Todo> getAll() {
+        return store.getAll();
+    }
+
+    //..
+}
+----
+
+
+[source, bash]
+.+runner.sh+
+----
+{ ~ } » java -jar tomee-embedded.jpg --path my-application.war
+----
+
+[NOTE]
+[role="speaker"]
+====
+* Niby wszystko jest w porządku. Jest single jar ;)
+* Prawie jak mikroserwis
+====
+
+
 [.topic.ending, hrole="name"]
 == Pytania? 
 [.footer]
@@ -55,6 +157,11 @@ http://speakerdeck.com/kubamarchwicki/jee-without-hassle-pl
 
 Follow me on twitter:
   @kubem
+
+Projekt z przykładami:
+  https://github.com/kubamarchwicki/micro-java
+  Frontend jest stąd: https://github.com/tastejs/todomvc
+  Pewna inspiracja: https://github.com/kouphax/todomvc-server
 
 Ta prezentacja została zrobiona przy pomocy AsciiDoctora
   http://asciidoctor.org/
