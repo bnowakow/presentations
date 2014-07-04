@@ -12,3 +12,7 @@ guard 'shell' do
     n m[0], "Slides rebuilt"
   }
 end 
+
+guard 'livereload' do
+  watch(%r{^.+\.(css|js|html)$})
+end
