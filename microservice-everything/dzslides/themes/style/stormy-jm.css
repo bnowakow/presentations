@@ -75,7 +75,7 @@ section, .view head > title {
 }
 
 section:not(.title) {
-  padding: 50px;
+  padding: 40px;
 }
 
 
