@@ -1,0 +1,15 @@
+JEE.next()
+----------
+Last year (in may) the next JEE spec has been officially released… yet another way to build our backend. I have no strong opinion if that’s good or bad, no Spring vs EJB, whatsoever. This is a business / technical decision, no easy answer, it all depends and I assume you’ve already taken this decision. That was your choice and I assume you knew what you were doing.
+
+So, you have this JEE; good - no need for me to encourage or discourage you. I’ll focus on some other stuff. Things that has been introduced (better say standardized): REST webservice, JSON, web sockets, some JPA goodies. How it used to be (like back in time) and how things changed (for better). From old boilerplated times to productive developer… at least that’s what she said.
+
+http://htmlpreview.github.io/?https://github.com/kubamarchwicki/presentations/master/JEE-next/slides.html[HTML slides]
+https://speakerdeck.com/kubamarchwicki/jeenext[PDF slides (at) speakerdeck]
+
+Presented at:
+~~~~~~~~~~~~~
+
+* 2013-09-26 - JUG. Gdańsk
+* 2013-11-14 - JUG. Łódź
+* 2014-04-07 - 4developers Conference. Warsaw
