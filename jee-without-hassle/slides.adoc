@@ -1,0 +1,514 @@
+= JEE'ish development without hassle
+Kuba Marchwicki ; @kubem
+:longform:
+:sectids!:
+:imagesdir: images
+:source-highlighter: highlightjs
+:language: no-highlight
+:dzslides-style: stormy-jm
+:dzslides-transition: fade
+:dzslides-fonts: family=Lato:400,700,400italic,700italic&subset=latin,latin-ext&family=Cedarville+Cursive
+:dzslides-highlight: tomorrow
+:experimental:
+:toc2:
+:sectanchors:
+:idprefix:
+:idseparator: -
+:icons: font
+
+////
+== Who am I?
+* YDP - Education Publisher
+* Most of examples are from YDP experience
+** But not all
+* I wasn't actually implementing many of those, unfortunately
+* I don't claim this ideas perfect. It was good enough in context
+** I'm happy to discuss it and ritualy dissent them
+** I'm not my ideas
+////
+
+== !
+image::karty-java.png[caption="Java Developer archetype", role="frame"]
+
+[NOTE]
+[role="speaker"]
+====
+* Well, that doesn't surprise me
+** I've recently met a company that was bragging about embracing annotation in their code
+** SRSLY! it's 2014. Java5 EOL was in October 2009
+* This is a sad life of software engineer.
+====
+
+== !
+image::karty-ios.png[caption="Java Developer archetype", role="frame-right"]
+
+[NOTE]
+[role="speaker"]
+====
+* I pewnie wielu z nas marzy się taka hipsterska praca
+** Do some haskell coding, or swift
+** Or at least some closures
+* But the reality is EJB 3.0 (if we are lucky)
+====
+
+== !
+image::git_log.png[caption="Standard corporate project", role="frame"]
+
+[NOTE]
+[role="speaker"]
+====
+* Have a look on the commit dates
+* I wonder if anybody have hope for their new greenfield project
+* This is a project which existed before you joined the company and will be there
+log after your leave
+* So... you ended up joining such a project
+====
+
+[.topic]
+== Every project has some principles
+
+[.incremental.scatter]
+JEE == EJB:: cause we do EJB
+Spring Framework:: we are lightweight, with 60MB war
+JPA:: object map everything
+
+[NOTE]
+[role="speaker"]
+====
+* Of course it has
+* We use JEE for such a long time noone knows why
+** Monkey and bannanas experiment
+* Spring Framework was lightweight w 2006
+** JEE6 was marketed as Spring alternative, cause spring become too heavy
+** Cause 80% of applications it was ORM + DI + View Components (JPA + EJB + JSF, JPA + Spring + Spring MVC)
+* JPA - map everything as objects. Event if it doen't make sense (raporting)
+* I don't want to say these assumptions are wrong. They are wonderful, in certain contexts
+** However, aligning with them causes us not to think about context
+** Met a company you made their own hibernate-special-dao for some project few years ago
+*** They still use it even though spring-data does pretty much the same
+====
+
+== !
+
+[quote, "Albert Einstein"]
+____
+Insanity is doing the same thing over and over again and expecting different results.
+____
+
+[NOTE]
+[role="speaker"]
+====
+* Strange side projects
+** Mobile, responsive frontend for webservices layer
+** Temporary eshop for photos and assets repository
+** Automation of some processes
+** Additional thingies which make human based processes more effective
+* Whenever on the project, I remember having such "opportunity"
+* I'll use an example of such side project: TodoMVC
+** Because we all know Todo application is an ultimate goal for everything
+** And number 42
+====
+
+[.topic]
+== What's the project about?
+
+* Database [detail]#MySQL seem good enough#
+* Data access [detail]#*get the data*#
+* Business logic [detail]#anemic CRUD#
+* A controller [detail]#*in a few different ways*#
+* Views [detail]#backbone.js#
+
+[NOTE]
+[role="speaker"]
+====
+* we tend to use exactly the same tools as always
+* if we have an JEE application, any web-related stuff is done in JSF
+* situation I had with web view for webservices
+** shang bang - we got JSF
+* So we again are unhappy with choices, as always
+** but haven't done much to change it
+====
+
+[.topic]
+== So what's the crack?
+
+[.statement]
+[detail]#IDE# +
+IDE +
+*IDE* -> [detail]#alt + tab#
+
+[NOTE]
+[role="speaker"]
+====
+* There is not much of philosophy in here.
+** Just ordinary everyday stuff
+** It allows to focus on certain things
+* So what can we do with such a surprise /side in a project
+====
+
+== !
+
+[source,java]
+.+TodoMVCResource.java+
+----
+@Path("/")
+@Produces(MediaType.APPLICATION_JSON)
+public class TodoMVCResource {
+
+    private final Store store;
+
+    @GET
+    public List<Todo> getAll() {
+        return store.getAll();
+    }
+
+    //..
+    //methods omitted for brevity
+}
+----
+
+[source, bash]
+.+runner.sh+
+----
+{ ~ } » java -jar tomee-embedded.jar --path my-application.war
+----
+
+[NOTE]
+[role="speaker"]
+====
+* This is how it might have looked like with JEE
+* + adding just small pom.xml dependency
+** two to be precise
+====
+
+== !
+
+[source,java]
+.+TodoMVCController.java+
+----
+@RestController
+public class TodoMVCController {
+
+    private final Store store;
+
+    @Autowired
+    public TodoMVCController(Store store) {
+        this.store = store;
+    }
+
+    @RequestMapping(value = "/todos",
+            method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<Todo> getAllTodos() {
+        return store.getAll();
+    }
+
+    //..
+}
+----
+
+
+[NOTE]
+[role="speaker"]
+====
+* And that would have been Spring
+* It looks legic - we got a single jar
+* Nearly microserwis
+* Fair chance we havent touched the original application
+** Which is quite important. Especially when you work with legacy
+* Have a look into the *IDE*
+* IDE IDE IDE IDE (boot configuration, spring  data - automagic)
+====
+
+== !
+
+[.statement.middle]
+Seem *legit?*
+
+[NOTE]
+[role="speaker"]
+====
+* Spring did the job for me
+* Am I a happy deveoper?
+** I can go and play xbox, fusbal
+* I don't want to rant about using JEE, Spring
+** But these framework tend to do things for you, which make a developer lazy
+** And all together; we don't need a lawnmower to handle 1m^2 of grass
+====
+
+== !
+
+[.incremental]
+* Servlet [detail]#starting point#
+* Response Mapping [detail]#Jackson / Jettison#
+* Dispatcher [detail]#Spring# / Container [detail]#JEE#
+* Dependency Container [detail]#Spring / CDI#
+* TransactionManager
+* ORM (EntityManager)
+* ResultSet [detail]#JDBC#
+* DataSource
+* SQL
+
+[NOTE]
+[role="speaker"]
+====
+* Let's have a look what Spring Boot / Data or TomEE did for us? *What's under the hood*
+* Some layers that are implicit, not always needed
+* Can we get closer to the *bare metal*?
+** So that in case of exception we know what's the crack no need to google it
+** Close to http i SQL (cause that's the technology we are using)
+====
+
+== !
+
+* *Servlet* [detail]#starting point#
+* *Response Mapping* [detail]#Jackson / Jettison#
+* Dispatcher [detail]#Spring# / Container [detail]#JEE#
+* Dependency Container [detail]#Spring / CDI#
+* TransactionManager
+* ORM (EntityManager)
+* *ResultSet* [detail]#JDBC#
+* *DataSource*
+* *SQL*
+
+[NOTE]
+[role="speaker"]
+====
+* And what we actually need in this simplistic application?
+* 50% is a cargo cult. Overengineering
+* Can it be done easier? more robust?
+====
+
+[.topic]
+== More robust?
+
+[.middle.incremental]
+* Dropwizard [detail]#Jetty + Jersey + jDBI#
+* Jetty + Sql2o
+* Jetty + RESTeasy + MyBatis
+* Spark + jOOQ
+* Webbit + jDBI
+
+[NOTE]
+[role="speaker"]
+====
+* My intention is not to cover the frameworks in details
+** Touch the subject - due to time
+** Honestly, I don't know all the details as well
+** So if you used that on a project - you prolly know more than I do
+** But framework is not the goal
+* It's about approach
+** Libraries over frameworks.
+====
+
+== !
+[.middle]
+* *Dropwizard* [detail]#Jetty + Jersey + jDBI#
+* Jetty + Sql2o
+* Jetty + RESTeasy + MyBatis
+* Spark + jOOQ
+* Webbit + jDBI
+
+== Dropwizard
+
+Dropwizard::
+Dropwizard is a Java framework for developing ops-friendly, high-performance, RESTful web services. +
+Dropwizard pulls together stable, mature libraries from the Java ecosystem into a simple, light-weight package that lets you focus on getting things done.
+
+[NOTE]
+[role="speaker"]
+====
+* A bit of marketing jargon
+* Dropwizard started as an extra-simple non framewor
+* It was originated for linkedin. Simlar as webbit was originated for DRW Trading
+** There was a big change between 0.6 and 0.7. Quite a lot has been added to address everybody's needs
+** It was no longer maintained by codahale - the original author
+* I'll focus on Jetty + Jersey + jDBI
+** dropwizard gives nice plumbing i API for many internal objects
+** allows automagic hook for container's api - which simplifies many things
+*** For example: Menaged Resources (Managed Objects for database access)
+** I won't cover neaty gritty details - afterall it's quite popular framework
+====
+
+
+== !
+
+[.middle]
+* Dropwizard [detail]#Jetty + Jersey + jDBI#
+* *Jetty + Sql2o*
+* Jetty + RESTeasy + MyBatis
+* Spark + jOOQ
+* Webbit + jDBI
+
+== Jetty + Sql2o
+
+Jetty::
+Small footprint web server and javax.servlet container
+
+Sql2o::
+Sql2o is a small java framework that makes it easy to execute sql statements on your JDBC compliant database from java.
+
+[NOTE]
+[role="speaker"]
+====
+* So while Jetty is quite straight forward, Sql2o seem wierd
+* IDE IDE IDE IDE
+* Have you evered wondered about performance of each db access library.
+====
+
+== Sql2o
+
+[cols="2", options="header"]
+|===
+| Method
+| Duration
+
+| Hand coded `ResultSet` | 60ms
+| Sql2o | 75ms [detail]#(25% slower)#
+| Apache DbUtils |98ms [detail]#(63% slower)#
+| JDBI | 197ms [detail]#(228% slower)#
+| MyBatis | 293ms [detail]#(388% slower)#
+| jOOQ | 447ms [detail]#(645% slower)#
+| Hibernate | 494ms [detail]#(723% slower)#
+| Spring JdbcTemplate | 636ms [detail]#(960% slower)#
+|===
+
+----
+sql2o/PojoPerformanceTest.java --> http://goo.gl/cwNkRN
+----
+
+[NOTE]
+[role="speaker"]
+====
+* 1000 SELECT statements against a DB and map the data returned to a POJO
+* Of course we can discuss methodology - which is good
+* Besides the peformance increase we have one other thing
+** if something happens we exactly know where it happended and why.
+====
+
+== !
+[.middle]
+* Dropwizard [detail]#Jetty + Jersey + jDBI#
+* Jetty + Sql2o
+* *Jetty + RESTeasy + MyBatis*
+* Spark + jOOQ
+* Webbit + jDBI
+
+== Jetty + RESTeasy + MyBatis
+
+RESTeasy::
+RESTEasy is a JBoss project that provides various frameworks to help you build RESTful Web Services and RESTful Java applications
+
+MyBatis::
+MyBatis is a first class persistence framework with support for custom SQL, stored procedures and advanced mappings
+
+[NOTE]
+[role="speaker"]
+====
+* RESTeasy is fairly well known, but myBatis might be a bit hipster'ish
+* With  sql2o we kept SQL statements in code, which is generally considered a bad practice
+** myBatis "externalize them" in a single place (XML or annotation based interface)
+* Most important point is to consciously make a decision which abstraction to use
+====
+
+== !
+[.middle]
+* Dropwizard [detail]#Jetty + Jersey + jDBI#
+* Jetty + Sql2o
+* Jetty + RESTeasy + MyBatis
+* *Spark + jOOQ*
+* Webbit + jDBI
+
+== Spark + jOOQ
+
+Spark::
+A Sinatra inspired micro web framework for quickly creating web applications in Java with minimal effort
+
+jOOQ::
+jOOQ generates Java code from your database and lets you build typesafe SQL queries through its fluent API
+
+== !
+[.middle]
+* Dropwizard [detail]#Jetty + Jersey + jDBI#
+* Jetty + Sql2o
+* Jetty + RESTeasy + MyBatis
+* Spark + jOOQ
+* *Webbit + jDBI*
+
+== Webbit + jDBI
+
+Webbit::
+An event-based, single threaded WebSocket and HTTP server in Java
+
+jDBI::
+jDBI is a SQL convenience library for Java. It attempts to expose relational database access in idiommatic Java, using collections, beans, and so on, while maintaining the same level of detail as JDBC. It exposes two different style APIs, a fluent style and a sql object style.
+
+[NOTE]
+[role="speaker"]
+====
+* webbit - uses netty
+** similarity with node.js is more than sure
+** most of such ultra-fast things were made for trading companies
+** DRW trading tego od Dana Northa i Joe Walesa
+* mentioning vert.x sound like a must - be we run out of time
+** I'll put it out of scope
+====
+
+[.topic]
+== Instead of wrap-up
+
+[.statement]
+*Why* bother?
+
+[NOTE]
+[role="speaker"]
+====
+* Marry Poppendieck was talking 'Sharpening the Saw'
+** We practice when it's fairly safe
+* There was a great video, lecture about innovation by John Cleese
+** Space (separeted),
+** Time (for certain amout of time, timeboxed),
+** Time (to get creative, not operational),
+** confidence (small chunk, we can get to Spring back), Fun (why, because we can ad we are nerds)
+* We try to understand the nature of the thing, not to do what always was done
+** Like no dependecy injection, bacause wasn't needed
+** It's a bit like between engineer and code. After coputer science and programming cource
+====
+
+[.topic.ending, hrole="name"]
+== Questions?
+[.footer]
+[icon-twitter]'{zwsp}' @kubem
+
+
+[.topic]
+== Links and other goodies
+
+----
+http://speakerdeck.com/kubamarchwicki/jee-without-hassle-pl
+
+Follow me on twitter
+  @kubem
+
+Project with examples
+  https://github.com/kubamarchwicki/micro-java
+  Frontend from here: https://github.com/tastejs/todomvc
+  Some inspirations: https://github.com/kouphax/todomvc-server
+
+This presentation was made with AsciiDoctor
+  http://asciidoctor.org/
+  https://github.com/kubamarchwicki/presentations/
+
+Web
+  http://www.eclipse.org/jetty/
+  http://resteasy.jboss.org/
+  http://www.sparkjava.com/
+  http://webbitserver.org/
+  http://dropwizard.io/
+
+Database
+  http://sql2o.org/
+  http://mybatis.github.io/mybatis-3/
+  http://jooq.org/
+  http://jdbi.org/
+----
