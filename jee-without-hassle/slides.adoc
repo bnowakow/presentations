@@ -511,4 +511,5 @@ Database
   http://mybatis.github.io/mybatis-3/
   http://jooq.org/
   http://jdbi.org/
+  http://www.hibernate-alternative.com/
 ----
