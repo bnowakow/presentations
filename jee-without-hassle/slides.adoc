@@ -485,7 +485,7 @@ jDBI is a SQL convenience library for Java. It attempts to expose relational dat
 == Links and other goodies
 
 ----
-http://speakerdeck.com/kubamarchwicki/jee-without-hassle-pl
+http://speakerdeck.com/kubamarchwicki/jee-without-hassle
 
 Follow me on twitter
   @kubem
