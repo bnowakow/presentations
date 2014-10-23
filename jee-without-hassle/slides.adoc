@@ -1,5 +1,5 @@
 = JEE'ish development without hassle
-Kuba Marchwicki ; @kubem
+Jakub Marchwicki ; @kubem
 :longform:
 :sectids!:
 :imagesdir: images
@@ -75,9 +75,7 @@ JPA:: object map everything
 [NOTE]
 [role="speaker"]
 ====
-* Of course it has
-* We use JEE for such a long time noone knows why
-** Monkey and bannanas experiment
+* Monkey and bannanas experiment
 * Spring Framework was lightweight w 2006
 ** JEE6 was marketed as Spring alternative, cause spring become too heavy
 ** Cause 80% of applications it was ORM + DI + View Components (JPA + EJB + JSF, JPA + Spring + Spring MVC)
@@ -98,12 +96,42 @@ ____
 [NOTE]
 [role="speaker"]
 ====
+* still, whatever requirement comes over we use the same hammer
+** over and over again
+====
+
+== TIM TOWTDI
+
+[quote, Mary Poppendieck, Lean Software Development]
+____
+There is no process that cannot be improved (...) The never-ending continuous
+improvement process (...)
+____
+
+[NOTE]
+[role="speaker"]
+====
+* Python approach - one best way to do things vs Perl approach - many ways to do thing
+* we don't have such constraint in Java
 * Strange side projects
 ** Mobile, responsive frontend for webservices layer
 ** Temporary eshop for photos and assets repository
 ** Automation of some processes
 ** Additional thingies which make human based processes more effective
 * Whenever on the project, I remember having such "opportunity"
+====
+
+== !
+image::todo_tweet.png[caption="Let's build a TODO application", role="frame"]
+
+[NOTE]
+[role="speaker"]
+====
+* So to run it by example
+* There is not much of philosophy in here.
+** Just ordinary everyday stuff
+** It allows to focus on certain things
+* So what can we do with such a surprise /side in a project
 * I'll use an example of such side project: TodoMVC
 ** Because we all know Todo application is an ultimate goal for everything
 ** And number 42
@@ -136,15 +164,6 @@ ____
 [detail]#IDE# +
 IDE +
 *IDE* -> [detail]#alt + tab#
-
-[NOTE]
-[role="speaker"]
-====
-* There is not much of philosophy in here.
-** Just ordinary everyday stuff
-** It allows to focus on certain things
-* So what can we do with such a surprise /side in a project
-====
 
 == !
 
@@ -213,7 +232,7 @@ public class TodoMVCController {
 ====
 * And that would have been Spring
 * It looks legic - we got a single jar
-* Nearly microserwis
+* Nearly microservise
 * Fair chance we havent touched the original application
 ** Which is quite important. Especially when you work with legacy
 * Have a look into the *IDE*
@@ -258,6 +277,10 @@ Seem *legit?*
 ** So that in case of exception we know what's the crack no need to google it
 ** Close to http i SQL (cause that's the technology we are using)
 ====
+
+== !
+image::geek_poke_layers.jpeg[caption="Layers. Onions have layers...", role="frame"]
+
 
 == !
 
@@ -473,6 +496,18 @@ jDBI is a SQL convenience library for Java. It attempts to expose relational dat
 * We try to understand the nature of the thing, not to do what always was done
 ** Like no dependecy injection, bacause wasn't needed
 ** It's a bit like between engineer and code. After coputer science and programming cource
+====
+
+== !
+image::mosquito_hunters.png[caption="", role="frame"]
+
+[NOTE]
+[role="speaker"]
+====
+* Thing to remember
+** Don't be a mosquito hunter. You don't need a rocket launcher
+** Though it might be fun
+* No need for lawn mower to cut 2m^2 of grass
 ====
 
 [.topic.ending, hrole="name"]
