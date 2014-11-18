@@ -1,4 +1,4 @@
-= Reverse engineering the clean code
+= Reverse engineering the clean code 
 Jakub Marchwicki ; @kubem
 :longform:
 :sectids!:
@@ -17,18 +17,29 @@ Jakub Marchwicki ; @kubem
 :icons: font
 
 == \\
+
+[.statement]
+Not *only* clean code
+
+[NOTE]
+[role="speaker"]
+====
+* Bartosz, Arquillian Persistence Extension. The true opensource warrior.
+* I'd like to tell you a story how I went the path Bartosz described
+** How I went beyond my daily job
+* Reverse engineering the clean code
+** Not in a way you turn a _class_ file into _java_ file
+** In a way Mitnick reversed security through it's social aspects
+====
+
+== \\
 image::05-comments.png[width=500]
 
 [NOTE]
 [role="speaker"]
 ====
-* I'd like to tell you a story how I went the path of craftmanship
-** How I went beyond my daily job
-* Reverse engineering the clean code
-** Not in a way you turn a _class_ file into _java_ file
-** In a way Mitnick reversed security through it's social aspects
 * Back in 2008 I was laying down code, best I could - like most people did.
-* There better and worse examples. I did was constatly improving.
+* There better and worse examples. I did was constatly improving. 
 ** At least that's what I tought when I looked back my old code
 ====
 
@@ -41,46 +52,6 @@ image::06-comments-woohoo.png[width=573]
 * one day I realized there can and must be a beaty in code
 ** prolly when I first time compared Calendar API and JodaTime
 ** or looked up Guava (called Google Collections at that time)
-====
-
-== \\
-image::07-wtfs.jpg[role="frame"]
-
-[NOTE]
-[role="speaker"]
-====
-* Jest na przyklad jedna uniwersalna miara
-** ale skąd wiemy że pojawiają się takie WTF.
-* I dlaczego wszyscy mają takie WTFy – niezależnie od języka, doświadczenia.
-* I think I can always smell the crappy code.
-====
-
-[.topic]
-== Complex vs complicated
-
-[.incremental]
-Simple to read, learn and understand::
-How easy it’s for novice programmer to maintain a significant program
-
-Make stuff simple but not simplistic::
-
-[NOTE]
-[role="speaker"]
-====
-* complex vs complicated – w kontekście języków programowania.
-* verbosity Javy vs. Groovy, frameworkach: nie pisz nowego – jednen już jest.
-** ESB wygląda prosto na diagramach.
-* Mythical man-month. Inherent and accidental complexity
-====
-
-== \\
-image::08-books.png[caption="TODO::: Single source of truth", role="frame"]
-
-[NOTE]
-[role="speaker"]
-====
-* Trafiłem na kilka książek. Kto nie zna?
-* Bo jak nie zna – to reszta prezentacji może być trudna do przełknięcie ;-)
 ====
 
 == \\
@@ -100,156 +71,6 @@ image::10-uncle-bob.jpg[caption="I found Uncle Bob", role="frame"]
 * I realized clean code wasn't on it's own. It was a result. *Not the cause*
 ====
 
-[.topic]
-== Uncle Bob's Basics
-
-* Name variables in such and such way
-
-[.source]
-== \\
-
-[source, java]
-----
-public static String parse_pliterki(String old_s) {
-  StringBuffer old_sb = new StringBuffer(old_s);
-  String new_s = "";
-  for(int i=0;i<old_sb.length();i++) {
-    if((int)old_sb.charAt(i)==260)
-      old_sb.replace(i,i+1,"&#260;");
-    if((int)old_sb.charAt(i)==261)
-      old_sb.replace(i,i+1,"&#261;");
-    //...
-  }
-  new_s += old_sb.toString();
-  return new_s;
-}
-----
-
-[.topic]
-== Uncle Bob's Basics
-
-* Name variables in such and such way
-* Use comments when suitable and valuable
-
-[.source]
-== \\
-
-[source, java]
-----
-/*
- * This class represents Customer
- */
-public class Customer {
-
-  /*
-   * The customer's name
-   */
-  private String name;
-
-  //....
-}
-----
-
-[.topic]
-== Uncle Bob's Basics
-
-* Name variables in such and such way
-* Use comments when suitable and valuable
-* Split functions, decompose
-
-[.source]
-== \\
-
-[source, csharp]
-----
-class Student
-{
-    private string name;
-    private int knowledge;
-    private Func<Course, bool> preferences;
-    private int experience;
-
-    public void Study()
-    {
-        knowledge++;
-    }
-
-    public void Enlist(IEnumerable<Course> courses)
-    {
-        // Select appropriate courses and enlist
-        foreach (var course in courses.Where(preferences))
-            course.Enlist(name);
-    }
-
-    public void Work()
-    {
-        experience++;
-    }
-}
-----
-
-[.topic]
-== Uncle Bob's Basics
-
-* Name variables in such and such way
-* Use comments when suitable and valuable
-* Split functions, decompose
-* Use abstractions, symmetry, law of Demeter
-
-[.source]
-== \\
-
-[source, java]
-----
-TextView v = (TextView)
- ((RelativeLayout)
-  ((AbsoluteLayout)
-   ((LinearLayout)
-    ((RelativeLayout)(
-     (LinearLayout)activty.findViewById(R.id.container)).getChildAt(1))
-    .getChildAt(0))
-   .getChildAt(element))
-  .getChildAt(0))
- .getChildAt(0);
-----
-
-[.topic]
-== Uncle Bob's Basics
-
-* Name variables in such and such way
-* Use comments when suitable and valuable
-* Split functions, decompose
-* Use abstractions, symmetry, law of Demeter
-* Test, test, test. Red - green - …
-
-[.source]
-== \\
-
-[source, java]
-----
-@Test
-public class ExampleTest {
-  public void testExample() {
-    assertTrue(true);
-  }
-}
-----
-
-== \\
-image::15-like-a-boss.jpg[caption="The SOLID programmer", role="frame"]
-
-[NOTE]
-[role="speaker"]
-====
-* Now I know where it's comming all from
-* You can feel like a boss. Sometimes being a bit superior and dicky
-* That might be how you feel when you get all that
-** Or you can dig harder and deeper
-** Look for some other inspirations. Go beyond beauty in code, cause it's not about beauty
-* SOLID definition
-* Ale to wszystko zbyt wcześnie
-====
-
 == \\
 image::11-kent-beck.jpg[caption="The Sourcerer", role="frame"]
 
@@ -261,52 +82,24 @@ image::11-kent-beck.jpg[caption="The Sourcerer", role="frame"]
 ** I know Uncle Bob was ranting about implementation patterns in clean code book. *I don't care*
 * Kent has given this different perspective on what was important
 ** what the implementation was really about
+* Communication. Simplicity. Flexibility - as the values.
+** Kind of a-ha moment
 ====
 
-[.topic]
-== Values
-
-[.incremental]
-* Code is the communication's foundation
-* We are one team, team as a whole
-** My shortcuts are not smb's else problem
-** Whole team's problem
-* Code is read more often then written
-* Spend more time maintaining than creating
-
-[.topic]
-== Implementation patterns
-
-[.incremental]
-Communication::
-Read code like a prose
-
-Simplicity::
-Be aware of complexity and add when essential
-
-Local consequences::
-Data and behaviour together
-
-[.topic]
-== Implementation patterns
-
-[.incremental]
-DRY::
-minimize repetition
-
-Symmetry::
-Keep the same level of abstraction
-
 == \\
+image::15-like-a-boss.jpg[caption="", role="strech-x"]
 
-[.small.quote, Grady Booch, Object-Oriented Analysis and Design with Applications]
-____
-Clean code is simple and direct. Clean code reads like well-written prose. Clean code never obscures the designers’ intent but rather is full of crisp abstractions and straightforward lines of control.
-____
+[NOTE]
+[role="speaker"]
+====
+* Now I know where it's comming all from
+* You can feel like a boss. Sometimes being a bit superior and dicky
+* That might be how you feel when you get all that
+** Or you can dig harder and deeper
+** Look for some other inspirations. Go beyond beauty in code, cause it's not about beauty
+====
 
-== \\
-image::12-loctus.jpg[caption="The Borg", role="frame"]
-
+ 
 == \\
 image::19-on.jpg[caption="prettiness", role="frame"]
 
@@ -326,21 +119,6 @@ image::19-syrena.jpg[caption="design", role="frame"]
 ** I'll get there
 ====
 
-== \\
-
-[quote, Trisha Gee (@trisha_gee), #JFokus (4   February 2014)]
-____
-For library designers, +
-the API *is* the UI.
-____
-
-[NOTE]
-[role="speaker"]
-====
-* Trisha projektowała API do MongoDB, ja Javy  - ale nie tylko
-====
-
-//TODO:: design principles
 
 == \\
 image::20-pudelko.jpg[caption="", role="stretch-x"]
@@ -348,7 +126,7 @@ image::20-pudelko.jpg[caption="", role="stretch-x"]
 [NOTE]
 [role="speaker"]
 ====
-* We see a box and we build a mental model around that, in our mind.
+* We see a box and we build a mental model around that, in our mind. 
 * Take this box
 ** We can lift it, shake it, open, look inside, put something inside
 ====
@@ -403,7 +181,7 @@ image::24-android1.png[width=300]
 ====
 * Not only among phisical objects, also in IT
 ** See Android. It's after all fairly easy to bash about
-* See this box. It has slider, which suggests an action.
+* See this box. It has slider, which suggests an action. 
 ** But at the same time it's a button. WTF??
 ====
 

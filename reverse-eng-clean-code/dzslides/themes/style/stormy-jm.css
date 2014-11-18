@@ -13,9 +13,9 @@
  .ending = Use on final slide, use h2 heading for message
  .statement = Use on a paragraph to make it a statement, vertically centered
  .middle = Use on any element to vertically center it
- 
+
  Color Palette:
- 
+
  Name           Hex
  =====================
  Eggshell .... #F1F2EC
@@ -38,7 +38,7 @@
 */
 
 html, .view body {
-  background: #333333 url(../../images/gray-noise.png) repeat;
+  background: #333333 url(../../images/gray-noise.png) repeat;  
   counter-reset: slideidx;
   font-family: 'Yanone Kaffeesatz', 'Alegreya Sans', sans-serif;
 }
@@ -79,9 +79,9 @@ section:not(.title) {
 }
 
 section.title {
-  background-image: url(../../images/logo.png);
+  background-image: url(../../images/logo.svg);
   background-repeat: no-repeat;
-  background-position: 5% 76%;
+  background-position: 50% 76%;
 }
 
 section.title h1 {
@@ -577,7 +577,7 @@ section.title footer {
   width: 100%;
   padding: 40px;
   background-color: #F3F4F8;
-  border-top: 1px solid #FFB606;
+  border-top: 1px solid #0066B3;
 }
 
 section.source {
@@ -617,7 +617,7 @@ section pre code {
 .statement,
 section.intro > h1,
 section.intro > h2,
-section.recap > hgroup, 
+section.recap > hgroup,
 section.ending > h2,
 section > dl,
 section > ul.graffiti,
@@ -643,7 +643,7 @@ img.frame {
   width: auto;
   height: auto;
   padding: 1px;
-  border: 2px solid #FFB606; 
+  border: 2px solid #0066B3;
   -webkit-transform: rotate(-10deg);
   -moz-transform: rotate(-10deg);
   margin: 8% 10%;
