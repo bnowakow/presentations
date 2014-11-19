@@ -44,15 +44,26 @@ image::06-comments-woohoo.png[width=573]
 ====
 
 == \\
-image::07-wtfs.jpg[role="frame"]
+image::07-wtfs.jpg[caption="The Team Building Activity", role="frame"]
 
 [NOTE]
 [role="speaker"]
 ====
-* Jest na przyklad jedna uniwersalna miara
+* This is quite universal metrics
 ** ale skąd wiemy że pojawiają się takie WTF.
 * I dlaczego wszyscy mają takie WTFy – niezależnie od języka, doświadczenia.
 * I think I can always smell the crappy code.
+====
+
+== \\
+image::07a-kalkulator.png[caption="The Refactoring Kata", role="frame"]
+
+[NOTE]
+[role="speaker"]
+====
+* And I just though maybe instead of a classical lecture I'll do a refactoring kata
+* After all - it's the first code I've seen with 15k
+** Quite a mountain
 ====
 
 [.topic]
@@ -74,7 +85,7 @@ Make stuff simple but not simplistic::
 ====
 
 == \\
-image::08-books.png[caption="TODO::: Single source of truth", role="frame"]
+image::07-clean-code.jpg[caption="Single source of truth", role="frame"]
 
 [NOTE]
 [role="speaker"]
@@ -351,7 +362,7 @@ ____
 [.topic]
 == Good design communicate
 
-[.incremental]
+[.middle.incremental]
 * effectively
 * efficiently
 * easy to digest
@@ -361,7 +372,7 @@ ____
 [role="speaker"]
 ====
 * Let's get to the basis of design, some principles
-** Design 101 - for those doing phisical design
+** Design 101 - for those doing physical design
 ** not only web pages
 * seem pretty straightforward
 * now eat this!
@@ -370,91 +381,89 @@ ____
 [.source]
 == \\
 
-[source, java]
+[source, javascript]
 ----
-Generator.prototype.update = function () {
-	var	t = this.timer++,
-		d = this.delay,
-		s = this.samples,
-		m = this.minDistance,
-		w = this.width,
-		h = this.height,
-		g = this.global,
-		c = this.cid,
-		ttl = this.ttl--,
-		l = s.length,
-		rand = Math.random,
-		floor = Math.floor,
-		x, y, r, i, j, d2, n;
 
-	if (ttl > 0) {
-		while (t > d) {
-			r = s[floor(rand() * l)].copy();
 
-			if (m) {
-				i = 1000;
-				while (i--) {
-					x = rand() * w - w * 0.5;
-					y = rand() * h - h * 0.5;
+function vyd_vse1(reg_id,c) {
+  for (var j=0; j<tm_regs[reg_id].length; j++)
+    document.getElementById(tm_regs[reg_id][j]).checked=c;
+  vyd_vse_chk();
+}
 
-					for (j in this) if (j instanceof Entity) {
-						n = this[i];
-						d2 = (x - n.x) * (x - n.x) + (y - n.y) * (y - n.y);
 
-						if (d2 * d2 > m) {
-							i = 0;
-						}
-					}
-				}
-			} else {
-				x = rand() * w - w * 0.5;
-				y = rand() * h - h * 0.5;
-			}
+function vyd_vse2(reg_id) {
+  var ffvv=0;
+  for (var j=0; j<tm_regs[reg_id].length; j++)
+    if (document.getElementById(tm_regs[reg_id][j]).checked!=1) {
+      ffvv=1;
+      break;
+    }
 
-			r.x = x;
-			r.y = y;
-
-			if (!g) {
-				r.parent = this;
-			}
-
-			this[c] = r;
-			this.cid = c += 1;
-			this.time = t -= d;
-		}
-	} else {
-		delete this.update;
-	}
-};
+  if (ffvv==0) document.getElementById('reg_'+reg_id).checked=1;
+  else document.getElementById('reg_'+reg_id).checked=0;
+  vyd_vse_chk();
+}
 ----
 
 == \\
 
-[.incremental]
+[quote, The Expert Beginner (@ExpertBeginner1), 19 November 2013]
+____
+What's up with all of the long method names these days? So much typing. Good method names read like teenager text messages.
+____
+
+== \\
+
 Contrast:: grabs attention, relative importance
-Repetition::
-attach meaning to the new element
-Alignment::
-Keeping same things together
-Proximity::
-not very far away from each other
 
 [NOTE]
 [role="speaker"]
 ====
+* Some practice
 * This is really for graphic design, aligning of visual elements
 * Kent Beck when talking about implementation patterns he was dscribing it
 ** He tackled each and every line of code with lot of
 ====
 
-[.topic]
-== TODO: slide with visual elements
+== \\
+image::16-contrast.png[role="frame"]
+
+== \\
+
+Contrast:: grabs attention, relative importance
+Repetition:: attach meaning to the new element
+
+== \\
+image::16-repetition.png[role="frame"]
+
+
+== \\
+
+Contrast:: grabs attention, relative importance
+Repetition:: attach meaning to the new element
+Alignment:: Keeping same things together
+
+== \\
+image::16-alignment.png[role="frame noframe"]
+
+
+== \\
+
+Contrast:: grabs attention, relative importance
+Repetition:: attach meaning to the new element
+Alignment:: Keeping same things together
+Proximity:: not very far away from each other
+
+== \\
+image::16-proximity.png[role="frame"]
+
 
 [.topic]
 == That was CRAP
 
 [.statement]
-*CRAP* design
+piece of *CRAP* design
 
 [NOTE]
 [role="speaker"]
@@ -465,7 +474,7 @@ not very far away from each other
 ====
 
 == \\
-image::20-pudelko.jpg[caption="", role="stretch-x"]
+image::20-pudelko.jpg[caption="Let's talk design, like real design", role="stretch-x"]
 
 [NOTE]
 [role="speaker"]
@@ -495,6 +504,8 @@ image::21-affordance.jpg[caption="affordance for dummies", role="frame"]
 ====
 * This plate,this knob suggest an action
 ** These suggestions are called signifiers
+* A wiecie że kod także ma swoją afordancję.
+* Ma swoją naturę która sugeruje nam pewne konkretne akcje które możemy wykonać. To się nazywa signifierami.
 ====
 
 == \\
@@ -505,7 +516,9 @@ image::21-design-of-everyday-things.jpg[caption="", role="stretch-x"]
 ====
 * These terms were coined by Don Norman
 ** In this book "the design of everyday things"
-* So now, think not only about phisical objects.
+* So now, think not only about physical objects.
+* Zobaczcie np taki przedmiot. Jaką akcję możemy na nim wykonać. Nalać wrzątku.
+** Jak złapać – widzimy. A co potem? – nie przypomina Wam to czegoś
 
 ====
 
@@ -538,7 +551,7 @@ image::24-android2.png[width=287, role="pull-right"]
 [role="speaker"]
 ====
 * Yeah. That was funny, but how it works with code?
-** Has it's nature this sugegsts us certain actions we can or should perform.
+** Has it's nature this suggests us certain actions we can or should perform.
 ====
 
 
@@ -617,6 +630,70 @@ Now take this example
 * signifiers: or more, what it suggests
 ====
 
+== \\
+image::26-george-miller.jpg[role="frame", caption="George Miller"]
+
+[NOTE]
+[role="speaker"]
+====
+* Ok – wiemy już coś o estetyce, o dobrze zaprojektowanym czymś – ale przejdźmy dalej.
+* 1956 by the cognitive psychologist George A. Miller
+* The Magical Number Seven, Plus or Minus Two: Some Limits on Our Capacity for Processing Information
+====
+
+== \\
+image::27-liczydlo.jpg[role="frame"]
+
+[NOTE]
+[role="speaker"]
+====
+* Pamięć ludzka może przechować do 7+/- 2 elementów w swojej pamięci krótkotrwałej. Widzimy do wszędzie – nawet w ruskim liczydle.
+* Policzono: 1-3 obiekty: 40 nano sekuns
+* Jeżeli więcej to 250ns na każdy kolejny. Czyli policzenie do 4 to w zasadzie ¼ sedunku. Kolejne 4 – kolejna ¼
+====
+
+[.topic]
+== But we are cutting some code here...
+
+[.middle]
+* number of method parameters
+* function / class size
+* external API method names
+* readable & descriptive naming
+
+[NOTE]
+[role="speaker"]
+====
+* Stosujemy w programowaniu aby nie zaśmiecać sobie głowy
+====
+
+[.topic]
+== Multistore memmory model
+image::29-multistore-model.png[]
+
+[NOTE]
+[role="speaker"]
+====
+* Pamięć sensoryczna: na ¼ sekundy
+* Pamięć krótkotrwała: do okolo 20 sek (7+/- 2 rzeczy)
+* Pamięć długotrwała: bez ograniczeń – ale wymaga nauki
+* Próg wejścia w kod, zrozumienia abstakcji.
+====
+
+[.topic]
+== The flow
+image::30-flow.png[height=450]
+
+[NOTE]
+[role="speaker"]
+====
+* Mihaly Csikszentmigalyi
+* Opisał on stan pełnego zanurzenia w jakiejś czynności (full immersion, involvement and angement) – nazwał to the flow
+* Projetanci mówią np. o procesie szukania (google search).
+* Programiści: refaktoring, połączony z TDD, cykl: red green refactor. Albo code deploy check
+====
+
+
 [.topic]
 == Beyond design 101
 
@@ -627,28 +704,13 @@ and be more *effective*
 [NOTE]
 [role="speaker"]
 ====
-There is more
-
-* George Miler. The Magical Number Seven, Plus or Minus Two: Some Limits on Our Capacity for Processing Information
-* multistore memory model
-** different level of memory, time to learn
-* The Flow - when we find ourself within a highly challanging, engaging state of full immersion.
+* To teraz zastanówcie się, obserwujcie siebie jak działaliście gdy robiliście pulla do dobrze napisanego open sourcea
+* Albo mieliście grzebać w legacy crap gdzie w każdym miejscu ziało frustracją.
+* To teraz pomyślcie o sobie za pół roku z kodem który właście tworzycie. Jak chcecie się czuć. Decyzja jest wasza.
 ====
 
 == \\
-image::25-bruce-lee.png[caption="", role="frame"]
-
-
-[NOTE]
-[role="speaker"]
-====
-* So when next time you find yourself with a bit a free time, about to watch "Breaking bad"
-* There is one thing I'd like you to remember
-** Take away with you
-====
-
-== \\
-image::25-bruce-lee.png[caption="Has Bruce Lee known kung-fu?", role="frame"]
+image::25-bruce-lee.png[caption="守破離", role="frame"]
 
 [NOTE]
 [role="speaker"]
@@ -660,14 +722,32 @@ image::25-bruce-lee.png[caption="Has Bruce Lee known kung-fu?", role="frame"]
 ** Actually this term is coined by a friend of mine
 ** Michał Bartyzel, who was talking yesterday about communication and conversation patterns
 * Go for Eames - The architect or Normand Design of everyday things
+
+* Shu – dogma. Adherence
+* Ha – bending rules
+* Ri – transcendence. We just know what to do and why.
 ====
 
 
 [.topic.ending, hrole="name"]
-== http://goo.gl/gXwoVQ
-
-[.pull-right]
-Thank you!
+== Thank you!
 
 [.footer]
 [icon-twitter]'{zwsp}' @kubem
+
+[.topic]
+== Links and other goodies
+
+----
+
+
+
+
+https://speakerdeck.com/kubamarchwicki/reverse-engineering-the-clean-code
+
+Follow me on twitter
+  @kubem
+
+Credits
+  http://www.slideshare.net/lisadawley/crap-design
+----

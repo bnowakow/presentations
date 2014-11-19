@@ -38,7 +38,7 @@
 */
 
 html, .view body {
-  background: #333333 url(../../images/gray-noise.png) repeat;  
+  background: #333333 url(../../images/gray-noise.png) repeat;
   counter-reset: slideidx;
   font-family: 'Yanone Kaffeesatz', 'Alegreya Sans', sans-serif;
 }
@@ -548,6 +548,10 @@ figcaption {
   width: 100%;
 }
 
+figcaption.big {
+  font-size: 5em;
+}
+
 figcaption.left {
   right: 0;
   left: .6em;
@@ -638,7 +642,7 @@ section p.statement strong {
 
 img.frame {
   display: block;
-  max-width:534px;
+  max-width:624px;
   max-height:400px;
   width: auto;
   height: auto;
@@ -647,6 +651,10 @@ img.frame {
   -webkit-transform: rotate(-10deg);
   -moz-transform: rotate(-10deg);
   margin: 8% 10%;
+}
+
+img.noframe {
+  border: 0px !important;
 }
 
 img.middle {

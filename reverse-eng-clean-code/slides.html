@@ -2,13 +2,15 @@
 <details><details open=""><ul><li>I&#8217;d like to tell you a story how I went the path of craftmanship<ul><li>How I went beyond my daily job</li></ul></li><li>Reverse engineering the clean code<ul><li>Not in a way you turn a <em>class</em> file into <em>java</em> file</li><li>In a way Mitnick reversed security through it&#8217;s social aspects</li></ul></li><li>Back in 2008 I was laying down code, best I could - like most people did.</li><li>There better and worse examples. I did was constatly improving.<ul><li>At least that&#8217;s what I tought when I looked back my old code</li></ul></li></ul></details></details></section>
 <section><img src="images/06-comments-woohoo.png" alt="06 comments woohoo" width="573">
 <details><details open=""><ul><li>one day I realized there can and must be a beaty in code<ul><li>prolly when I first time compared Calendar API and JodaTime</li><li>or looked up Guava (called Google Collections at that time)</li></ul></li></ul></details></details></section>
-<section><img class="frame" src="images/07-wtfs.jpg" alt="07 wtfs">
-<details><details open=""><ul><li>Jest na przyklad jedna uniwersalna miara<ul><li>ale skąd wiemy że pojawiają się takie WTF.</li></ul></li><li>I dlaczego wszyscy mają takie WTFy – niezależnie od języka, doświadczenia.</li><li>I think I can always smell the crappy code.</li></ul></details></details></section>
+<section><figure><img class="frame" src="images/07-wtfs.jpg" alt="07 wtfs"><figcaption>The Team Building Activity</figcaption></figure>
+<details><details open=""><ul><li>This is quite universal metrics<ul><li>ale skąd wiemy że pojawiają się takie WTF.</li></ul></li><li>I dlaczego wszyscy mają takie WTFy – niezależnie od języka, doświadczenia.</li><li>I think I can always smell the crappy code.</li></ul></details></details></section>
+<section><figure><img class="frame" src="images/07a-kalkulator.png" alt="07a kalkulator"><figcaption>The Refactoring Kata</figcaption></figure>
+<details><details open=""><ul><li>And I just though maybe instead of a classical lecture I&#8217;ll do a refactoring kata</li><li>After all - it&#8217;s the first code I&#8217;ve seen with 15k<ul><li>Quite a mountain</li></ul></li></ul></details></details></section>
 <section class="topic"><h2>Complex vs complicated</h2><dl class="incremental"><dt>Simple to read, learn and understand</dt><dd>How easy it’s for novice programmer to maintain a significant program</dd><dt>Make stuff simple but not simplistic</dt></dl>
 <details><details open=""><ul><li>complex vs complicated – w kontekście języków programowania.</li><li>verbosity Javy vs. Groovy, frameworkach: nie pisz nowego – jednen już jest.<ul><li>ESB wygląda prosto na diagramach.</li></ul></li><li>Mythical man-month. Inherent and accidental complexity</li></ul></details></details></section>
-<section><figure><img class="frame" src="images/08-books.png" alt="08 books"><figcaption>TODO::: Single source of truth</figcaption></figure>
+<section><figure><img class="frame" src="images/07-clean-code.jpg" alt="07 clean code"><figcaption>Single source of truth</figcaption></figure>
 <details><details open=""><ul><li>Trafiłem na kilka książek. Kto nie zna?</li><li>Bo jak nie zna – to reszta prezentacji może być trudna do przełknięcie ;-)</li></ul></details></details></section>
-<section><figure><img class="frame" src="images/10-uncle-bob.jpg" alt="10 uncle bob"><figcaption>I found Uncle Bob</figcaption></figure>
+<section><figure><img class="frame" src="images/10-uncle-bob.jpg" alt="10 uncle bob"><figcaption>Have you met Uncle Bob?</figcaption></figure>
 <details><details open=""><ul><li>Now when I think about it, it was definatelly master - apprentice relation</li><li>The rules. <strong>The dogmna</strong>. Variables. Names. Comments</li><li>I realized my craft was improving<ul><li>I felt like I had this rules tatoos at my arm</li></ul></li><li>But yet another realization came<ul><li>Do I do this to keep the code maintanable, easier to change</li><li>I kept focus beter</li></ul></li><li>My team mates are more eager to change my code</li><li>I realized clean code wasn&#8217;t on it&#8217;s own. It was a result. <strong>Not the cause</strong></li></ul></details></details></section>
 <section class="topic"><h2>Uncle Bob&#8217;s Basics</h2><ul><li>Name variables in such and such way</li></ul></section>
 <section class="source"><div class="listingblock"><pre class="highlight"><code class="java">public static String parse_pliterki(String old_s) {
@@ -68,7 +70,7 @@ public class Customer {
   ((AbsoluteLayout)
    ((LinearLayout)
     ((RelativeLayout)(
-     (LinearLayout)activty.findViewById(R.id.container)).getChildAt(1))
+    (LinearLayout)activty.findViewById(R.id.container)).getChildAt(1))
     .getChildAt(0))
    .getChildAt(element))
   .getChildAt(0))
@@ -88,28 +90,64 @@ public class ExampleTest {
 <section class="topic"><h2>Implementation patterns</h2><dl class="incremental"><dt>Communication</dt><dd>Read code like a prose</dd><dt>Simplicity</dt><dd>Be aware of complexity and add when essential</dd><dt>Local consequences</dt><dd>Data and behaviour together</dd></dl></section>
 <section class="topic"><h2>Implementation patterns</h2><dl class="incremental"><dt>DRY</dt><dd>minimize repetition</dd><dt>Symmetry</dt><dd>Keep the same level of abstraction</dd></dl></section>
 <section><blockquote class="small quote"><p>Clean code is simple and direct. Clean code reads like well-written prose. Clean code never obscures the designers’ intent but rather is full of crisp abstractions and straightforward lines of control.</p><em>Object-Oriented Analysis and Design with Applications</em><br><cite>Grady Booch</cite></blockquote></section>
-<section><figure><img class="frame" src="images/12-loctus.jpg" alt="12 loctus"><figcaption>The Borg</figcaption></figure></section>
+<section><figure><img class="frame" src="images/12-loctus.jpg" alt="12 loctus"><figcaption>The Borg</figcaption></figure>
+<details><details open=""><ul><li>Still we ask ourselves a question why are we doing that?</li></ul></details></details></section>
 <section><figure><img class="frame" src="images/19-on.jpg" alt="19 on"><figcaption>prettiness</figcaption></figure></section>
 <section><figure><img class="frame" src="images/19-krzeslo.jpg" alt="19 krzeslo"><figcaption>aesthetics</figcaption></figure></section>
 <section><figure><img class="frame" src="images/19-syrena.jpg" alt="19 syrena"><figcaption>design</figcaption></figure>
 <details><details open=""><ul><li>Each of these make you feel different emotions<ul><li>Though all wakes a sense of beauty in you. Because all of those where neatly designed.</li></ul></li><li>It&#8217;s all about what we feel,what happends within our mind when we see such objectes</li><li>Same can happen when working with beautiful code<ul><li>I&#8217;ll get there</li></ul></li></ul></details></details></section>
 <section><blockquote><p>For library designers,<br>
 the API <strong>is</strong> the UI.</p><em>#JFokus (4   February 2014)</em><br><cite>Trisha Gee (@trisha_gee)</cite></blockquote>
-<details><details open=""><ul><li>Trisha projektowała API do MongoDB, ja Javy  - ale nie tylko</li></ul></details></details></section>
-<section><figure><img class="stretch-x" src="images/20-pudelko.jpg" alt="20 pudelko"><figcaption></figcaption></figure>
-<details><details open=""><ul><li>We see a box and we build a mental model around that, in our mind.</li><li>Take this box<ul><li>We can lift it, shake it, open, look inside, put something inside</li></ul></li></ul></details></details></section>
+<details><details open=""><ul><li>Trisha projektowała API do MongoDB, ja Javy - ale nie tylko</li><li>A thesis that API is pretty much like UI - similar principles, similar behvious</li><li>Similar disorientation.</li></ul></details></details></section>
+<section class="topic"><h2>Good design communicate</h2><ul class="middle incremental"><li>effectively</li><li>efficiently</li><li>easy to digest</li><li>comfortable to read</li></ul>
+<details><details open=""><ul><li>Let&#8217;s get to the basis of design, some principles<ul><li>Design 101 - for those doing physical design</li><li>not only web pages</li></ul></li><li>seem pretty straightforward</li><li>now eat this!</li></ul></details></details></section>
+<section class="source"><div class="listingblock"><pre class="highlight"><code class="javascript">
+
+function vyd_vse1(reg_id,c) {
+  for (var j=0; j&lt;tm_regs[reg_id].length; j++)
+    document.getElementById(tm_regs[reg_id][j]).checked=c;
+  vyd_vse_chk();
+}
+
+
+function vyd_vse2(reg_id) {
+  var ffvv=0;
+  for (var j=0; j&lt;tm_regs[reg_id].length; j++)
+    if (document.getElementById(tm_regs[reg_id][j]).checked!=1) {
+      ffvv=1;
+      break;
+    }
+
+  if (ffvv==0) document.getElementById('reg_'+reg_id).checked=1;
+  else document.getElementById('reg_'+reg_id).checked=0;
+  vyd_vse_chk();
+}</code></pre></div></section>
+<section><blockquote><p>What&#8217;s up with all of the long method names these days? So much typing. Good method names read like teenager text messages.</p><em>19 November 2013</em><br><cite>The Expert Beginner (@ExpertBeginner1)</cite></blockquote></section>
+<section><dl><dt>Contrast</dt><dd>grabs attention, relative importance</dd></dl>
+<details><details open=""><ul><li>Some practice</li><li>This is really for graphic design, aligning of visual elements</li><li>Kent Beck when talking about implementation patterns he was dscribing it<ul><li>He tackled each and every line of code with lot of</li></ul></li></ul></details></details></section>
+<section><img class="frame" src="images/16-contrast.png" alt="16 contrast"></section>
+<section><dl><dt>Contrast</dt><dd>grabs attention, relative importance</dd><dt>Repetition</dt><dd>attach meaning to the new element</dd></dl></section>
+<section><img class="frame" src="images/16-repetition.png" alt="16 repetition"></section>
+<section><dl><dt>Contrast</dt><dd>grabs attention, relative importance</dd><dt>Repetition</dt><dd>attach meaning to the new element</dd><dt>Alignment</dt><dd>Keeping same things together</dd></dl></section>
+<section><img class="frame noframe" src="images/16-alignment.png" alt="16 alignment"></section>
+<section><dl><dt>Contrast</dt><dd>grabs attention, relative importance</dd><dt>Repetition</dt><dd>attach meaning to the new element</dd><dt>Alignment</dt><dd>Keeping same things together</dd><dt>Proximity</dt><dd>not very far away from each other</dd></dl></section>
+<section><img class="frame" src="images/16-proximity.png" alt="16 proximity"></section>
+<section class="topic"><h2>That was CRAP</h2><p class="statement">piece of <strong>CRAP</strong> design</p>
+<details><details open=""><ul><li>However it&#8217;s not about remembering some juicy buzzwords</li><li>It&#8217;s not that somebody created a mem and now we design like this</li><li>The mem was coming from somewhere, from some studies and researches</li></ul></details></details></section>
+<section><figure><img class="stretch-x" src="images/20-pudelko.jpg" alt="20 pudelko"><figcaption>Let's talk design, like real design</figcaption></figure>
+<details><details open=""><ul><li>Sometimes research is about a box</li><li>We see a box and we build a mental model around that, in our mind.</li><li>Take this box<ul><li>We can lift it, shake it, open, look inside, put something inside</li></ul></li></ul></details></details></section>
 <section class="topic"><h2>Affordance</h2><div class="exampleblock"><div class="content"><blockquote class="small quote"><p>a <strong>quality</strong> of an <strong>object</strong>, which <strong>allows</strong> an individual <strong>to perform an action</strong>. For example, a knob affords twisting, and perhaps pushing, while a cord affords pulling</p></blockquote></div></div></section>
 <section><figure><img class="frame" src="images/21-affordance.jpg" alt="21 affordance"><figcaption>affordance for dummies</figcaption></figure>
-<details><details open=""><ul><li>This plate,this knob suggest an action<ul><li>These suggestions are called signifiers</li></ul></li></ul></details></details></section>
+<details><details open=""><ul><li>This plate,this knob suggest an action<ul><li>These suggestions are called signifiers</li></ul></li><li>A wiecie że kod także ma swoją afordancję.</li><li>Ma swoją naturę która sugeruje nam pewne konkretne akcje które możemy wykonać. To się nazywa signifierami.</li></ul></details></details></section>
 <section><figure><img class="stretch-x" src="images/21-design-of-everyday-things.jpg" alt="21 design of everyday things"><figcaption></figcaption></figure>
-<details><details open=""><ul><li>These terms were coined by Don Norman<ul><li>In this book "the design of everyday things"</li></ul></li><li>So now, think not only about phisical objects.</li></ul></details></details></section>
+<details><details open=""><ul><li>These terms were coined by Don Norman<ul><li>In this book "the design of everyday things"</li></ul></li><li>So now, think not only about physical objects.</li><li>Zobaczcie np taki przedmiot. Jaką akcję możemy na nim wykonać. Nalać wrzątku.<ul><li>Jak złapać – widzimy. A co potem? – nie przypomina Wam to czegoś</li></ul></li></ul></details></details></section>
 <section><figure><img class="frame" src="images/22-drzwi-jedi.png" alt="22 drzwi jedi"><figcaption>Only for Jedi</figcaption></figure>
 <details><details open=""><ul><li>How it works - we see it on daily basis</li></ul></details></details></section>
 <section><img src="images/24-android1.png" alt="24 android1" width="300">
 <details><details open=""><ul><li>Not only among phisical objects, also in IT<ul><li>See Android. It&#8217;s after all fairly easy to bash about</li></ul></li><li>See this box. It has slider, which suggests an action.<ul><li>But at the same time it&#8217;s a button. WTF??</li></ul></li></ul></details></details></section>
 <section><img src="images/24-android1.png" alt="24 android1" width="300">
 <img class="pull-right" src="images/24-android2.png" alt="24 android2" width="287">
-<details><details open=""><ul><li>Yeah. That was funny, but how it works with code?<ul><li>Has it&#8217;s nature this sugegsts us certain actions we can or should perform.</li></ul></li></ul></details></details></section>
+<details><details open=""><ul><li>Yeah. That was funny, but how it works with code?<ul><li>Has it&#8217;s nature this suggests us certain actions we can or should perform.</li></ul></li></ul></details></details></section>
 <section><figure><img class="frame" src="images/13-functions2.png" alt="13 functions2"><figcaption>Why? Oh Why?</figcaption></figure></section>
 <section class="source"><div class="listingblock"><div class="title"><code>BadBadSql.java</code></div><pre class="highlight"><code class="java">public class Sql {
 
@@ -152,13 +190,30 @@ public class FindKeyBySql extends Sql {
 }</code></pre></div>
 <details><details open=""><p>Now take this example</p>
 <ul><li>mental model: what model you build when you see this code</li><li>affordance: what actions does this code allow you to do</li><li>signifiers: or more, what it suggests</li></ul></details></details></section>
+<section><figure><img class="frame" src="images/26-george-miller.jpg" alt="26 george miller"><figcaption>George Miller</figcaption></figure>
+<details><details open=""><ul><li>Ok – wiemy już coś o estetyce, o dobrze zaprojektowanym czymś – ale przejdźmy dalej.</li><li>1956 by the cognitive psychologist George A. Miller</li><li>The Magical Number Seven, Plus or Minus Two: Some Limits on Our Capacity for Processing Information</li></ul></details></details></section>
+<section><img class="frame" src="images/27-liczydlo.jpg" alt="27 liczydlo">
+<details><details open=""><ul><li>Pamięć ludzka może przechować do 7+/- 2 elementów w swojej pamięci krótkotrwałej. Widzimy do wszędzie – nawet w ruskim liczydle.</li><li>Policzono: 1-3 obiekty: 40 nano sekuns</li><li>Jeżeli więcej to 250ns na każdy kolejny. Czyli policzenie do 4 to w zasadzie ¼ sedunku. Kolejne 4 – kolejna ¼</li></ul></details></details></section>
+<section class="topic"><h2>But we are cutting some code here&#8230;</h2><ul class="middle"><li>number of method parameters</li><li>function / class size</li><li>external API method names</li><li>readable &amp; descriptive naming</li></ul>
+<details><details open=""><ul><li>Stosujemy w programowaniu aby nie zaśmiecać sobie głowy</li></ul></details></details></section>
+<section class="topic"><h2>Multistore memmory model</h2><img src="images/29-multistore-model.png" alt="29 multistore model">
+<details><details open=""><ul><li>Pamięć sensoryczna: na ¼ sekundy</li><li>Pamięć krótkotrwała: do okolo 20 sek (7+/- 2 rzeczy)</li><li>Pamięć długotrwała: bez ograniczeń – ale wymaga nauki</li><li>Próg wejścia w kod, zrozumienia abstakcji.</li></ul></details></details></section>
+<section class="topic"><h2>The flow</h2><img src="images/30-flow.png" alt="30 flow" height="450">
+<details><details open=""><ul><li>Mihaly Csikszentmigalyi</li><li>Opisał on stan pełnego zanurzenia w jakiejś czynności (full immersion, involvement and angement) – nazwał to the flow</li><li>Projetanci mówią np. o procesie szukania (google search).</li><li>Programiści: refaktoring, połączony z TDD, cykl: red green refactor. Albo code deploy check</li></ul></details></details></section>
 <section class="topic"><h2>Beyond design 101</h2><p class="statement">We can <strong>help</strong> ourselves<br>
 and be more <strong>effective</strong></p>
-<details><details open=""><p>There is more</p>
-<ul><li>George Miler. The Magical Number Seven, Plus or Minus Two: Some Limits on Our Capacity for Processing Information</li><li>multistore memory model<ul><li>different level of memory, time to learn</li></ul></li><li>The Flow - when we find ourself within a highly challanging, engaging state of full immersion.</li></ul></details></details></section>
-<section><figure><img class="frame" src="images/25-bruce-lee.png" alt="25 bruce lee"><figcaption></figcaption></figure>
-<details><details open=""><ul><li>So when next time you find yourself with a bit a free time, about to watch "Breaking bad"</li><li>There is one thing I&#8217;d like you to remember<ul><li>Take away with you</li></ul></li></ul></details></details></section>
-<section><figure><img class="frame" src="images/25-bruce-lee.png" alt="25 bruce lee"><figcaption>Has Bruce Lee known kung-fu?</figcaption></figure>
-<details><details open=""><ul><li>Coding is only a part of you job</li><li>Lots of things are beyond coding<ul><li>Communication, aesthetics, desgn, psychology</li></ul></li><li>Be like Bruce Lee, who started with Kung Fu and ended with Karate<ul><li>Actually this term is coined by a friend of mine</li><li>Michał Bartyzel, who was talking yesterday about communication and conversation patterns</li></ul></li><li>Go for Eames - The architect or Normand Design of everyday things</li></ul></details></details></section>
-<section class="topic ending"><h2 class="name"><a href="http://goo.gl/gXwoVQ">http://goo.gl/gXwoVQ</a></h2><p class="pull-right">Thank you!</p>
-<p class="footer"><em class="icon-twitter">&#8203;</em> @kubem</p></section><script src="./dzslides/core/dzslides.js"></script><script src="./dzslides/highlight/highlight.pack.js"></script><script>hljs.initHighlightingOnLoad()</script></body></html>
+<details><details open=""><ul><li>To teraz zastanówcie się, obserwujcie siebie jak działaliście gdy robiliście pulla do dobrze napisanego open sourcea</li><li>Albo mieliście grzebać w legacy crap gdzie w każdym miejscu ziało frustracją.</li><li>To teraz pomyślcie o sobie za pół roku z kodem który właście tworzycie. Jak chcecie się czuć. Decyzja jest wasza.</li></ul></details></details></section>
+<section><figure><img class="frame" src="images/25-bruce-lee.png" alt="25 bruce lee"><figcaption>守破離</figcaption></figure>
+<details><details open=""><ul><li>Coding is only a part of you job</li><li>Lots of things are beyond coding<ul><li>Communication, aesthetics, desgn, psychology</li></ul></li><li>Be like Bruce Lee, who started with Kung Fu and ended with Karate<ul><li>Actually this term is coined by a friend of mine</li><li>Michał Bartyzel, who was talking yesterday about communication and conversation patterns</li></ul></li><li>Go for Eames - The architect or Normand Design of everyday things</li><li>Shu – dogma. Adherence</li><li>Ha – bending rules</li><li>Ri – transcendence. We just know what to do and why.</li></ul></details></details></section>
+<section class="topic ending"><h2 class="name">Thank you!</h2><p class="footer"><em class="icon-twitter">&#8203;</em> @kubem</p></section>
+<section class="topic"><h2>Links and other goodies</h2><div class="listingblock"><pre>
+
+
+
+https://speakerdeck.com/kubamarchwicki/reverse-engineering-the-clean-code
+
+Follow me on twitter
+  @kubem
+
+Credits
+  http://www.slideshare.net/lisadawley/crap-design</pre></div></section><script src="./dzslides/core/dzslides.js"></script><script src="./dzslides/highlight/highlight.pack.js"></script><script>hljs.initHighlightingOnLoad()</script></body></html>
