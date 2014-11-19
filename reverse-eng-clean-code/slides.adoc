@@ -84,7 +84,7 @@ image::08-books.png[caption="TODO::: Single source of truth", role="frame"]
 ====
 
 == \\
-image::10-uncle-bob.jpg[caption="I found Uncle Bob", role="frame"]
+image::10-uncle-bob.jpg[caption="Have you met Uncle Bob?", role="frame"]
 
 [NOTE]
 [role="speaker"]
@@ -206,7 +206,7 @@ TextView v = (TextView)
   ((AbsoluteLayout)
    ((LinearLayout)
     ((RelativeLayout)(
-     (LinearLayout)activty.findViewById(R.id.container)).getChildAt(1))
+    (LinearLayout)activty.findViewById(R.id.container)).getChildAt(1))
     .getChildAt(0))
    .getChildAt(element))
   .getChildAt(0))
@@ -307,6 +307,12 @@ ____
 == \\
 image::12-loctus.jpg[caption="The Borg", role="frame"]
 
+[NOTE]
+[role="speaker"]
+====
+* Still we ask ourselves a question why are we doing that?
+====
+
 == \\
 image::19-on.jpg[caption="prettiness", role="frame"]
 
@@ -337,10 +343,126 @@ ____
 [NOTE]
 [role="speaker"]
 ====
-* Trisha projektowała API do MongoDB, ja Javy  - ale nie tylko
+* Trisha projektowała API do MongoDB, ja Javy - ale nie tylko
+* A thesis that API is pretty much like UI - similar principles, similar behvious
+* Similar disorientation.
 ====
 
-//TODO:: design principles
+[.topic]
+== Good design communicate
+
+[.incremental]
+* effectively
+* efficiently
+* easy to digest
+* comfortable to read
+
+[NOTE]
+[role="speaker"]
+====
+* Let's get to the basis of design, some principles
+** Design 101 - for those doing phisical design
+** not only web pages
+* seem pretty straightforward
+* now eat this!
+====
+
+[.source]
+== \\
+
+[source, java]
+----
+Generator.prototype.update = function () {
+	var	t = this.timer++,
+		d = this.delay,
+		s = this.samples,
+		m = this.minDistance,
+		w = this.width,
+		h = this.height,
+		g = this.global,
+		c = this.cid,
+		ttl = this.ttl--,
+		l = s.length,
+		rand = Math.random,
+		floor = Math.floor,
+		x, y, r, i, j, d2, n;
+
+	if (ttl > 0) {
+		while (t > d) {
+			r = s[floor(rand() * l)].copy();
+
+			if (m) {
+				i = 1000;
+				while (i--) {
+					x = rand() * w - w * 0.5;
+					y = rand() * h - h * 0.5;
+
+					for (j in this) if (j instanceof Entity) {
+						n = this[i];
+						d2 = (x - n.x) * (x - n.x) + (y - n.y) * (y - n.y);
+
+						if (d2 * d2 > m) {
+							i = 0;
+						}
+					}
+				}
+			} else {
+				x = rand() * w - w * 0.5;
+				y = rand() * h - h * 0.5;
+			}
+
+			r.x = x;
+			r.y = y;
+
+			if (!g) {
+				r.parent = this;
+			}
+
+			this[c] = r;
+			this.cid = c += 1;
+			this.time = t -= d;
+		}
+	} else {
+		delete this.update;
+	}
+};
+----
+
+== \\
+
+[.incremental]
+Contrast:: grabs attention, relative importance
+Repetition::
+attach meaning to the new element
+Alignment::
+Keeping same things together
+Proximity::
+not very far away from each other
+
+[NOTE]
+[role="speaker"]
+====
+* This is really for graphic design, aligning of visual elements
+* Kent Beck when talking about implementation patterns he was dscribing it
+** He tackled each and every line of code with lot of
+====
+
+[.topic]
+== TODO: slide with visual elements
+
+[.topic]
+== That was CRAP
+
+[.statement]
+*CRAP* design
+
+[NOTE]
+[role="speaker"]
+====
+* However it's not about remembering some juicy buzzwords
+* It's not that somebody created a mem and now we design like this
+* The mem was coming from somewhere, from some studies and researches
+====
 
 == \\
 image::20-pudelko.jpg[caption="", role="stretch-x"]
@@ -348,6 +470,7 @@ image::20-pudelko.jpg[caption="", role="stretch-x"]
 [NOTE]
 [role="speaker"]
 ====
+* Sometimes research is about a box
 * We see a box and we build a mental model around that, in our mind.
 * Take this box
 ** We can lift it, shake it, open, look inside, put something inside
