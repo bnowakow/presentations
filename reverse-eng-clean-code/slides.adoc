@@ -49,9 +49,9 @@ image::07-wtfs.jpg[caption="The Team Building Activity", role="frame"]
 [NOTE]
 [role="speaker"]
 ====
-* This is quite universal metrics
-** ale skąd wiemy że pojawiają się takie WTF.
-* I dlaczego wszyscy mają takie WTFy – niezależnie od języka, doświadczenia.
+* I also understood several other things
+* Some quite universal metrics
+* Now we all know it, regardless of the language
 * I think I can always smell the crappy code.
 ====
 
@@ -64,6 +64,10 @@ image::07a-kalkulator.png[caption="The Refactoring Kata", role="frame"]
 * And I just though maybe instead of a classical lecture I'll do a refactoring kata
 * After all - it's the first code I've seen with 15k
 ** Quite a mountain
+* And we all have fun from this code, from the approach
+* We can spend hours discussing openness of public founded projects etc
+* But we also can have a discussion why the program is such a crap
+** Or what would be the implications
 ====
 
 [.topic]
@@ -78,10 +82,11 @@ Make stuff simple but not simplistic::
 [NOTE]
 [role="speaker"]
 ====
-* complex vs complicated – w kontekście języków programowania.
-* verbosity Javy vs. Groovy, frameworkach: nie pisz nowego – jednen już jest.
-** ESB wygląda prosto na diagramach.
+* complex vs complicated – this might be one of the discussion point.
+* We can talk verbosity of the language Javy vs. Groovy
+** We can talk ESB looks simple on diagrams
 * Mythical man-month. Inherent and accidental complexity
+** Or complex vs complicated.
 ====
 
 == \\
@@ -90,8 +95,7 @@ image::07-clean-code.jpg[caption="Single source of truth", role="frame"]
 [NOTE]
 [role="speaker"]
 ====
-* Trafiłem na kilka książek. Kto nie zna?
-* Bo jak nie zna – to reszta prezentacji może być trudna do przełknięcie ;-)
+* So when you get into this thinking, you look for books. I started with this guy
 ====
 
 == \\
@@ -104,11 +108,7 @@ image::10-uncle-bob.jpg[caption="Have you met Uncle Bob?", role="frame"]
 * The rules. *The dogmna*. Variables. Names. Comments
 * I realized my craft was improving
 ** I felt like I had this rules tatoos at my arm
-* But yet another realization came
-** Do I do this to keep the code maintanable, easier to change
-** I kept focus beter
-* My team mates are more eager to change my code
-* I realized clean code wasn't on it's own. It was a result. *Not the cause*
+* There were rules
 ====
 
 [.topic]
@@ -257,8 +257,11 @@ image::15-like-a-boss.jpg[caption="The SOLID programmer", role="frame"]
 * That might be how you feel when you get all that
 ** Or you can dig harder and deeper
 ** Look for some other inspirations. Go beyond beauty in code, cause it's not about beauty
-* SOLID definition
-* Ale to wszystko zbyt wcześnie
+* But yet another realization came
+** Do I do this to keep the code maintanable, easier to change
+** I kept focus beter
+* My team mates are more eager to change my code
+* I realized clean code wasn't on it's own. It was a result. *Not the cause*
 ====
 
 == \\
@@ -371,7 +374,7 @@ ____
 [NOTE]
 [role="speaker"]
 ====
-* Let's get to the basis of design, some principles
+* Let's get to some basics, some principles
 ** Design 101 - for those doing physical design
 ** not only web pages
 * seem pretty straightforward
@@ -458,9 +461,25 @@ Proximity:: not very far away from each other
 == \\
 image::16-proximity.png[role="frame"]
 
+[.source]
+== \\
+
+[source, java]
+----
+Car car = Car.builder(Color.WHITE, 500)
+  .withSunroof()
+  .modelName("Mustang")
+  .createCar();
+----
+
+[NOTE]
+[role="speaker"]
+====
+* Fluid Builder pattern can by itself be a nice example
+====
 
 [.topic]
-== That was CRAP
+== Let's recap
 
 [.statement]
 piece of *CRAP* design
@@ -468,7 +487,9 @@ piece of *CRAP* design
 [NOTE]
 [role="speaker"]
 ====
-* However it's not about remembering some juicy buzzwords
+* We subconsciously feel aesthetics, feel something is not right with the code
+* There are rules - however it's not about remembering some juicy buzzwords
+** We use them, adhere etc
 * It's not that somebody created a mem and now we design like this
 * The mem was coming from somewhere, from some studies and researches
 ====
@@ -647,6 +668,7 @@ image::27-liczydlo.jpg[role="frame"]
 [NOTE]
 [role="speaker"]
 ====
+* Znowu temat na topic, temat wyborczy
 * Pamięć ludzka może przechować do 7+/- 2 elementów w swojej pamięci krótkotrwałej. Widzimy do wszędzie – nawet w ruskim liczydle.
 * Policzono: 1-3 obiekty: 40 nano sekuns
 * Jeżeli więcej to 250ns na każdy kolejny. Czyli policzenie do 4 to w zasadzie ¼ sedunku. Kolejne 4 – kolejna ¼
@@ -743,11 +765,14 @@ image::25-bruce-lee.png[caption="守破離", role="frame"]
 
 
 
-https://speakerdeck.com/kubamarchwicki/reverse-engineering-the-clean-code
+https://speakerdeck.com/kubamarchwicki
+      /reverse-engineering-the-clean-code
 
 Follow me on twitter
   @kubem
 
-Credits
-  http://www.slideshare.net/lisadawley/crap-design
+This presentation was made with AsciiDoctor
+  http://asciidoctor.org/
+  https://github.com/kubamarchwicki/presentations/
+
 ----
