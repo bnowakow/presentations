@@ -90,12 +90,15 @@ Make stuff simple but not simplistic::
 ====
 
 == \\
-image::07-clean-code.jpg[caption="Single source of truth", role="frame"]
+image::07-clean-code.jpg[caption="", role="stretch-x"]
 
 [NOTE]
 [role="speaker"]
 ====
 * So when you get into this thinking, you look for books. I started with this guy
+* Single source of truth
+* Trafiłem na kilka książek. Kto nie zna?
+* Bo jak nie zna – to reszta prezentacji może być trudna do przełknięcie ;-)
 ====
 
 == \\
@@ -276,6 +279,10 @@ image::11-kent-beck.jpg[caption="The Sourcerer", role="frame"]
 * Kent has given this different perspective on what was important
 ** what the implementation was really about
 ====
+
+== \\
+image::11a-implementation-patterns.jpg[caption="", role="strech-x"]
+
 
 [.topic]
 == Values
