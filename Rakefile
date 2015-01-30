@@ -1,8 +1,9 @@
 require 'tilt'
 require 'asciidoctor'
+require 'asciidoctor-diagram'
 
 deck2pdf_path = 'deck2pdf/build/distributions/deck2pdf-0.1-SNAPSHOT/bin/deck2pdf'
- 
+
 desc 'Render the slides to dzslides'
 task :render, :file do |t, args|
     args.with_defaults(:file => 'slides')
@@ -26,6 +27,6 @@ task :pdf, :file do |t, args|
 
     system("#{deck2pdf_path} --profile=dzslides --width=954 --height=714 #{source_file}.html #{source_file}.pdf")
 end
- 
+
 task :default => :render do
 end
